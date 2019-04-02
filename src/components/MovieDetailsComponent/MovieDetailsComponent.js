@@ -22,19 +22,19 @@ class MovieDetailsComponent extends React.Component {
                     <button className="btn btn-default watchlist-btn col-12">Add to Watchlist</button>
                   </div>
                   <div className="col-md-6 col-xs-6">
-                      <h1>{this.props.movie.title}</h1>
-                      <h6>{this.props.movie.synopsis}</h6>
-                      <h6>Director: {this.props.movie.director}</h6>
-                      <h6>Writers: {this.props.movie.writer}</h6>
-                      <h6>Rating: </h6>
+                      <h1 className="white-title">{this.props.movie.title}</h1>
+                      <h6 className="white-title">{this.props.movie.synopsis}</h6>
+                      <h6 className="white-title">Director: {this.props.movie.director}</h6>
+                      <h6 className="white-title">Writers: {this.props.movie.writer}</h6>
+                      <h6 className="white-title">Rating: </h6>
                   </div>
                   <div className="col-md-3 col-xs-5">
-                    <h1>Twitter Feed</h1>
+                    <h1 className="white-title">Twitter Feed</h1>
                   </div>
                 </div>
                 <br/>
                 <div className="row">
-                  <h3>Cast</h3>
+                  <h3 className="white-title">Cast</h3>
                 </div>
                 <div className="row card-group">
                   {
@@ -45,7 +45,7 @@ class MovieDetailsComponent extends React.Component {
                 </div>
                 <br/>
                 <div className="row">
-                  <h3>Reviews</h3>
+                  <h3 className="white-title">Reviews</h3>
                 </div>
                 <div className="row card-columns">
                   {

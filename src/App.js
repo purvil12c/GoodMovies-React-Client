@@ -79,6 +79,7 @@ class App extends Component {
                         <Route path="/" exact component={Login}/>
                         <Route path="/register" exact component={Register}/>
                         <Route path="/profile" exact component={Profile}/>
+                        <Route path="/movieDetail" exact component={()=><MovieDetailsComponent movie={this.movie}/>}/>
                     </div>
                 </Router>
             </div>

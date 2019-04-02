@@ -1,14 +1,4 @@
-h1 {
-  color: white;
-  opacity: 0.95;
-}
-
-h6 {
-  color: white;
-  opacity: 0.95;
-}
-
-h3 {
+.white-title {
   color: white;
   opacity: 0.95;
 }
