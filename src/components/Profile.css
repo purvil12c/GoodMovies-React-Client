@@ -1,0 +1,11 @@
+.background {
+    height: 143vh;
+    background: url("netflix_bg.jpg");
+    background-color: #2d3436;
+    background-blend-mode: overlay;
+    width: 100%;
+}
+
+.review-card {
+    width: 18rem;
+}
