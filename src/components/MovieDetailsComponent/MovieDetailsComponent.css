@@ -1,0 +1,24 @@
+h1 {
+  color: white;
+  opacity: 0.95;
+}
+
+h6 {
+  color: white;
+  opacity: 0.95;
+}
+
+h3 {
+  color: white;
+  opacity: 0.95;
+}
+
+.watchlist-btn {
+    color: white;
+    background-color: black;
+}
+
+.watchlist-btn:hover{
+  color: black;
+  background-color: white;
+}
