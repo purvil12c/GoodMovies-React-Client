@@ -19,7 +19,10 @@ class MovieDetailsComponent extends React.Component {
                 <div className="row">
                   <div className="col-md-3 col-xs-1">
                     <img src={this.props.movie.poster} className="col-12"/>
-                    <button className="btn btn-default watchlist-btn col-12">Add to Watchlist</button>
+                    <button className="btn btn-default watchlist-btn col-12">
+                        Add to Watchlist
+                        <i className="fa fa-plus mx-2"></i>
+                    </button>
                   </div>
                   <div className="col-md-6 col-xs-6">
                       <h1>{this.props.movie.title}</h1>
@@ -29,7 +32,9 @@ class MovieDetailsComponent extends React.Component {
                       <h6>Rating: </h6>
                   </div>
                   <div className="col-md-3 col-xs-5">
-                    <h1>Twitter Feed</h1>
+                    <h1>Twitter Feed
+                        <i className="fa fa-twitter"></i>
+                    </h1>
                   </div>
                 </div>
                 <br/>
