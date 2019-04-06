@@ -1,8 +1,51 @@
 import React from 'react';
 import "./LoginRegister.css"
 import {Link} from 'react-router-dom'
+import UserService from '../services/UserService'
 
 class Login extends React.Component {
+    constructor(props) {
+        super(props);
+        this.userService = new UserService();
+        this.state = {
+            username: '',
+            password: ''
+        }
+
+    }
+
+    usernameChanged = (event) => {
+        this.setState({
+                          username: event.target.value
+                      })
+    };
+
+    passwordChanged = (event) => {
+        this.setState({
+                          password: event.target.value
+                      })
+    };
+
+    login = () => {
+        var user = {
+            username: this.state.username,
+            password: this.state.password
+        };
+
+        this.userService.login(user)
+            .then(response => {
+                if (response.username != null) {
+                    this.props.history.push('/home')
+                } else if (response.username == null) {
+                    alert("Username and Password does not match with our records. Try again!")
+                    this.setState({
+                                      username: '',
+                                      password: ''
+                                  })
+                }
+            })
+    };
+
     render() {
         return (
             <div className={"background"}>
@@ -13,7 +56,9 @@ class Login extends React.Component {
                                placeholder={"Username"}/>
                         <input className={"form-control my-2"} type={"password"}
                                placeholder={"Password"}/>
-                        <button className={"red-button my-2"}>Sign In</button>
+                        <button className={"red-button my-2"} onClick={this.login}>
+                            Sign In
+                        </button>
                         <p>
                             Not a member?
                         </p>
