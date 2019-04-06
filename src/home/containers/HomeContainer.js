@@ -13,11 +13,11 @@ export default class HomeContainer extends React.Component {
     }
 
     render() {
-            return (
-                <div>
-                    <HomeNavigationBar loggedIn = {true}/>
+        return (
+            <div>
+                <HomeNavigationBar loggedIn = {true}/>
 
-                    <div className={"row"}>
+                <div className={"row"}>
                     <div className="md-form m-4 col-9">
                         <input className="form-control" type="text" placeholder="Search" aria-label="Search"></input>
                     </div>
@@ -29,15 +29,15 @@ export default class HomeContainer extends React.Component {
                             <input type="radio" name="options" id="option2" autoComplete="off"/> Users
                         </label>
                     </div>
-                    </div>
-
-                    <h3 className="ml-4 mt-4"> Popular Movies </h3>
-                    <MovieSlider movies={[{name: 'Avengers', id:123}, {name: 'Avengers', id:234}, {name: 'Avengers', id:345}, {name: 'Avengers', id: 456}, {name: 'Avengers', id: 567}, {name: 'Avengers', id: 678}]}/>
-
-                    <h3 className="ml-4 mt-4"> In Theatres </h3>
-                    <MovieSlider movies={[{name: 'Avengers', id:123}, {name: 'Avengers', id:234}, {name: 'Avengers', id:345}]}/>
-
                 </div>
-            );
+
+                <h3 className="ml-4 mt-4"> Popular Movies </h3>
+                <MovieSlider movies={[{name: 'Avengers', id:123}, {name: 'Avengers', id:234}, {name: 'Avengers', id:345}, {name: 'Avengers', id: 456}, {name: 'Avengers', id: 567}, {name: 'Avengers', id: 678}]}/>
+
+                <h3 className="ml-4 mt-4"> In Theatres </h3>
+                <MovieSlider movies={[{name: 'Avengers', id:123}, {name: 'Avengers', id:234}, {name: 'Avengers', id:345}]}/>
+
+            </div>
+        );
     }
 }
