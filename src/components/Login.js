@@ -53,9 +53,9 @@ class Login extends React.Component {
                     <form className={"box-elements"}>
                         <h1>Sign In</h1>
                         <input className={"form-control my-2"} type={"text"}
-                               placeholder={"Username"}/>
+                               placeholder={"Username"} onChange={this.usernameChanged}/>
                         <input className={"form-control my-2"} type={"password"}
-                               placeholder={"Password"}/>
+                               placeholder={"Password"} onChange={this.passwordChanged}/>
                         <button className={"red-button my-2"} onClick={this.login}>
                             Sign In
                         </button>
