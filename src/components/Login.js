@@ -35,7 +35,7 @@ class Login extends React.Component {
         this.userService.login(user)
             .then(response => {
                 if (response.username != null) {
-                    this.props.history.push('/home/' + response._id)
+                    this.props.history.push('/home')
                 } else if (response.message) {
                     alert("Username and Password does not match with our records. Try again!");
                     this.resetFields();
@@ -48,7 +48,6 @@ class Login extends React.Component {
                           username: '',
                           password: ''
                       })
-
 
     render() {
         return (
