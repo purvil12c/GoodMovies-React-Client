@@ -65,7 +65,9 @@ class MovieDetailsComponent extends React.Component {
                       <h6 className="white-title">Rating: </h6>
                   </div>
                   <div className="col-md-3 col-xs-5">
-                    <h1 className="white-title">Twitter Feed</h1>
+                    <h1 className="white-title">Twitter Feed
+                        <i className="fa fa-twitter"></i>
+                    </h1>
                   </div>
                 </div>
                 <br/>

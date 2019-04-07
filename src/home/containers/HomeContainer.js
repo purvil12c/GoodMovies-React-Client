@@ -44,11 +44,11 @@ export default class HomeContainer extends React.Component {
     }
 
     render() {
-            return (
-                <div>
-                    <HomeNavigationBar loggedIn = {true}/>
+        return (
+            <div>
+                <HomeNavigationBar loggedIn = {true}/>
 
-                    <div className={"row"}>
+                <div className={"row"}>
                     <div className="md-form m-4 col-9">
                         <input className="form-control" type="text" onChange={this.searchTextUpdated}
                                placeholder="Search" value={this.state.searchQuery}
@@ -65,15 +65,14 @@ export default class HomeContainer extends React.Component {
                             <input type="radio" name="options" id="option2" autoComplete="off"/> Users
                         </label>
                     </div>
-                    </div>
-
-                    <h3 className="ml-4 mt-4"> Popular Movies </h3>
-                    <MovieSlider movies={this.state.popularMovies}/>
-
-                    <h3 className="ml-4 mt-4"> In Theatres </h3>
-                    <MovieSlider movies={this.state.nowPlayingMovies}/>
-
                 </div>
-            );
+
+                <h3 className="ml-4 mt-4"> Popular Movies </h3>
+                <MovieSlider movies={this.state.popularMovies}/>
+
+                <h3 className="ml-4 mt-4"> In Theatres </h3>
+                <MovieSlider movies={this.state.nowPlayingMovies}/>
+            </div>
+        );
     }
 }

@@ -4,7 +4,6 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Register from "./components/Register";
 import Profile from "./components/Profile";
 import MovieDetailsComponent from "./components/MovieDetailsComponent/MovieDetailsComponent";
-import {HomeNavigationBar} from "./home/components/HomeNavigationBar";
 import HomeContainer from "./home/containers/HomeContainer";
 import MovieSearchComponent from "./components/MovieSearchComponent/MovieSearchComponent";
 
