@@ -8,9 +8,8 @@ export default class HomeContainer extends React.Component {
     constructor(props) {
         super(props);
         this.userService = new UserService();
-        const userId = props.match.params.id;
         this.state = ({});
-        this.userService.findUserById(userId).then(
+        this.userService.getProfile().then(
             user => this.setState({
                                       username: user.username,
                                       type: user.type,
