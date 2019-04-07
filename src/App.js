@@ -14,13 +14,7 @@ class App extends Component {
             <div className="App">
                 <Router>
                     <div>
-                        <div className="container-fluid">
-                            <Route path='/home' exact
-                                   render={() => <HomeNavigationBar loggedIn={true}/>}/>
-                        </div>
-                        <div className="m-0">
-                            <Route exact path='/' component={HomeContainer}/>
-                        </div>
+                        <Route path='/' exact component={HomeContainer}/>
                         <Route path="/login" exact component={Login}/>
                         <Route path="/register" exact component={Register}/>
                         <Route path="/profile" exact component={Profile}/>
