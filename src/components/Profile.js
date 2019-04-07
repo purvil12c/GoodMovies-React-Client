@@ -3,13 +3,29 @@ import ProfileNavBar from "./ProfileNavBar";
 import './Profile.css'
 import UserInformation from "./UserInformation";
 import UserReviews from "./UserReviews";
+import UserService from "../services/UserService";
 
 class Profile extends React.Component {
     constructor(props) {
         super(props);
+        this.userService = new UserService();
         this.state = {
             tabInfo: 'userInfo'
-        }
+        };
+        this.userService.getProfile().then(
+            user => this.setState({
+                                      username: user.username,
+                                      type: user.type,
+                                      ratings: user.ratings,
+                                      reviews: user.reviews,
+                                      watchlist: user.watchlist,
+                                      followers: user.followers,
+                                      following: user.following,
+                                      firstname: user.firstname,
+                                      lastname: user.lastname
+                                  })
+        )
+
     }
 
     showUserInformation = () =>
@@ -50,22 +66,44 @@ class Profile extends React.Component {
                                         </div>
                                     </div>
                                     <div className={"col-sm-12 col-md-8 col-lg-10"}>
-                                        <h1>@username</h1>
+                                        {
+                                            this.state.username !== undefined &&
+                                            <h1>{this.state.username}</h1>
+
+                                        }
                                         <div className={"row"}>
                                             <div className={"col-12"}>
-                                                <button type="button" className="btn btn-primary">Movies
-                                                    <span className="badge badge-light mx-1">9</span>
+                                                <button type="button"
+                                                        className="btn btn-primary">Movies
+                                                    {
+                                                        this.state.watchlist !== undefined &&
+                                                        <span className="badge badge-light mx-1">
+                                                            {this.state.watchlist.length}
+                                                        </span>
+                                                    }
                                                 </button>
                                             </div>
                                             <div className={"col-12"}>
-                                                <button type="button" className="btn btn-primary my-2">
-                                                    Followers <span className="badge badge-light mx-1">200</span>
+                                                <button type="button"
+                                                        className="btn btn-primary my-2">
+                                                    Followers
+                                                    {
+                                                        this.state.followers !== undefined &&
+                                                        <span className="badge badge-light mx-1">
+                                                            {this.state.followers.length}
+                                                        </span>
+                                                    }
                                                 </button>
                                             </div>
                                             <div className={"col-12"}>
                                                 <button type="button" className="btn btn-primary">
-                                                    Extra
-                                                    <span className="badge badge-light mx-1">9</span>
+                                                    Following
+                                                    {
+                                                        this.state.following !== undefined &&
+                                                        <span className="badge badge-light mx-1">
+                                                            {this.state.following.length}
+                                                        </span>
+                                                    }
                                                 </button>
                                             </div>
                                         </div>
@@ -93,12 +131,16 @@ class Profile extends React.Component {
                         <div className="card-body">
                             {
                                 this.state.tabInfo == 'userInfo' &&
+                                this.state.firstname !== undefined &&
+                                this.state.lastname !== undefined &&
                                 <div>
-                                    <UserInformation/>
+                                    <UserInformation firstname={this.state.firstname}
+                                                     lastname={this.state.lastname}/>
                                 </div>
                             }
                             {
                                 this.state.tabInfo == 'watchList' &&
+                                this.state.watchlist !== undefined &&
                                 <div>
                                     <h1>
                                         Watchlist
@@ -107,8 +149,9 @@ class Profile extends React.Component {
                             }
                             {
                                 this.state.tabInfo == 'userReviews' &&
+                                this.state.reviews !== undefined &&
                                 <div>
-                                    <UserReviews/>
+                                    <UserReviews reviews={this.state.reviews}/>
                                 </div>
                             }
                         </div>
