@@ -77,7 +77,8 @@ class App extends Component {
             <div className="App">
                 <Router>
                     <div>
-                        <Route path="/" exact component={Login}/>
+                        <Route path="/" exact component={HomeContainer}/>
+                        <Route path="/login" exact component={Login}/>
                         <Route path="/register" exact component={Register}/>
                         <Route path="/profile" exact component={Profile}/>
                         <Route path="/movieDetail" exact
