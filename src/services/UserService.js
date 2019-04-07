@@ -1,4 +1,4 @@
-const user_login_url = 'URL';
+const user_login_url = ' http://express-goodmovies-server.herokuapp.com/users/login';
 const user_register_url = 'URL';
 
 export default class UserService {
