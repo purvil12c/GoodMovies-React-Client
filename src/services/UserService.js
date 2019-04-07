@@ -1,6 +1,6 @@
 const user_login_url = 'https://express-goodmovies-server.herokuapp.com/users/login';
 const user_get_profile = 'https://express-goodmovies-server.herokuapp.com/users/profile';
-const user_register_url = 'URL';
+const user_signup_url = ' https://express-goodmovies-server.herokuapp.com/users/signup';
 
 export default class UserService {
     login = (user) =>
@@ -13,8 +13,8 @@ export default class UserService {
             method: 'POST'
         }).then(response => response.json());
 
-    register = (user) =>
-        fetch(user_register_url, {
+    signUp = (user) =>
+        fetch(user_signup_url, {
             body: JSON.stringify(user),
             credentials: "include",
             headers: {
