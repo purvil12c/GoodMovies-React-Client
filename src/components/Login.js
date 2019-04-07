@@ -34,9 +34,10 @@ class Login extends React.Component {
 
         this.userService.login(user)
             .then(response => {
+                console.log(response)
                 if (response.username != null) {
                     this.props.history.push('/home')
-                } else if (response.username == null) {
+                } else if (response.message === "Password is incorrect") {
                     alert("Username and Password does not match with our records. Try again!")
                     this.setState({
                                       username: '',
@@ -56,7 +57,7 @@ class Login extends React.Component {
                                placeholder={"Username"} onChange={this.usernameChanged}/>
                         <input className={"form-control my-2"} type={"password"}
                                placeholder={"Password"} onChange={this.passwordChanged}/>
-                        <button className={"red-button my-2"} onClick={this.login}>
+                        <button className={"red-button my-2"} type={"button"} onClick={this.login}>
                             Sign In
                         </button>
                         <p>
