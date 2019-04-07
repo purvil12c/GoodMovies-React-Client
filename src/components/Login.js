@@ -37,15 +37,19 @@ class Login extends React.Component {
                 console.log(response)
                 if (response.username != null) {
                     this.props.history.push('/home')
-                } else if (response.message === "Password is incorrect") {
-                    alert("Username and Password does not match with our records. Try again!")
-                    this.setState({
-                                      username: '',
-                                      password: ''
-                                  })
+                } else if (response.message) {
+                    alert("Username and Password does not match with our records. Try again!");
+                    this.resetFields();
                 }
             })
     };
+
+    resetFields = () =>
+        this.setState({
+                          username: '',
+                          password: ''
+                      })
+
 
     render() {
         return (
@@ -54,9 +58,11 @@ class Login extends React.Component {
                     <form className={"box-elements"}>
                         <h1>Sign In</h1>
                         <input className={"form-control my-2"} type={"text"}
-                               placeholder={"Username"} onChange={this.usernameChanged}/>
+                               placeholder={"Username"} value={this.state.username}
+                               onChange={this.usernameChanged}/>
                         <input className={"form-control my-2"} type={"password"}
-                               placeholder={"Password"} onChange={this.passwordChanged}/>
+                               placeholder={"Password"} value={this.state.password}
+                               onChange={this.passwordChanged}/>
                         <button className={"red-button my-2"} type={"button"} onClick={this.login}>
                             Sign In
                         </button>
