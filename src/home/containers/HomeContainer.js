@@ -8,19 +8,13 @@ export default class HomeContainer extends React.Component {
     constructor(props) {
         super(props);
         this.userService = new UserService();
-        this.state = ({});
+        this.state = ({
+            response: ''
+        });
         this.userService.getProfile().then(
-            user => this.setState({
-                                      username: user.username,
-                                      type: user.type,
-                                      ratings: user.ratings,
-                                      reviews: user.reviews,
-                                      watchlist: user.watchlist,
-                                      followers: user.followers,
-                                      following: user.following,
-                                      firstname: user.firstname,
-                                      lastname: user.lastname
-                                  })
+            response => this.setState({
+                                          response: response
+                                      })
         )
     }
 
@@ -28,13 +22,23 @@ export default class HomeContainer extends React.Component {
         // Load popular movies and in theatre movies from API here and use them below
     }
 
+    logout = () => {
+        this.userService.logout();
+    };
+
     render() {
         return (
             <div>
                 {
-                    this.state.username !== undefined &&
+                    this.state.response.message === 'You are not logged in' &&
+                    <HomeNavigationBar loggedIn={false}/>
+
+                }
+                {
+                    this.state.response.username !== undefined &&
                     <HomeNavigationBar loggedIn={true}
-                                       username={this.state.username}/>
+                                       username={this.state.response.username}
+                                       logout={this.logout}/>
                 }
 
                 <div className={"row"}>

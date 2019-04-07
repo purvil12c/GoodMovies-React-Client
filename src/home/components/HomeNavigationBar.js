@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
 
-export const HomeNavigationBar = ({loggedIn, username}) => {
+export const HomeNavigationBar = ({loggedIn, username, logout}) => {
     return (
         <nav className="navbar navbar-dark bg-primary">
             <Link to="/">
@@ -20,6 +20,20 @@ export const HomeNavigationBar = ({loggedIn, username}) => {
                     <Link style={{display: 'block', height: '100%'}}
                           className="navbar-nav" to='/profile'>
                         <button type='btn' className="text-white btn">{username}</button>
+                    </Link>
+                </div>
+                <div hidden={!loggedIn}>
+                    <Link style={{display: 'block', height: '100%'}}
+                          className="navbar-nav" to='/login'>
+                        <button type='btn' className="text-white btn" onClick={logout}>
+                            Logout
+                        </button>
+                    </Link>
+                </div>
+                <div hidden={loggedIn}>
+                    <Link style={{display: 'block', height: '100%'}}
+                          className="navbar-nav" to='/login'>
+                        Login
                     </Link>
                 </div>
             </form>
