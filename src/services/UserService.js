@@ -1,4 +1,5 @@
 const user_login_url = 'https://express-goodmovies-server.herokuapp.com/users/login';
+const user_find_by_id = 'https://express-goodmovies-server.herokuapp.com/users/';
 const user_register_url = 'URL';
 
 export default class UserService {
@@ -21,5 +22,13 @@ export default class UserService {
             },
             method: 'POST'
         }).then(response => response.json());
+
+    findUserById = (id) =>
+        fetch(user_find_by_id + id, {
+            credentials: "include",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(response => response.json())
 
 }
