@@ -1,14 +1,4 @@
-h1 {
-  color: white;
-  opacity: 0.95;
-}
-
-h6 {
-  color: white;
-  opacity: 0.95;
-}
-
-h3 {
+.white-title {
   color: white;
   opacity: 0.95;
 }
@@ -21,4 +11,18 @@ h3 {
 .watchlist-btn:hover{
   color: black;
   background-color: white;
+}
+
+.bold-text {
+    font-weight: bold;
+    font-size: large;
+}
+
+
+.background {
+    height: 120vh;
+    background: url("../netflix_bg.jpg");
+    background-color: #2d3436;
+    background-blend-mode: overlay;
+    width: 100%;
 }

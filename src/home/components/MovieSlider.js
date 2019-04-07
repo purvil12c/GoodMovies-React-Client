@@ -1,5 +1,6 @@
 import React from 'react';
 import {Carousel} from 'react-responsive-carousel';
+import * as constants from '../../services/Constants'
 import {MovieSliderItem} from "../components/MovieSliderItem";
 
 export default class MovieSlider extends React.Component {
@@ -18,8 +19,8 @@ export default class MovieSlider extends React.Component {
             let movieRenderList = [];
             let posterRenderList = [];
 
-            movies.map((movie, index) => {
-                let poster = 'https://oyster.ignimgs.com/wordpress/stg.ign.com/2019/03/D2wo1l0UkAA3Bu7.jpg-large.jpg';
+            movies.map((movie) => {
+                let poster = constants.TMDB_IMAGE_BASE_URL + '/w500' + movie.poster_path;
                 movieArray.push(movie);
                 posterArray.push(poster);
             });
