@@ -40,3 +40,4 @@ export const HomeNavigationBar = ({loggedIn, username, logout}) => {
         </nav>
     )
 };
+

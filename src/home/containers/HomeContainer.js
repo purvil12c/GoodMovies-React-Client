@@ -3,23 +3,55 @@ import React from 'react';
 import {HomeNavigationBar} from '../components/HomeNavigationBar';
 import MovieSlider from "../components/MovieSlider";
 import UserService from "../../services/UserService"
+import MovieServiceClient from "../../services/MovieService";
 
 export default class HomeContainer extends React.Component {
     constructor(props) {
         super(props);
         this.userService = new UserService();
-        this.state = ({
+
+        this.state = {
+            popularMovies: [],
+            nowPlayingMovies: [],
+            searchQuery: '',
             response: ''
-        });
+        }
+
         this.userService.getProfile().then(
             response => this.setState({
-                                          response: response
-                                      })
+                response: response
+            })
         )
+
+        this.searchTextUpdated = this.searchTextUpdated.bind(this);
+        this.searchButtonClicked = this.searchButtonClicked.bind(this);
+
     }
 
     componentDidMount() {
-        // Load popular movies and in theatre movies from API here and use them below
+        MovieServiceClient.instance.getPopularMovies().then(response => {
+            this.setState({
+                popularMovies: response.results
+            })
+        })
+
+        MovieServiceClient.instance.getNowPlayingMovies().then(response => {
+            this.setState({
+                nowPlayingMovies: response.results
+            })
+        })
+    }
+
+    searchTextUpdated(event) {
+        this.setState({
+            searchQuery: event.target.value
+        })
+    }
+
+    searchButtonClicked() {
+        if (this.state.searchQuery !== '') {
+            this.props.history.push('/search/' + this.state.searchQuery);
+        }
     }
 
     logout = () => {
@@ -43,9 +75,13 @@ export default class HomeContainer extends React.Component {
 
                 <div className={"row"}>
                     <div className="md-form m-4 col-9">
-                        <input className="form-control" type="text" placeholder="Search"
+                        <input className="form-control" type="text" onChange={this.searchTextUpdated}
+                               placeholder="Search" value={this.state.searchQuery}
                                aria-label="Search"></input>
                     </div>
+                    <button type='btn' className="text-white btn bg-primary" onClick={this.searchButtonClicked}>
+                        GO
+                    </button>
                     <div className="btn-group btn-group-toggle m-4" data-toggle="buttons">
                         <label className="btn btn-secondary active">
                             <input type="radio" name="options" id="option1"
@@ -59,14 +95,13 @@ export default class HomeContainer extends React.Component {
                 </div>
 
                 <h3 className="ml-4 mt-4"> Popular Movies </h3>
-                <MovieSlider movies={[{name: 'Avengers', id: 123}, {name: 'Avengers', id: 234},
-                    {name: 'Avengers', id: 345}, {name: 'Avengers', id: 456},
-                    {name: 'Avengers', id: 567}, {name: 'Avengers', id: 678}]}/>
+                <MovieSlider movies={this.state.popularMovies}/>
 
                 <h3 className="ml-4 mt-4"> In Theatres </h3>
-                <MovieSlider movies={[{name: 'Avengers', id: 123}, {name: 'Avengers', id: 234},
-                    {name: 'Avengers', id: 345}]}/>
+                <MovieSlider movies={this.state.nowPlayingMovies}/>
+
             </div>
+
         );
     }
 }
