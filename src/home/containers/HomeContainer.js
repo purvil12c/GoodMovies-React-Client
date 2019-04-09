@@ -14,12 +14,12 @@ export default class HomeContainer extends React.Component {
             popularMovies: [],
             nowPlayingMovies: [],
             searchQuery: '',
-            response: ''
+            userProfile: ''
         }
 
         this.userService.getProfile().then(
             response => this.setState({
-                response: response
+                userProfile: response
             })
         )
 
@@ -62,14 +62,14 @@ export default class HomeContainer extends React.Component {
         return (
             <div>
                 {
-                    this.state.response.message === 'You are not logged in' &&
+                    this.state.userProfile.message === 'You are not logged in' &&
                     <HomeNavigationBar loggedIn={false}/>
 
                 }
                 {
-                    this.state.response.username !== undefined &&
+                    this.state.userProfile.username !== undefined &&
                     <HomeNavigationBar loggedIn={true}
-                                       username={this.state.response.username}
+                                       username={this.state.userProfile.username}
                                        logout={this.logout}/>
                 }
 
