@@ -4,6 +4,7 @@ import './Profile.css'
 import UserInformation from "./UserInformation";
 import UserReviews from "./UserReviews";
 import UserService from "../services/UserService";
+import UserWatchList from "./UserWatchList";
 
 class Profile extends React.Component {
     constructor(props) {
@@ -124,9 +125,7 @@ class Profile extends React.Component {
                                 this.state.tabInfo == 'watchList' &&
                                 this.state.watchlist !== undefined &&
                                 <div>
-                                    <h1>
-                                        Watchlist
-                                    </h1>
+                                    <UserWatchList watchlist={this.state.watchlist}/>
                                 </div>
                             }
                             {
