@@ -10,9 +10,9 @@ class OthersProfile extends React.Component {
         const id = props.match.params.id;
         this.state = ({
             id: id,
-            tabInfo: 'watchList'
+            tabInfo: 'watchList',
+            loggedInUser: ''
         })
-
     }
 
     componentDidMount() {
@@ -26,7 +26,13 @@ class OthersProfile extends React.Component {
                                       watchlist: user.watchlist,
                                       type: user.type
                                   })
-        )
+        );
+
+        this.userService.getProfile().then(
+            response => this.setState({
+                                          loggedInUser: response
+                                      })
+        );
     }
 
     showWatchList = () =>
@@ -76,11 +82,14 @@ class OthersProfile extends React.Component {
                                         }
                                     </div>
                                     <div className={"col-sm-12 col-md-6 col-lg-8"}>
-                                        <div className={"float-right"}>
-                                            <button className={"btn btn-primary my-2"}>
-                                                Follow
-                                            </button>
-                                        </div>
+                                        {
+                                            this.state.loggedInUser.username !== undefined &&
+                                            <div className={"float-right"}>
+                                                <button className={"btn btn-primary my-2"}>
+                                                    Follow
+                                                </button>
+                                            </div>
+                                        }
                                     </div>
                                 </div>
                             </div>
