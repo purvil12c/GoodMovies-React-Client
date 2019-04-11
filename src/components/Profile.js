@@ -45,7 +45,7 @@ class Profile extends React.Component {
 
     render() {
         return (
-            <div className={"background"}>
+            <div>
                 <div>
                     <ProfileNavBar/>
                 </div>
@@ -62,7 +62,7 @@ class Profile extends React.Component {
                                         </div>
                                         <div className={"col-12"}>
                                             <button className={"btn btn-primary my-2"}>
-                                                Follow <i className="fa fa-plus mx-1"></i></button>
+                                                Follow</button>
                                         </div>
                                     </div>
                                     <div className={"col-sm-12 col-md-8 col-lg-10"}>
