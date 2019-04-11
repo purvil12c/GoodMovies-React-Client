@@ -56,7 +56,14 @@ class OthersProfile extends React.Component {
                       });
 
     followUser = (userId, followId) =>
-        console.log('User ' + userId + ' followed User : ' + followId);
+        this.userService.followUser(userId, followId).then(
+            alert('Followed this user')
+        );
+
+    unfollowUser = (userId, followId) =>
+        this.userService.unfollowUser(userId, followId).then(
+            alert('Unfollowed this user')
+        );
 
     render() {
         return (
@@ -94,6 +101,13 @@ class OthersProfile extends React.Component {
                                                             this.state.loggedInUser._id,
                                                             this.state.id)}>
                                                     Follow
+                                                </button>
+                                                <button className={"btn btn-primary my-2"}
+                                                        type={"button"}
+                                                        onClick={() => this.unfollowUser(
+                                                            this.state.loggedInUser._id,
+                                                            this.state.id)}>
+                                                    Unfollow
                                                 </button>
                                             </div>
                                         }
