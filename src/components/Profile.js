@@ -80,13 +80,6 @@ class Profile extends React.Component {
                                             </div>
                                         }
                                     </div>
-                                    <div className={"col-sm-12 col-md-6 col-lg-8"}>
-                                        <div className={"float-right"}>
-                                            <button className={"btn btn-primary my-2"}>
-                                                Follow
-                                            </button>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <ul className="nav nav-tabs card-header-tabs">
