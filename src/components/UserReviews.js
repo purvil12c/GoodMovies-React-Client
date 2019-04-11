@@ -1,33 +1,25 @@
 import React from 'react';
+import ReviewComponent from "./ReviewComponent";
 
 class UserReviews extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = ({
+            reviews: this.props.reviews
+        })
+    }
+
     render() {
         return (
-            <div className={"row"}>
-                <div className="review-card col-sm-12 col-md-4 col-lg-2">
-                    <img src="https://picsum.photos/200/200" className="card-img-top" alt="..."/>
-                    <div className="card-body">
-                        <p className="card-text">Stars / Detailed review depnding upon user</p>
-                    </div>
-                </div>
-                <div className="review-card col-sm-12 col-md-4 col-lg-2">
-                    <img src="https://picsum.photos/200/200" className="card-img-top" alt="..."/>
-                    <div className="card-body">
-                        <p className="card-text">Stars / Detailed review depnding upon user</p>
-                    </div>
-                </div>
-                <div className="review-card col-sm-12 col-md-4 col-lg-2">
-                    <img src="https://picsum.photos/200/200" className="card-img-top" alt="..."/>
-                    <div className="card-body">
-                        <p className="card-text">Stars / Detailed review depnding upon user</p>
-                    </div>
-                </div>
-                <div className="review-card col-sm-12 col-md-4 col-lg-2">
-                    <img src="https://picsum.photos/200/200" className="card-img-top" alt="..."/>
-                    <div className="card-body">
-                        <p className="card-text">Stars / Detailed review depnding upon user</p>
-                    </div>
-                </div>
+            <div className={"container"}>
+                {
+                    this.state.reviews.map(review => {
+                        console.log(review);
+                        return (
+                            <ReviewComponent review={review}/>
+                        )
+                    })
+                }
             </div>
         );
     }
