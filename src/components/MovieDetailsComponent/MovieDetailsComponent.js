@@ -97,6 +97,7 @@ class MovieDetailsComponent extends React.Component {
         })
     }
 
+    // TODO Show and hide things based on whether user is critic or user
     render() {
        if (this.state.userProfile.message === 'You are not logged in') {
             return (
@@ -109,7 +110,6 @@ class MovieDetailsComponent extends React.Component {
                             <div className="col-md-3 col-xs-1">
                                 <img src={constants.TMDB_IMAGE_BASE_URL + '/w500' + this.state.movie.poster_path}
                                      className="col-12"/>
-                                <button className="btn btn-default watchlist-btn col-12">Add to Watchlist</button>
                             </div>
                             <div className="col-md-6 col-xs-6">
                                 <h1 className="white-title">{this.state.movie.title}</h1>

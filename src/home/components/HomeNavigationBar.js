@@ -30,12 +30,6 @@ export const HomeNavigationBar = ({loggedIn, username, logout}) => {
                         </button>
                     </Link>
                 </div>
-                <div hidden={loggedIn}>
-                    <Link style={{display: 'block', height: '100%'}}
-                          className="navbar-nav" to='/login'>
-                        Login
-                    </Link>
-                </div>
             </form>
         </nav>
     )
