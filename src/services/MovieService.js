@@ -54,6 +54,35 @@ class MovieServiceClient {
         });
     }
 
+    getMovieReviews(movieId) {
+        return fetch(constants.GET_REVIEWS_FOR_MOVIE_URL.replace('MOVIE_ID', movieId), {
+            method: 'GET'
+        }).then(function (response) {
+            if(response.headers.get("content-type")!=null)
+                return response.json();
+            else return null;
+        });
+    }
+
+    createMovieReview(reviewBody, reviewTitle, movieId, userId) {
+        return fetch(constants.ADD_REVIEW_FOR_MOVIE_URL,
+            {
+                method : 'POST',
+                body : JSON.stringify({'body': reviewBody, 'title': reviewTitle, 'movieId': movieId, 'userId': userId}),
+                headers: {
+                    'content-type':'application/json'
+                }})
+            .then(function(response) {
+                var contentType = response.headers.get("content-type");
+                if(contentType && contentType.includes("application/json")) {
+                    return response.json();
+                }
+                else {
+                    return null;
+                }
+            });
+    }
+
     searchMovieForQuery(searchQuery) {
         return fetch(constants.MOVIE_SEARCH_URL.replace('QUERY', searchQuery), {
             method: 'GET'
