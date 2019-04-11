@@ -135,7 +135,7 @@ class Register extends React.Component {
                         <p>
                             Already a member?
                         </p>
-                        <Link to={"/"}>Sign in here!</Link>
+                        <Link to={"/login"}>Sign in here!</Link>
                     </form>
                 </div>
             </div>
