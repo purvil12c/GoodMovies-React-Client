@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 
 export const HomeNavigationBar = ({loggedIn, username, logout}) => {
     return (
-        <nav className="navbar navbar-dark bg-primary">
+        <nav className="navbar navbar-inverse">
             <Link to="/">
                 <button type='btn' className="text-white btn">
                     <h1>Good Movies</h1>

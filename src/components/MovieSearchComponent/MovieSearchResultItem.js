@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import * as constants from '../../services/Constants'
 export const MovieSearchResultItem = ({searchResult}) => {
     return (
-        <Link className='col-2' to={`/movie/${searchResult.id}`}>
+        <Link className='col-2' style={{ textDecoration: 'none' }} to={`/movie/${searchResult.id}`}>
         <li className='card shadow p-3 bg-white rounded'>
             <div className="row no-gutters">
                 <div className="col-auto">
@@ -11,7 +11,10 @@ export const MovieSearchResultItem = ({searchResult}) => {
                 </div>
                 <div className="col">
                     <div className="card-block">
-                        <h6 className="card-title m-4">{searchResult.title}</h6>
+                        <h6 className="card-title m-4 black-title">{searchResult.title}</h6>
+                    </div>
+                    <div className="card-body">
+                        <p className="black-title">{searchResult.overview}</p>
                     </div>
                 </div>
             </div>
