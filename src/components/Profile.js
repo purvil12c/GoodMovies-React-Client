@@ -5,6 +5,7 @@ import UserInformation from "./UserInformation";
 import UserReviews from "./UserReviews";
 import UserService from "../services/UserService";
 import UserWatchList from "./UserWatchList";
+import UserFollowers from "./UserFollowers";
 
 class Profile extends React.Component {
     constructor(props) {
@@ -138,16 +139,22 @@ class Profile extends React.Component {
                             {
                                 this.state.tabInfo == 'followers' &&
                                 this.state.followers != undefined &&
-                                <h1>
-                                    {this.state.followers.length}
-                                </h1>
+                                <div>
+                                    <h1>
+                                        {this.state.followers.length}
+                                    </h1>
+                                    <UserFollowers followers={this.state.followers}/>
+                                </div>
                             }
                             {
                                 this.state.tabInfo == 'following' &&
                                 this.state.following != undefined &&
-                                <h1>
-                                    {this.state.following.length}
-                                </h1>
+                                <div>
+                                    <h1>
+                                        {this.state.following.length}
+                                    </h1>
+                                    <UserFollowers followers={this.state.followers}/>
+                                </div>
                             }
                         </div>
                     </div>
