@@ -14,6 +14,7 @@ class Profile extends React.Component {
         };
         this.userService.getProfile().then(
             user => this.setState({
+                                      user: user,
                                       username: user.username,
                                       type: user.type,
                                       ratings: user.ratings,
@@ -43,6 +44,16 @@ class Profile extends React.Component {
                           tabInfo: 'userReviews'
                       });
 
+    showFollowers = () =>
+        this.setState({
+                          tabInfo: 'followers'
+                      });
+
+    showFollowing = () =>
+        this.setState({
+                          tabInfo: 'following'
+                      });
+
     render() {
         return (
             <div>
@@ -55,57 +66,25 @@ class Profile extends React.Component {
                         <div className="card-header text-left">
                             <div className={"jumbotron"}>
                                 <div className={"row"}>
-                                    <div className={"col-sm-12 col-md-4 col-lg-2"}>
-                                        <div className={"col-12"}>
+                                    <div className={"col-sm-12 col-md-6 col-lg-4"}>
+                                        <div>
                                             <img src={"https://picsum.photos/100/100"}
                                                  className={"rounded-circle"}/>
                                         </div>
-                                        <div className={"col-12"}>
-                                            <button className={"btn btn-primary my-2"}>
-                                                Follow</button>
-                                        </div>
-                                    </div>
-                                    <div className={"col-sm-12 col-md-8 col-lg-10"}>
                                         {
-                                            this.state.username !== undefined &&
-                                            <h1>{this.state.username}</h1>
-
+                                            this.state.user !== undefined &&
+                                            <div>
+                                                <h3>
+                                                    {this.state.username}
+                                                </h3>
+                                            </div>
                                         }
-                                        <div className={"row"}>
-                                            <div className={"col-12"}>
-                                                <button type="button"
-                                                        className="btn btn-primary">Movies
-                                                    {
-                                                        this.state.watchlist !== undefined &&
-                                                        <span className="badge badge-light mx-1">
-                                                            {this.state.watchlist.length}
-                                                        </span>
-                                                    }
-                                                </button>
-                                            </div>
-                                            <div className={"col-12"}>
-                                                <button type="button"
-                                                        className="btn btn-primary my-2">
-                                                    Followers
-                                                    {
-                                                        this.state.followers !== undefined &&
-                                                        <span className="badge badge-light mx-1">
-                                                            {this.state.followers.length}
-                                                        </span>
-                                                    }
-                                                </button>
-                                            </div>
-                                            <div className={"col-12"}>
-                                                <button type="button" className="btn btn-primary">
-                                                    Following
-                                                    {
-                                                        this.state.following !== undefined &&
-                                                        <span className="badge badge-light mx-1">
-                                                            {this.state.following.length}
-                                                        </span>
-                                                    }
-                                                </button>
-                                            </div>
+                                    </div>
+                                    <div className={"col-sm-12 col-md-6 col-lg-8"}>
+                                        <div className={"float-right"}>
+                                            <button className={"btn btn-primary my-2"}>
+                                                Follow
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -114,7 +93,7 @@ class Profile extends React.Component {
                                 <li className="nav-item">
                                     <a href="#" className={this.state.tabInfo == 'userInfo'
                                                            ? "nav-link active" : "nav-link"}
-                                       onClick={this.showUserInformation}>Profile</a>
+                                       onClick={this.showUserInformation}>Edit Profile</a>
                                 </li>
                                 <li className="nav-item">
                                     <a href="#" className={this.state.tabInfo == 'watchList'
@@ -125,6 +104,16 @@ class Profile extends React.Component {
                                     <a href="#" className={this.state.tabInfo == 'userReviews'
                                                            ? "nav-link active" : "nav-link"}
                                        onClick={this.showUserReviews}>Reviews</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a href="#" className={this.state.tabInfo == 'followers'
+                                                           ? "nav-link active" : "nav-link"}
+                                       onClick={this.showFollowers}>Followers</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a href="#" className={this.state.tabInfo == 'following'
+                                                           ? "nav-link active" : "nav-link"}
+                                       onClick={this.showFollowing}>Following</a>
                                 </li>
                             </ul>
                         </div>
@@ -153,6 +142,20 @@ class Profile extends React.Component {
                                 <div>
                                     <UserReviews reviews={this.state.reviews}/>
                                 </div>
+                            }
+                            {
+                                this.state.tabInfo == 'followers' &&
+                                this.state.followers != undefined &&
+                                <h1>
+                                    {this.state.followers.length}
+                                </h1>
+                            }
+                            {
+                                this.state.tabInfo == 'following' &&
+                                this.state.following != undefined &&
+                                <h1>
+                                    {this.state.following.length}
+                                </h1>
                             }
                         </div>
                     </div>
