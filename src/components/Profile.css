@@ -3,15 +3,14 @@ html, body{
 }
 
 body {
-    background: url("netflix_bg.jpg");
-    background-position: center center;
-    background-repeat: revert;
+    background: url("netflix_bg.jpg")!important;
+    background-position: center center!important;
+    background-repeat: revert!important;
     background-attachment: fixed;
-    background-size:  cover;
-
-    height: 100%;
-    background-color: #2d3436;
-    background-blend-mode: overlay;
+    background-size:  cover!important;
+    height: 100%!important;
+    background-color: #2d3436!important;
+    background-blend-mode: overlay!important;
 }
 
 .review-card {
