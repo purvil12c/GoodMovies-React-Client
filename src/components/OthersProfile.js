@@ -61,23 +61,45 @@ class OthersProfile extends React.Component {
                         <div className="card-header text-left">
                             <div className={"jumbotron"}>
                                 <div className={"row"}>
-                                    <div className={"col-sm-12 col-md-4 col-lg-2"}>
-                                        <div className={"col-12"}>
+                                    {/*<div className={"col-sm-12 col-md-4 col-lg-2"}>*/}
+                                        {/*<div className={"col-12"}>*/}
+                                            {/*<img src={"https://picsum.photos/100/100"}*/}
+                                                 {/*className={"rounded-circle"}/>*/}
+                                        {/*</div>*/}
+                                        {/*<div className={"col-12"}>*/}
+                                            {/*<button className={"btn btn-primary my-2"}>*/}
+                                                {/*Follow*/}
+                                            {/*</button>*/}
+                                        {/*</div>*/}
+                                    {/*</div>*/}
+                                    {/*<div className={"col-sm-12 col-md-8 col-lg-10"}>*/}
+                                        {/*{*/}
+                                            {/*this.state.username !== undefined &&*/}
+                                            {/*<h1>{this.state.username}</h1>*/}
+                                        {/*}*/}
+                                    {/*</div>*/}
+                                    <div className={"col-sm-12 col-md-6 col-lg-4"}>
+                                        <div>
                                             <img src={"https://picsum.photos/100/100"}
                                                  className={"rounded-circle"}/>
                                         </div>
-                                        <div className={"col-12"}>
+                                        {
+                                            this.state.user !== undefined &&
+                                            <div>
+                                                <h3>
+                                                    {this.state.username}
+                                                </h3>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div className={"col-sm-12 col-md-6 col-lg-8"}>
+                                        <div className={"float-right"}>
                                             <button className={"btn btn-primary my-2"}>
                                                 Follow
                                             </button>
                                         </div>
                                     </div>
-                                    <div className={"col-sm-12 col-md-8 col-lg-10"}>
-                                        {
-                                            this.state.username !== undefined &&
-                                            <h1>{this.state.username}</h1>
-                                        }
-                                    </div>
+
                                 </div>
                             </div>
                             <ul className="nav nav-tabs card-header-tabs">
