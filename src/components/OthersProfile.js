@@ -55,6 +55,9 @@ class OthersProfile extends React.Component {
                           tabInfo: 'following'
                       });
 
+    followUser = (userId, followId) =>
+        console.log('User ' + userId + ' followed User : ' + followId);
+
     render() {
         return (
             <div>
@@ -85,7 +88,11 @@ class OthersProfile extends React.Component {
                                         {
                                             this.state.loggedInUser.username !== undefined &&
                                             <div className={"float-right"}>
-                                                <button className={"btn btn-primary my-2"}>
+                                                <button className={"btn btn-primary my-2"}
+                                                        type={"button"}
+                                                        onClick={() => this.followUser(
+                                                            this.state.loggedInUser._id,
+                                                            this.state.id)}>
                                                     Follow
                                                 </button>
                                             </div>
