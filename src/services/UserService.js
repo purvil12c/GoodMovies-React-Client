@@ -2,6 +2,7 @@ const user_login_url = 'https://express-goodmovies-server.herokuapp.com/users/lo
 const user_get_profile = 'https://express-goodmovies-server.herokuapp.com/users/profile';
 const user_signup_url = 'https://express-goodmovies-server.herokuapp.com/users/signup';
 const user_logout = 'https://express-goodmovies-server.herokuapp.com/users/logout';
+const user_findById = 'https://express-goodmovies-server.herokuapp.com/users/';
 
 export default class UserService {
     login = (user) =>
@@ -30,7 +31,15 @@ export default class UserService {
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).then(response => response.json())
+        }).then(response => response.json());
+
+    findUserById = (userId) =>
+        fetch(user_findById + userId, {
+            credentials: "include",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(response => response.json());
 
     logout = () =>
         fetch(user_logout, {

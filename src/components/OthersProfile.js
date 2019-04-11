@@ -1,38 +1,39 @@
 import React from 'react'
+import UserService from '../services/UserService'
 import ProfileNavBar from "./ProfileNavBar";
-import './Profile.css'
-import UserInformation from "./UserInformation";
 import UserReviews from "./UserReviews";
-import UserService from "../services/UserService";
 
-class Profile extends React.Component {
+class OthersProfile extends React.Component {
     constructor(props) {
         super(props);
         this.userService = new UserService();
-        this.state = {
-            tabInfo: 'userInfo'
-        };
-        this.userService.getProfile().then(
+        const id = props.match.params.id;
+        this.state = ({
+            id: id,
+            tabInfo: 'watchList',
+            loggedInUser: ''
+        })
+    }
+
+    componentDidMount() {
+        this.userService.findUserById(this.state.id).then(
             user => this.setState({
                                       user: user,
                                       username: user.username,
-                                      type: user.type,
-                                      ratings: user.ratings,
-                                      reviews: user.reviews,
-                                      watchlist: user.watchlist,
                                       followers: user.followers,
                                       following: user.following,
-                                      firstname: user.firstname,
-                                      lastname: user.lastname
+                                      reviews: user.reviews,
+                                      watchlist: user.watchlist,
+                                      type: user.type
                                   })
-        )
+        );
 
+        this.userService.getProfile().then(
+            response => this.setState({
+                                          loggedInUser: response
+                                      })
+        );
     }
-
-    showUserInformation = () =>
-        this.setState({
-                          tabInfo: 'userInfo'
-                      });
 
     showWatchList = () =>
         this.setState({
@@ -81,20 +82,18 @@ class Profile extends React.Component {
                                         }
                                     </div>
                                     <div className={"col-sm-12 col-md-6 col-lg-8"}>
-                                        <div className={"float-right"}>
-                                            <button className={"btn btn-primary my-2"}>
-                                                Follow
-                                            </button>
-                                        </div>
+                                        {
+                                            this.state.loggedInUser.username !== undefined &&
+                                            <div className={"float-right"}>
+                                                <button className={"btn btn-primary my-2"}>
+                                                    Follow
+                                                </button>
+                                            </div>
+                                        }
                                     </div>
                                 </div>
                             </div>
                             <ul className="nav nav-tabs card-header-tabs">
-                                <li className="nav-item">
-                                    <a href="#" className={this.state.tabInfo == 'userInfo'
-                                                           ? "nav-link active" : "nav-link"}
-                                       onClick={this.showUserInformation}>Edit Profile</a>
-                                </li>
                                 <li className="nav-item">
                                     <a href="#" className={this.state.tabInfo == 'watchList'
                                                            ? "nav-link active" : "nav-link"}
@@ -119,20 +118,11 @@ class Profile extends React.Component {
                         </div>
                         <div className="card-body">
                             {
-                                this.state.tabInfo == 'userInfo' &&
-                                this.state.firstname !== undefined &&
-                                this.state.lastname !== undefined &&
-                                <div>
-                                    <UserInformation firstname={this.state.firstname}
-                                                     lastname={this.state.lastname}/>
-                                </div>
-                            }
-                            {
                                 this.state.tabInfo == 'watchList' &&
                                 this.state.watchlist !== undefined &&
                                 <div>
                                     <h1>
-                                        Watchlist
+                                        {this.state.watchlist.length}
                                     </h1>
                                 </div>
                             }
@@ -140,6 +130,7 @@ class Profile extends React.Component {
                                 this.state.tabInfo == 'userReviews' &&
                                 this.state.reviews !== undefined &&
                                 <div>
+                                    <h1>{this.state.reviews.length}</h1>
                                     <UserReviews reviews={this.state.reviews}/>
                                 </div>
                             }
@@ -166,4 +157,4 @@ class Profile extends React.Component {
 
 }
 
-export default Profile;
+export default OthersProfile;

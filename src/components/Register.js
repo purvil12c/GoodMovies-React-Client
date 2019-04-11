@@ -124,8 +124,8 @@ class Register extends React.Component {
 
                         <select id="role" className="form-control" onChange={this.typeChanged}
                                 value={this.state.type}>
-                            <option value="USER">User</option>
-                            <option value="CRITIC">Critic</option>
+                            <option value="normal">User</option>
+                            <option value="critic">Critic</option>
                         </select>
 
                         <button className={"red-button my-2"} onClick={this.registerUser}

@@ -6,6 +6,7 @@ import Profile from "./components/Profile";
 import MovieDetailsComponent from "./components/MovieDetailsComponent/MovieDetailsComponent";
 import HomeContainer from "./home/containers/HomeContainer";
 import MovieSearchComponent from "./components/MovieSearchComponent/MovieSearchComponent";
+import OthersProfile from "./components/OthersProfile";
 
 class App extends Component {
     render() {
@@ -18,6 +19,7 @@ class App extends Component {
                         <Route path="/login" exact component={Login}/>
                         <Route path="/register" exact component={Register}/>
                         <Route path="/profile" exact component={Profile}/>
+                        <Route path="/profile/:id" exact component={OthersProfile}/>
                         <Route path='/movie/:movieId' exact component={MovieDetailsComponent}/>
                         <Route path='/search/:query' exact component={MovieSearchComponent}/>
                     </div>
