@@ -48,6 +48,26 @@ export default class UserService {
                 'Content-Type': 'application/json'
             },
             method: 'POST'
-        })
+        });
+
+    followUser = (userId, followId) =>
+        fetch('https://express-goodmovies-server.herokuapp.com/users/' + userId +
+              '/follow/' + followId, {
+                  credentials: "include",
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  method: 'POST'
+              }).then(response => response.json());
+
+    unfollowUser = (userId, followId) =>
+        fetch('https://express-goodmovies-server.herokuapp.com/users/' + userId +
+              '/unfollow/' + followId, {
+                  credentials: "include",
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  method: 'POST'
+              }).then(response => response.json());
 
 }
