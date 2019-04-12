@@ -12,7 +12,7 @@ class Profile extends React.Component {
         super(props);
         this.userService = new UserService();
         this.state = {
-            tabInfo: 'userInfo'
+            tabInfo: 'watchList'
         };
     }
 
