@@ -22,7 +22,7 @@ export default class AddWatchlistComponent extends React.Component {
 
             let idArray = [];
             for (let movie in response.watchlist) {
-                idArray.push(response.watchlist[movie].id);
+                idArray.push(response.watchlist[movie].movieId);
             }
             this.setState({
                 userProfile: response,
@@ -74,25 +74,15 @@ export default class AddWatchlistComponent extends React.Component {
 
     render() {
 
-        let movie = this.props.movie
-
         // If movie already exists in the watchlist
-        if (this.state.watchlistIds !== undefined && this.state.watchlistIds.indexOf(movie.id) > -1) {
+        if (this.state.watchlistIds !== undefined && this.state.watchlistIds.indexOf(String(this.props.movie.id)) > -1) {
             return (
-                    <button className="btn white-title col-12" onClick={this.removeFromWatchlist}>Remove from watchlist</button>
+                    <button className="btn btn-danger col-12 mt-4" onClick={this.removeFromWatchlist}>Remove from watchlist</button>
             );
         }
-        else if (this.state.watchlistIds !== undefined && this.state.watchlistIds.indexOf(movie.id) <= -1) {
+        else if (this.state.watchlistIds !== undefined && this.state.watchlistIds.indexOf(String(this.props.movie.id)) <= -1) {
             return (
-                <button className="btn white-title col-12" onClick={this.addToWatchlist}>Add to watchlist</button>
-            );
-        }
-        else {
-            return (
-
-                <div className="ml-4">
-                    <h5>Fetching...</h5>
-                </div>
+                <button className="btn btn-success col-12 mt-4" onClick={this.addToWatchlist}>Add to watchlist</button>
             );
         }
     }
