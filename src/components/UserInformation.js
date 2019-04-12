@@ -1,10 +1,39 @@
 import React from 'react';
+import UserService from '../services/UserService'
 
 class UserInformation extends React.Component {
     constructor(props) {
         super(props);
+        this.userService = new UserService();
+        this.state = ({
+            firstname: this.props.user.firstname,
+            lastname: this.props.user.lastname
+        })
 
     }
+
+    firstNameChanged = (event) => {
+        this.setState({
+                          firstname: event.target.value
+                      })
+    };
+
+    lastNameChanged = (event) => {
+        this.setState({
+                          lastname: event.target.value
+                      })
+    };
+
+    updateUser = () => {
+        var userId = this.props.user._id;
+        var user = {
+            firstname: this.state.firstname,
+            lastname: this.state.lastname
+        };
+        this.props.updateUser(user, userId)
+        alert('User Updated');
+        
+    };
 
     render() {
         return (
@@ -15,7 +44,8 @@ class UserInformation extends React.Component {
                     <div className={"col sm-10"}>
                         <input className="form-control" id="email"
                                placeholder="Firstname"
-                               value={this.props.firstname}/>
+                               value={this.state.firstname}
+                               onChange={this.firstNameChanged}/>
                     </div>
                 </div>
                 <div className={"form-group row"}>
@@ -24,7 +54,8 @@ class UserInformation extends React.Component {
                     <div className={"col sm-10"}>
                         <input className="form-control" id="email"
                                placeholder="Lastname"
-                               value={this.props.lastname}/>
+                               value={this.state.lastname}
+                               onChange={this.lastNameChanged}/>
                     </div>
                 </div>
                 <div className={"form-group row"}>
@@ -42,6 +73,11 @@ class UserInformation extends React.Component {
                         <input type={"number"} className="form-control" id="email"
                                placeholder="(470) 290-9905"/>
                     </div>
+                </div>
+                <div>
+                    <button className={'btn btn-primary'} type={'button'} onClick={this.updateUser}>
+                        Update
+                    </button>
                 </div>
             </div>
         );
