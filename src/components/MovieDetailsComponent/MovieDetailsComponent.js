@@ -5,6 +5,7 @@ import * as constants from '../../services/Constants'
 import ReviewComponent from '../ReviewComponent/ReviewComponent';
 import MovieServiceClient from "../../services/MovieService";
 import UserService from "../../services/UserService";
+import AddWatchlistComponent from "../AddWatchlistComponent/AddWatchlistComponent";
 
 class MovieDetailsComponent extends React.Component {
     constructor(props){
@@ -152,7 +153,7 @@ class MovieDetailsComponent extends React.Component {
                                 <div className="col-md-3 col-xs-1">
                                     <img src={constants.TMDB_IMAGE_BASE_URL + '/w500' + this.state.movie.poster_path}
                                          className="col-12"/>
-                                    <button className="btn btn-default watchlist-btn col-12">Add to Watchlist</button>
+                                    <AddWatchlistComponent movie={this.state.movie} userId={this.state.userProfile._id}/>
                                 </div>
                                 <div className="col-md-6 col-xs-6">
                                     <h1 className="white-title">{this.state.movie.title}</h1>
@@ -211,7 +212,7 @@ class MovieDetailsComponent extends React.Component {
                                 <div className="col-md-3 col-xs-1">
                                     <img src={constants.TMDB_IMAGE_BASE_URL + '/w500' + this.state.movie.poster_path}
                                          className="col-12"/>
-                                    <button className="btn btn-default watchlist-btn col-12">Add to Watchlist</button>
+                                    <AddWatchlistComponent movie={this.state.movie} userId={this.state.userProfile._id}/>
                                 </div>
                                 <div className="col-md-6 col-xs-6">
                                     <h1 className="white-title">{this.state.movie.title}</h1>
