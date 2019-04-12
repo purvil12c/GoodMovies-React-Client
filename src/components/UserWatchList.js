@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import '../../node_modules/font-awesome/css/font-awesome.min.css'
 
 class UserWatchList extends React.Component {
     constructor(props) {
@@ -17,9 +18,12 @@ class UserWatchList extends React.Component {
                         this.state.watchlist.map(movie => {
                             return (
                                 <li className="list-group-item">
-                                    <Link to={'/movie/' + movie.movieId}>
-                                        {movie.movieName}
-                                    </Link>
+                                    <div>
+                                        <Link to={'/movie/' + movie.movieId}>
+                                            {movie.movieName}
+                                        </Link>
+                                        <i className="fa fa-times float-right"></i>
+                                    </div>
                                 </li>
                             )
                         })
