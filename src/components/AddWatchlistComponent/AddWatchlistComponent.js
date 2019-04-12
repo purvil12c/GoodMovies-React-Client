@@ -77,12 +77,12 @@ export default class AddWatchlistComponent extends React.Component {
         // If movie already exists in the watchlist
         if (this.state.watchlistIds !== undefined && this.state.watchlistIds.indexOf(String(this.props.movie.id)) > -1) {
             return (
-                    <button className="btn btn-danger col-12 mt-4" onClick={this.removeFromWatchlist}>Remove from watchlist</button>
+                    <button className="btn btn-outline-danger col-12 mt-4" onClick={this.removeFromWatchlist}>Remove from watchlist</button>
             );
         }
         else if (this.state.watchlistIds !== undefined && this.state.watchlistIds.indexOf(String(this.props.movie.id)) <= -1) {
             return (
-                <button className="btn btn-success col-12 mt-4" onClick={this.addToWatchlist}>Add to watchlist</button>
+                <button className="btn btn-outline-success col-12 mt-4" onClick={this.addToWatchlist}>Add to watchlist</button>
             );
         }
     }

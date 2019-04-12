@@ -254,8 +254,8 @@ class MovieDetailsComponent extends React.Component {
                             <p className="white-title">No reviews for this movie</p>
                             <div className="card shadow p-3 bg-white rounded">
                                 <h5>ADD A REVIEW</h5>
-                                <input className="card mb-2 mt-2" name="title" onChange={this.reviewTitleEdited} placeholder="Review Title"/>
-                                <textarea className="card mb-2" name="body" onChange={this.reviewBodyEdited} placeholder="Review Body"/>
+                                <input className="card mb-2 mt-2 p-3" name="title" onChange={this.reviewTitleEdited} placeholder="Review Title"/>
+                                <textarea className="card mb-2 p-3" name="body" onChange={this.reviewBodyEdited} placeholder="Review Body"/>
                                 <button className="btn col-12 btn-primary" onClick={this.writeReview}>Add</button>
                             </div>
                         </div>
