@@ -25,6 +25,16 @@ export default class UserService {
             method: 'POST'
         }).then(response => response.json());
 
+    updateUser = (user, userId) =>
+        fetch(user_findById + userId, {
+            body: JSON.stringify(user),
+            credentials: "include",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'PUT'
+        }).then(response => response.json())
+
     getProfile = () =>
         fetch(user_get_profile, {
             credentials: "include",
