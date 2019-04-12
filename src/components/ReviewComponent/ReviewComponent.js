@@ -9,8 +9,7 @@ const ReviewComponent = ({review}) => {
                 <h5 className="black-title">{review.title}</h5>
                 <p className="black-title">{review.body}</p>
                 <br/>
-                {/*TODO Change to review.username*/}
-                <p className="black-title">Written by {review.userId}</p>
+                <p className="black-title">Written by {review.username}</p>
             </div>
         </div>
         </Link>
