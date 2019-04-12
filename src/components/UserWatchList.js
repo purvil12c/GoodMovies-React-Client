@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 class UserWatchList extends React.Component {
     constructor(props) {
@@ -16,7 +17,9 @@ class UserWatchList extends React.Component {
                         this.state.watchlist.map(movie => {
                             return (
                                 <li className="list-group-item">
-                                    Movie Title would be displayed here -> {movie.movieId}
+                                    <Link to={'/movie/' + movie.movieId}>
+                                        {movie.movieName}
+                                    </Link>
                                 </li>
                             )
                         })
