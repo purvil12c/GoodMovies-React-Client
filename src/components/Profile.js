@@ -14,6 +14,9 @@ class Profile extends React.Component {
         this.state = {
             tabInfo: 'userInfo'
         };
+    }
+
+    componentDidMount() {
         this.userService.getProfile().then(
             user => this.setState({
                                       user: user,
@@ -28,8 +31,15 @@ class Profile extends React.Component {
                                       lastname: user.lastname
                                   })
         )
-
     }
+
+    updateUser = (user, userId) => {
+        this.userService.updateUser(user, userId).then(
+            user => this.setState({
+                                      user: user
+                                  })
+        )
+    };
 
     showUserInformation = () =>
         this.setState({
@@ -115,11 +125,10 @@ class Profile extends React.Component {
                         <div className="card-body">
                             {
                                 this.state.tabInfo == 'userInfo' &&
-                                this.state.firstname !== undefined &&
-                                this.state.lastname !== undefined &&
+                                this.state.user !== undefined &&
                                 <div>
-                                    <UserInformation firstname={this.state.firstname}
-                                                     lastname={this.state.lastname}/>
+                                    <UserInformation user={this.state.user}
+                                                     updateUser={this.updateUser}/>
                                 </div>
                             }
                             {
