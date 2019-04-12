@@ -30,9 +30,8 @@ class UserInformation extends React.Component {
             firstname: this.state.firstname,
             lastname: this.state.lastname
         };
-        this.props.updateUser(user, userId)
+        this.props.updateUser(user, userId);
         alert('User Updated');
-        
     };
 
     render() {

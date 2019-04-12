@@ -96,11 +96,6 @@ class Profile extends React.Component {
                             </div>
                             <ul className="nav nav-tabs card-header-tabs">
                                 <li className="nav-item">
-                                    <a href="#" className={this.state.tabInfo == 'userInfo'
-                                                           ? "nav-link active" : "nav-link"}
-                                       onClick={this.showUserInformation}>Edit Profile</a>
-                                </li>
-                                <li className="nav-item">
                                     <a href="#" className={this.state.tabInfo == 'watchList'
                                                            ? "nav-link active" : "nav-link"}
                                        onClick={this.showWatchList}>WatchList</a>
@@ -119,6 +114,11 @@ class Profile extends React.Component {
                                     <a href="#" className={this.state.tabInfo == 'following'
                                                            ? "nav-link active" : "nav-link"}
                                        onClick={this.showFollowing}>Following</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a href="#" className={this.state.tabInfo == 'userInfo'
+                                                           ? "nav-link active" : "nav-link"}
+                                       onClick={this.showUserInformation}>Edit Profile</a>
                                 </li>
                             </ul>
                         </div>
