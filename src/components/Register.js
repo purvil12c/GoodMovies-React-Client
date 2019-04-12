@@ -79,7 +79,7 @@ class Register extends React.Component {
         } else {
             this.userService.signUp(user).then(response => {
                 if (response.username != null) {
-                    this.props.history.push('/profile')
+                    this.props.history.push('/')
                 } else if (response.message) {
                     alert("Seems like this username is already taken. Try some other username.");
                     this.setState({

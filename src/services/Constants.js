@@ -12,3 +12,5 @@ export const MOVIE_CAST_URL = TMDB_BASE_URL + '/movie/MOVIE_ID/credits?api_key='
 export const MOVIE_SEARCH_URL = TMDB_BASE_URL + '/search/movie?api_key=' + API_KEY + '&query=QUERY';
 export const GET_REVIEWS_FOR_MOVIE_URL = HEROKU_BASE_URL + '/reviews?movieId=MOVIE_ID';
 export const ADD_REVIEW_FOR_MOVIE_URL = HEROKU_BASE_URL + '/reviews';
+export const ADD_MOVIE_TO_WATCHLIST_URL = HEROKU_BASE_URL + '/users/USER_ID/watchlist/MOVIE_ID';
+export const REMOVE_MOVIE_FROM_WATCHLIST_URL = HEROKU_BASE_URL + '/users/USER_ID/unwatchlist/MOVIE_ID';
