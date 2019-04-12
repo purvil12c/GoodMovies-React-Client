@@ -10,6 +10,14 @@ class UserWatchList extends React.Component {
         })
     }
 
+    deleteFromWatchlist = (movieId) => {
+        let watchlist = this.state.watchlist.filter(movie => movie.movieId !== movieId);
+        this.setState({
+                          watchlist: watchlist
+                      });
+
+    };
+
     render() {
         return (
             <div>
@@ -22,7 +30,9 @@ class UserWatchList extends React.Component {
                                         <Link to={'/movie/' + movie.movieId}>
                                             {movie.movieName}
                                         </Link>
-                                        <i className="fa fa-times float-right"></i>
+                                        <i className="fa fa-times float-right"
+                                           onClick={() => this.deleteFromWatchlist(
+                                               movie.movieId)}></i>
                                     </div>
                                 </li>
                             )
