@@ -52,6 +52,9 @@ export default class HomeContainer extends React.Component {
         if (this.state.searchQuery !== '') {
             this.props.history.push('/search/' + this.state.searchQuery);
         }
+        else {
+            alert("Enter a search query first!");
+        }
     }
 
     logout = () => {
@@ -94,10 +97,10 @@ export default class HomeContainer extends React.Component {
                     </div>
                 </div>
 
-                <h3 className="ml-4 mt-4"> Popular Movies </h3>
+                <h3 className="ml-4 mt-4 white-title"> Popular Movies </h3>
                 <MovieSlider movies={this.state.popularMovies}/>
 
-                <h3 className="ml-4 mt-4"> In Theatres </h3>
+                <h3 className="ml-4 mt-4 white-title"> In Theatres </h3>
                 <MovieSlider movies={this.state.nowPlayingMovies}/>
 
             </div>

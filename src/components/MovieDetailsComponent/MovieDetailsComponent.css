@@ -3,6 +3,11 @@
     opacity: 0.95;
 }
 
+.black-title {
+    color: black;
+    opacity: 0.95;
+}
+
 .watchlist-btn {
     color: white;
     background-color: black;
