@@ -64,11 +64,12 @@ class MovieServiceClient {
         });
     }
 
-    createMovieReview(reviewBody, reviewTitle, movieId, userId) {
+    createMovieReview(reviewBody, reviewTitle, movieId, userId, username, movieName) {
         return fetch(constants.ADD_REVIEW_FOR_MOVIE_URL,
             {
                 method : 'POST',
-                body : JSON.stringify({'body': reviewBody, 'title': reviewTitle, 'movieId': movieId, 'userId': userId}),
+                body : JSON.stringify({'body': reviewBody, 'title': reviewTitle,
+                    'movieId': movieId, 'userId': userId, 'username': username, 'movieName': movieName}),
                 headers: {
                     'content-type':'application/json'
                 }})
