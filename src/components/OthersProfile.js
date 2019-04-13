@@ -93,7 +93,9 @@ class OthersProfile extends React.Component {
                                     </div>
                                     <div className={"col-sm-12 col-md-6 col-lg-8"}>
                                         {
+                                            this.state.user != undefined &&
                                             this.state.loggedInUser.username !== undefined &&
+                                            this.state.loggedInUser._id !== this.state.user._id &&
                                             <div className={"float-right"}>
                                                 <button className={"btn btn-primary my-2"}
                                                         type={"button"}
