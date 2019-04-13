@@ -162,17 +162,22 @@ class Profile extends React.Component {
                                                            ? "nav-link active" : "nav-link"}
                                        onClick={this.showFollowing}>Following</a>
                                 </li>
-                                <li className="nav-item">
-                                    <a href="#" className={this.state.tabInfo == 'userInfo'
-                                                           ? "nav-link active" : "nav-link"}
-                                       onClick={this.showUserInformation}>Edit Profile</a>
-                                </li>
+                                {
+                                    this.state.user !== undefined &&
+                                    this.state.loggedInUser._id === this.state.user._id &&
+                                    <li className="nav-item">
+                                        <a href="#" className={this.state.tabInfo == 'userInfo'
+                                                               ? "nav-link active" : "nav-link"}
+                                           onClick={this.showUserInformation}>Edit Profile</a>
+                                    </li>
+                                }
                             </ul>
                         </div>
                         <div className="card-body">
                             {
                                 this.state.tabInfo == 'userInfo' &&
                                 this.state.user !== undefined &&
+                                this.state.loggedInUser._id === this.state.user._id &&
                                 <div>
                                     <UserInformation user={this.state.user}
                                                      updateUser={this.updateUser}/>
