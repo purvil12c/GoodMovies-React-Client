@@ -76,16 +76,19 @@ class Profile extends React.Component {
                           tabInfo: 'following'
                       });
 
-    followUser = (userId, followId) =>
-        this.userService.followUser(userId, followId).then(
+    followUser = (userId, followId) => {
+        var followBody = {
+            "username": this.state.loggedInUser.username
+        }
+        this.userService.followUser(userId, followId, followBody).then(
             alert('Followed this user')
         );
+    }
 
     unfollowUser = (userId, followId) =>
         this.userService.unfollowUser(userId, followId).then(
             alert('Unfollowed this user')
         );
-
 
     render() {
         return (
