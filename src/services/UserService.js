@@ -81,4 +81,12 @@ export default class UserService {
                   method: 'POST'
               }).then(response => response.json());
 
+    deleteFromWatchList = (userId, movieId) =>
+        fetch(user_findById + userId + '/unwatchlist/' + movieId, {
+            credentials: "include",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST'
+        }).then(response => response.json())
 }

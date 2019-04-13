@@ -1,15 +1,15 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import '../../node_modules/font-awesome/css/font-awesome.min.css'
+import UserService from '../services/UserService'
 
 class UserWatchList extends React.Component {
     constructor(props) {
         super(props);
+        this.userService = new UserService();
         this.state = ({
             watchlist: this.props.watchlist
-        })
-        console.log(this.props.loggedInUser._id)
-        console.log(this.props.currentUser._id)
+        });
     }
 
     deleteFromWatchlist = (movieId) => {
@@ -17,7 +17,7 @@ class UserWatchList extends React.Component {
         this.setState({
                           watchlist: watchlist
                       });
-
+        this.userService.deleteFromWatchList(this.props.currentUser._id, movieId)
     };
 
     render() {
