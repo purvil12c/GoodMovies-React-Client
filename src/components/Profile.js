@@ -11,28 +11,36 @@ class Profile extends React.Component {
     constructor(props) {
         super(props);
         this.userService = new UserService();
+        const id = props.match.params.id;
         this.state = {
-            tabInfo: 'watchList'
+            id: id,
+            tabInfo: 'watchList',
+            loggedInUser: ''
         };
     }
 
     componentDidMount() {
+        this.userService.findUserById(this.state.id)
+            .then(
+                user => this.setState({
+                                          user: user,
+                                          username: user.username,
+                                          type: user.type,
+                                          ratings: user.ratings,
+                                          reviews: user.reviews,
+                                          watchlist: user.watchlist,
+                                          followers: user.followers,
+                                          following: user.following,
+                                          firstname: user.firstname,
+                                          lastname: user.lastname
+                                      })
+            )
+
         this.userService.getProfile().then(
-            user => this.userService.findUserById(user._id)
-        ).then(
-            user => this.setState({
-                                      user: user,
-                                      username: user.username,
-                                      type: user.type,
-                                      ratings: user.ratings,
-                                      reviews: user.reviews,
-                                      watchlist: user.watchlist,
-                                      followers: user.followers,
-                                      following: user.following,
-                                      firstname: user.firstname,
-                                      lastname: user.lastname
-                                  })
-        )
+            response => this.setState({
+                                          loggedInUser: response
+                                      })
+        );
     }
 
     updateUser = (user, userId) => {
@@ -68,6 +76,17 @@ class Profile extends React.Component {
                           tabInfo: 'following'
                       });
 
+    followUser = (userId, followId) =>
+        this.userService.followUser(userId, followId).then(
+            alert('Followed this user')
+        );
+
+    unfollowUser = (userId, followId) =>
+        this.userService.unfollowUser(userId, followId).then(
+            alert('Unfollowed this user')
+        );
+
+
     render() {
         return (
             <div>
@@ -91,6 +110,29 @@ class Profile extends React.Component {
                                                 <h3>
                                                     {this.state.username}
                                                 </h3>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div className={"col-sm-12 col-md-6 col-lg-8"}>
+                                        {
+                                            this.state.user != undefined &&
+                                            this.state.loggedInUser.username !== undefined &&
+                                            this.state.loggedInUser._id !== this.state.user._id &&
+                                            <div className={"float-right"}>
+                                                <button className={"btn btn-primary my-2"}
+                                                        type={"button"}
+                                                        onClick={() => this.followUser(
+                                                            this.state.loggedInUser._id,
+                                                            this.state.id)}>
+                                                    Follow
+                                                </button>
+                                                <button className={"btn btn-primary my-2"}
+                                                        type={"button"}
+                                                        onClick={() => this.unfollowUser(
+                                                            this.state.loggedInUser._id,
+                                                            this.state.id)}>
+                                                    Unfollow
+                                                </button>
                                             </div>
                                         }
                                     </div>
