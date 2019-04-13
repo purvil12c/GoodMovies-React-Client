@@ -184,10 +184,15 @@ class Profile extends React.Component {
                                 </div>
                             }
                             {
+                                this.state.user !== undefined &&
+                                (this.state.loggedInUser._id !== undefined
+                                 || this.state.loggedInUser.message != undefined) &&
                                 this.state.tabInfo == 'watchList' &&
                                 this.state.watchlist !== undefined &&
                                 <div>
-                                    <UserWatchList watchlist={this.state.watchlist}/>
+                                    <UserWatchList watchlist={this.state.watchlist}
+                                                   loggedInUser={this.state.loggedInUser}
+                                                   currentUser={this.state.user}/>
                                 </div>
                             }
                             {

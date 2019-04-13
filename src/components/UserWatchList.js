@@ -8,6 +8,8 @@ class UserWatchList extends React.Component {
         this.state = ({
             watchlist: this.props.watchlist
         })
+        console.log(this.props.loggedInUser._id)
+        console.log(this.props.currentUser._id)
     }
 
     deleteFromWatchlist = (movieId) => {
@@ -30,9 +32,14 @@ class UserWatchList extends React.Component {
                                         <Link to={'/movie/' + movie.movieId}>
                                             {movie.movieName}
                                         </Link>
-                                        <i className="fa fa-times float-right"
-                                           onClick={() => this.deleteFromWatchlist(
-                                               movie.movieId)}></i>
+                                        {
+                                            this.props.loggedInUser._id
+                                            === this.props.currentUser._id &&
+                                            <i className="fa fa-times float-right"
+                                               onClick={() => this.deleteFromWatchlist(
+                                                   movie.movieId)}></i>
+
+                                        }
                                     </div>
                                 </li>
                             )
