@@ -89,4 +89,12 @@ export default class UserService {
             },
             method: 'POST'
         }).then(response => response.json())
+
+    findReviewsByUserId = (userId) =>
+        fetch(user_findById + userId + '/reviews', {
+            credentials: "include",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(response => response.json())
 }
