@@ -27,7 +27,6 @@ class Profile extends React.Component {
                                           username: user.username,
                                           type: user.type,
                                           ratings: user.ratings,
-                                          reviews: user.reviews,
                                           watchlist: user.watchlist,
                                           followers: user.followers,
                                           following: user.following,
@@ -41,6 +40,13 @@ class Profile extends React.Component {
                                           loggedInUser: response
                                       })
         );
+
+        this.userService.findReviewsByUserId(this.state.id).then(
+            reviews => this.setState({
+                                         reviews: reviews
+                                     })
+        )
+
     }
 
     updateUser = (user, userId) => {
