@@ -18,6 +18,8 @@ class Profile extends React.Component {
 
     componentDidMount() {
         this.userService.getProfile().then(
+            user => this.userService.findUserById(user._id)
+        ).then(
             user => this.setState({
                                       user: user,
                                       username: user.username,
