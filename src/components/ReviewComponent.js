@@ -4,14 +4,17 @@ const ReviewComponent = ({review}) =>
     review !== null &&
     <div className="card my-2">
         <div className="card-header">
-            Movie title here
+            {review.movieId} : Movie title here
+            <i className="fa fa-times float-right"></i>
         </div>
         <div className="card-body">
-            <h5 className="card-title">Review Title : {review.reviewId}</h5>
+            <h5 className="card-title">{review.title}</h5>
             <p className="card-text">
                 Review Body would be here
             </p>
-            <a href="#" className="btn btn-primary">Delete button here maybe?</a>
+            <div className={'float-right'}>
+                Review by : {review.username}
+            </div>
         </div>
     </div>
 
