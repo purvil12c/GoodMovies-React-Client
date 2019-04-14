@@ -75,7 +75,7 @@ class MovieDetailsComponent extends React.Component {
         else {
             // Post a review and update the state by fetching new ones
             MovieServiceClient.instance.createMovieReview(this.state.newReviewBody, this.state.newReviewTitle,
-                this.state.movie.id, this.state.userProfile._id, this.state.userProfile.username, this.state.movie.name).then(_ => {
+                this.state.movie.id, this.state.userProfile._id, this.state.userProfile.username, this.state.movie.title).then(_ => {
 
                 MovieServiceClient.instance.getMovieReviews(this.props.match.params.movieId).then(response => {
                     this.setState ({

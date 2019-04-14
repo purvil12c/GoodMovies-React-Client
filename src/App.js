@@ -7,6 +7,7 @@ import MovieDetailsComponent from "./components/MovieDetailsComponent/MovieDetai
 import HomeContainer from "./home/containers/HomeContainer";
 import MovieSearchComponent from "./components/MovieSearchComponent/MovieSearchComponent";
 import OthersProfile from "./components/OthersProfile";
+import UserSearchComponent from "./components/UserSearchComponent/UserSearchComponent";
 
 class App extends Component {
     render() {
@@ -21,7 +22,8 @@ class App extends Component {
                         <Route path="/profile" exact component={Profile}/>
                         <Route path="/profile/:id" exact component={OthersProfile}/>
                         <Route path='/movie/:movieId' exact component={MovieDetailsComponent}/>
-                        <Route path='/search/:query' exact component={MovieSearchComponent}/>
+                        <Route path='/movie/search/:query' exact component={MovieSearchComponent}/>
+                        <Route path='/user/search/:query' exact component={UserSearchComponent}/>
                     </div>
                 </Router>
             </div>

@@ -3,6 +3,7 @@ const user_get_profile = 'https://express-goodmovies-server.herokuapp.com/users/
 const user_signup_url = 'https://express-goodmovies-server.herokuapp.com/users/signup';
 const user_logout = 'https://express-goodmovies-server.herokuapp.com/users/logout';
 const user_findById = 'https://express-goodmovies-server.herokuapp.com/users/';
+const user_search_url = 'https://express-goodmovies-server.herokuapp.com/users/search/';
 
 export default class UserService {
     login = (user) =>
@@ -49,5 +50,11 @@ export default class UserService {
             },
             method: 'POST'
         })
-
+    search = (searchQuery) =>
+        fetch(user_search_url + searchQuery, {
+            credentials: "include",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(response => response.json());
 }
