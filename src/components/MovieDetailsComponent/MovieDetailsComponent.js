@@ -104,9 +104,7 @@ class MovieDetailsComponent extends React.Component {
             return (
                 <div className="container-fluid background mb-4">
                     <div className="container">
-                        <div className="row">
-                            <SearchBarComponent/>
-                        </div>
+                        <div className="row searchbar"/>
                         <div className="row">
                             <div className="col-md-3 col-xs-1">
                                 <img src={constants.TMDB_IMAGE_BASE_URL + '/w500' + this.state.movie.poster_path}
@@ -118,7 +116,6 @@ class MovieDetailsComponent extends React.Component {
                                 <br/>
                                 <h6 className="white-title">Release Date: {this.state.movie.release_date}</h6>
                                 <h6 className="white-title">Runtime: {this.state.movie.runtime} minutes</h6>
-                                <h6 className="white-title">Rating: </h6>
                             </div>
                             <div className="col-md-3 col-xs-5">
                                 <h3 className="white-title">Twitter Feed
@@ -146,9 +143,7 @@ class MovieDetailsComponent extends React.Component {
                 return (
                     <div className="container-fluid background mb-4">
                         <div className="container">
-                            <div className="row">
-                                <SearchBarComponent/>
-                            </div>
+                            <div className="row searchbar"/>
                             <div className="row">
                                 <div className="col-md-3 col-xs-1">
                                     <img src={constants.TMDB_IMAGE_BASE_URL + '/w500' + this.state.movie.poster_path}
@@ -165,7 +160,6 @@ class MovieDetailsComponent extends React.Component {
                                     <br/>
                                     <h6 className="white-title">Release Date: {this.state.movie.release_date}</h6>
                                     <h6 className="white-title">Runtime: {this.state.movie.runtime} minutes</h6>
-                                    <h6 className="white-title">Rating: </h6>
                                 </div>
                                 <div className="col-md-3 col-xs-5">
                                     <h3 className="white-title">Twitter Feed
@@ -209,9 +203,7 @@ class MovieDetailsComponent extends React.Component {
                 return (
                     <div className="container-fluid background mb-4">
                         <div className="container">
-                            <div className="row">
-                                <SearchBarComponent/>
-                            </div>
+                            <div className="row searchbar"/>
                             <div className="row">
                                 <div className="col-md-3 col-xs-1">
                                     <img src={constants.TMDB_IMAGE_BASE_URL + '/w500' + this.state.movie.poster_path}
@@ -228,7 +220,6 @@ class MovieDetailsComponent extends React.Component {
                                     <br/>
                                     <h6 className="white-title">Release Date: {this.state.movie.release_date}</h6>
                                     <h6 className="white-title">Runtime: {this.state.movie.runtime} minutes</h6>
-                                    <h6 className="white-title">Rating: </h6>
                                 </div>
                                 <div className="col-md-3 col-xs-5">
                                     <h3 className="white-title">Twitter Feed
