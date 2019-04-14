@@ -5,8 +5,8 @@ class ProfileNavBar extends React.Component {
     render() {
         return (
             <div>
-                <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-                    <Link className={"navbar-brand"} to={"/home"}>GoodMovies</Link>
+                <nav className="navbar transparent fixed-top navbar-expand-lg">
+                    <Link className={"navbar-brand white-title"} to={"/home"}>GoodMovies</Link>
                 </nav>
             </div>
         );

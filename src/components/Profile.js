@@ -4,30 +4,86 @@ import './Profile.css'
 import UserInformation from "./UserInformation";
 import UserReviews from "./UserReviews";
 import UserService from "../services/UserService";
+import UserWatchList from "./UserWatchList";
+import UserFollowers from "./UserFollowers";
+import UserFollowing from './UserFollowing';
 
 class Profile extends React.Component {
     constructor(props) {
         super(props);
         this.userService = new UserService();
+        const id = props.match.params.id;
         this.state = {
-            tabInfo: 'userInfo'
+            id: id,
+            tabInfo: 'watchList',
+            loggedInUser: ''
         };
+    }
+
+    componentDidMount() {
+
+        if (this.state.id === undefined) {
+            this.userService.getProfile().then(
+                response => this.userService.findUserById(response._id)
+            ).then(user => this.setState({
+                                             user: user,
+                                             username: user.username,
+                                             type: user.type,
+                                             ratings: user.ratings,
+                                             watchlist: user.watchlist,
+                                             followers: user.followers,
+                                             following: user.following,
+                                             firstname: user.firstname,
+                                             lastname: user.lastname
+                                         }
+            ));
+
+            this.userService.getProfile().then(
+                response => this.userService.findReviewsByUserId(response._id)).then(
+                reviews => this.setState({
+                                             reviews: reviews
+                                         })
+            )
+
+        } else {
+            this.userService.findUserById(this.state.id)
+                .then(
+                    user => this.setState({
+                                              user: user,
+                                              username: user.username,
+                                              type: user.type,
+                                              ratings: user.ratings,
+                                              watchlist: user.watchlist,
+                                              followers: user.followers,
+                                              following: user.following,
+                                              firstname: user.firstname,
+                                              lastname: user.lastname
+                                          })
+                );
+
+            this.userService.findReviewsByUserId(this.state.id).then(
+                reviews => this.setState({
+                                             reviews: reviews
+                                         })
+            )
+
+        }
+
         this.userService.getProfile().then(
-            user => this.setState({
-                                      user: user,
-                                      username: user.username,
-                                      type: user.type,
-                                      ratings: user.ratings,
-                                      reviews: user.reviews,
-                                      watchlist: user.watchlist,
-                                      followers: user.followers,
-                                      following: user.following,
-                                      firstname: user.firstname,
-                                      lastname: user.lastname
-                                  })
-        )
+            response => this.setState({
+                                          loggedInUser: response
+                                      })
+        );
 
     }
+
+    updateUser = (user, userId) => {
+        this.userService.updateUser(user, userId).then(
+            user => this.setState({
+                                      user: user
+                                  })
+        )
+    };
 
     showUserInformation = () =>
         this.setState({
@@ -53,6 +109,17 @@ class Profile extends React.Component {
         this.setState({
                           tabInfo: 'following'
                       });
+
+    followUser = (userId, followId) => {
+        this.userService.followUser(userId, followId).then(
+            alert('Followed this user')
+        );
+    };
+
+    unfollowUser = (userId, followId) =>
+        this.userService.unfollowUser(userId, followId).then(
+            alert('Unfollowed this user')
+        );
 
     render() {
         return (
@@ -81,20 +148,31 @@ class Profile extends React.Component {
                                         }
                                     </div>
                                     <div className={"col-sm-12 col-md-6 col-lg-8"}>
-                                        <div className={"float-right"}>
-                                            <button className={"btn btn-primary my-2"}>
-                                                Follow
-                                            </button>
-                                        </div>
+                                        {
+                                            this.state.user != undefined &&
+                                            this.state.loggedInUser.username !== undefined &&
+                                            this.state.loggedInUser._id !== this.state.user._id &&
+                                            <div className={"float-right"}>
+                                                <button className={"btn btn-primary my-2"}
+                                                        type={"button"}
+                                                        onClick={() => this.followUser(
+                                                            this.state.loggedInUser._id,
+                                                            this.state.id)}>
+                                                    Follow
+                                                </button>
+                                                <button className={"btn btn-primary my-2"}
+                                                        type={"button"}
+                                                        onClick={() => this.unfollowUser(
+                                                            this.state.loggedInUser._id,
+                                                            this.state.id)}>
+                                                    Unfollow
+                                                </button>
+                                            </div>
+                                        }
                                     </div>
                                 </div>
                             </div>
                             <ul className="nav nav-tabs card-header-tabs">
-                                <li className="nav-item">
-                                    <a href="#" className={this.state.tabInfo == 'userInfo'
-                                                           ? "nav-link active" : "nav-link"}
-                                       onClick={this.showUserInformation}>Edit Profile</a>
-                                </li>
                                 <li className="nav-item">
                                     <a href="#" className={this.state.tabInfo == 'watchList'
                                                            ? "nav-link active" : "nav-link"}
@@ -115,25 +193,37 @@ class Profile extends React.Component {
                                                            ? "nav-link active" : "nav-link"}
                                        onClick={this.showFollowing}>Following</a>
                                 </li>
+                                {
+                                    this.state.user !== undefined &&
+                                    this.state.loggedInUser._id === this.state.user._id &&
+                                    <li className="nav-item">
+                                        <a href="#" className={this.state.tabInfo == 'userInfo'
+                                                               ? "nav-link active" : "nav-link"}
+                                           onClick={this.showUserInformation}>Edit Profile</a>
+                                    </li>
+                                }
                             </ul>
                         </div>
                         <div className="card-body">
                             {
                                 this.state.tabInfo == 'userInfo' &&
-                                this.state.firstname !== undefined &&
-                                this.state.lastname !== undefined &&
+                                this.state.user !== undefined &&
+                                this.state.loggedInUser._id === this.state.user._id &&
                                 <div>
-                                    <UserInformation firstname={this.state.firstname}
-                                                     lastname={this.state.lastname}/>
+                                    <UserInformation user={this.state.user}
+                                                     updateUser={this.updateUser}/>
                                 </div>
                             }
                             {
+                                this.state.user !== undefined &&
+                                (this.state.loggedInUser._id !== undefined
+                                 || this.state.loggedInUser.message != undefined) &&
                                 this.state.tabInfo == 'watchList' &&
                                 this.state.watchlist !== undefined &&
                                 <div>
-                                    <h1>
-                                        Watchlist
-                                    </h1>
+                                    <UserWatchList watchlist={this.state.watchlist}
+                                                   loggedInUser={this.state.loggedInUser}
+                                                   currentUser={this.state.user}/>
                                 </div>
                             }
                             {
@@ -146,16 +236,22 @@ class Profile extends React.Component {
                             {
                                 this.state.tabInfo == 'followers' &&
                                 this.state.followers != undefined &&
-                                <h1>
-                                    {this.state.followers.length}
-                                </h1>
+                                <div>
+                                    <h1>
+                                        {this.state.followers.length}
+                                    </h1>
+                                    <UserFollowers followers={this.state.followers}/>
+                                </div>
                             }
                             {
                                 this.state.tabInfo == 'following' &&
                                 this.state.following != undefined &&
-                                <h1>
-                                    {this.state.following.length}
-                                </h1>
+                                <div>
+                                    <h1>
+                                        {this.state.following.length}
+                                    </h1>
+                                    <UserFollowing following={this.state.following}/>
+                                </div>
                             }
                         </div>
                     </div>

@@ -1,18 +1,22 @@
-html, body{
+html, body {
     height: 100%;
 }
 
 body {
-    background: url("netflix_bg.jpg")!important;
-    background-position: center center!important;
-    background-repeat: revert!important;
+    background: url("netflix_bg.jpg") !important;
+    background-position: center center !important;
+    background-repeat: revert !important;
     background-attachment: fixed;
-    background-size:  cover!important;
-    height: 100%!important;
-    background-color: #2d3436!important;
-    background-blend-mode: overlay!important;
+    background-size: cover !important;
+    height: 100% !important;
+    background-color: #2d3436 !important;
+    background-blend-mode: overlay !important;
 }
 
 .review-card {
     width: 18rem;
+}
+
+.transparent {
+    background: rgba(0, 0, 0, 0.4);
 }

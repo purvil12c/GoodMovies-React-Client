@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
 
-export const HomeNavigationBar = ({loggedIn, username, logout}) => {
+export const HomeNavigationBar = ({loggedIn, userId, username, logout}) => {
     return (
         <nav className="navbar navbar-inverse">
             <Link to="/">
@@ -18,7 +18,7 @@ export const HomeNavigationBar = ({loggedIn, username, logout}) => {
                 </div>
                 <div hidden={!loggedIn}>
                     <Link style={{display: 'block', height: '100%'}}
-                          className="navbar-nav" to='/profile'>
+                          className="navbar-nav" to={'/profile'}>
                         <button type='btn' className="text-white btn">{username}</button>
                     </Link>
                 </div>
