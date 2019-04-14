@@ -3,6 +3,8 @@ import "./LoginRegister.css"
 import {Link} from 'react-router-dom'
 import UserService from '../services/UserService'
 
+import logo from '../assets/goodmovies_logo.png';
+
 class Login extends React.Component {
     constructor(props) {
         super(props);
@@ -52,6 +54,9 @@ class Login extends React.Component {
     render() {
         return (
             <div className={"background"}>
+              <div className="row col-12 justify-content-center" style={{backgroundColor: 'black', margin: 0}}>
+                <img src={logo}/>
+              </div>
                 <div className={"box"}>
                     <form className={"box-elements"}>
                         <h1>Sign In</h1>
