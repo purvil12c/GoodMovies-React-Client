@@ -2,6 +2,8 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 import UserService from '../services/UserService'
 
+import logo from '../assets/goodmovies_logo.png';
+
 class Register extends React.Component {
     constructor(props) {
         super(props);
@@ -98,6 +100,9 @@ class Register extends React.Component {
     render() {
         return (
             <div className={"background"}>
+                <div className="row col-12 justify-content-center" style={{backgroundColor: 'black', margin: 0}}>
+                  <img src={logo}/>
+                </div>
                 <div className={"box"}>
                     <form className={"box-elements"}>
                         <h1>Sign Up</h1>
