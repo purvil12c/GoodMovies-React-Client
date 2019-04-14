@@ -18,7 +18,7 @@ export const HomeNavigationBar = ({loggedIn, userId, username, logout}) => {
                 </div>
                 <div hidden={!loggedIn}>
                     <Link style={{display: 'block', height: '100%'}}
-                          className="navbar-nav" to={`/profile/${userId}`}>
+                          className="navbar-nav" to={'/profile'}>
                         <button type='btn' className="text-white btn">{username}</button>
                     </Link>
                 </div>
