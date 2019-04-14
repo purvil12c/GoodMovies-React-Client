@@ -14,3 +14,4 @@ export const GET_REVIEWS_FOR_MOVIE_URL = HEROKU_BASE_URL + '/reviews?movieId=MOV
 export const ADD_REVIEW_FOR_MOVIE_URL = HEROKU_BASE_URL + '/reviews';
 export const ADD_MOVIE_TO_WATCHLIST_URL = HEROKU_BASE_URL + '/users/USER_ID/watchlist/MOVIE_ID';
 export const REMOVE_MOVIE_FROM_WATCHLIST_URL = HEROKU_BASE_URL + '/users/USER_ID/unwatchlist/MOVIE_ID';
+export const TWITTER_SEARCH_BY_MOVIE_NAME_URL = HEROKU_BASE_URL + '/twitter/MOVIE_NAME';
