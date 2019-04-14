@@ -21,32 +21,59 @@ class Profile extends React.Component {
     }
 
     componentDidMount() {
-        this.userService.findUserById(this.state.id)
-            .then(
-                user => this.setState({
-                                          user: user,
-                                          username: user.username,
-                                          type: user.type,
-                                          ratings: user.ratings,
-                                          watchlist: user.watchlist,
-                                          followers: user.followers,
-                                          following: user.following,
-                                          firstname: user.firstname,
-                                          lastname: user.lastname
-                                      })
+
+        if (this.state.id === undefined) {
+            this.userService.getProfile().then(
+                response => this.userService.findUserById(response._id)
+            ).then(user => this.setState({
+                                             user: user,
+                                             username: user.username,
+                                             type: user.type,
+                                             ratings: user.ratings,
+                                             watchlist: user.watchlist,
+                                             followers: user.followers,
+                                             following: user.following,
+                                             firstname: user.firstname,
+                                             lastname: user.lastname
+                                         }
+            ));
+
+            this.userService.getProfile().then(
+                response => this.userService.findReviewsByUserId(response._id)).then(
+                reviews => this.setState({
+                                             reviews: reviews
+                                         })
             )
+
+        } else {
+            this.userService.findUserById(this.state.id)
+                .then(
+                    user => this.setState({
+                                              user: user,
+                                              username: user.username,
+                                              type: user.type,
+                                              ratings: user.ratings,
+                                              watchlist: user.watchlist,
+                                              followers: user.followers,
+                                              following: user.following,
+                                              firstname: user.firstname,
+                                              lastname: user.lastname
+                                          })
+                );
+
+            this.userService.findReviewsByUserId(this.state.id).then(
+                reviews => this.setState({
+                                             reviews: reviews
+                                         })
+            )
+
+        }
 
         this.userService.getProfile().then(
             response => this.setState({
                                           loggedInUser: response
                                       })
         );
-
-        this.userService.findReviewsByUserId(this.state.id).then(
-            reviews => this.setState({
-                                         reviews: reviews
-                                     })
-        )
 
     }
 
@@ -87,7 +114,7 @@ class Profile extends React.Component {
         this.userService.followUser(userId, followId).then(
             alert('Followed this user')
         );
-    }
+    };
 
     unfollowUser = (userId, followId) =>
         this.userService.unfollowUser(userId, followId).then(
