@@ -88,19 +88,19 @@ export default class HomeContainer extends React.Component {
                                        logout={this.logout}/>
                 }
 
-                <div className={"row"}>
-                    <div className="md-form mt-4 mb-4 ml-4 mr-1 col-9">
-                        <input className="form-control" type="text" onChange={this.searchTextUpdated}
-                               placeholder="Search" value={this.state.searchQuery}
-                               aria-label="Search"></input>
-                    </div>
-                    <select className="custom-select col-lg-1 col-sm-12 mr-2 mb-4 mt-4" onChange={this.searchTypeUpdated}>
-                        <option value="movie">Movies</option>
-                        <option value="user">Users</option>
-                    </select>
-                    <button type='btn col-sm-12' className="text-white btn bg-primary" onClick={this.searchButtonClicked}>
-                        GO
-                    </button>
+                <div className="row col-12 justify-content-center">
+                  <div className="col-6">
+                    <input className="form-control" type="text" onChange={this.searchTextUpdated}
+                           placeholder="Search" value={this.state.searchQuery}
+                           aria-label="Search"/>
+                  </div>
+                  <select className="custom-select col-lg-1 col-xs-1" onChange={this.searchTypeUpdated}>
+                      <option value="movie">Movies</option>
+                      <option value="user">Users</option>
+                  </select>
+                  <button type='btn' className="text-white btn btn-outline-success ml-2" onClick={this.searchButtonClicked}>
+                      GO
+                  </button>
 
                 </div>
 
