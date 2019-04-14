@@ -1,12 +1,15 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
+import logo from '../../assets/goodmovies_logo.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 export const HomeNavigationBar = ({loggedIn, username, logout}) => {
     return (
         <nav className="navbar navbar-inverse">
             <Link to="/">
                 <button type='btn' className="text-white btn">
-                    <h1>Good Movies</h1>
+                    <img src={logo}/>
                 </button>
             </Link>
             <form className="form-inline">
@@ -19,12 +22,14 @@ export const HomeNavigationBar = ({loggedIn, username, logout}) => {
                 <div hidden={!loggedIn}>
                     <Link style={{display: 'block', height: '100%'}}
                           className="navbar-nav" to='/profile'>
+                        <FontAwesomeIcon icon={ faUser }/>
                         <button type='btn' className="text-white btn">{username}</button>
                     </Link>
                 </div>
                 <div hidden={!loggedIn}>
                     <Link style={{display: 'block', height: '100%'}}
                           className="navbar-nav" to='/login'>
+                        <FontAwesomeIcon icon={ faSignOutAlt }/>
                         <button type='btn' className="text-white btn" onClick={logout}>
                             Logout
                         </button>
@@ -34,4 +39,3 @@ export const HomeNavigationBar = ({loggedIn, username, logout}) => {
         </nav>
     )
 };
-
