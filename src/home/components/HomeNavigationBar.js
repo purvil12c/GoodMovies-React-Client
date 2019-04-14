@@ -4,7 +4,7 @@ import logo from '../../assets/goodmovies_logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
-export const HomeNavigationBar = ({loggedIn, username, logout}) => {
+export const HomeNavigationBar = ({loggedIn, userId, username, logout}) => {
     return (
         <nav className="navbar navbar-inverse">
             <Link to="/">
@@ -20,7 +20,7 @@ export const HomeNavigationBar = ({loggedIn, username, logout}) => {
                     </Link>
                 </div>
                 <div hidden={!loggedIn}>
-                    <Link style={{display: 'block', height: '100%'}}
+                   <Link style={{display: 'block', height: '100%'}}
                           className="navbar-nav" to='/profile'>
                         <FontAwesomeIcon icon={ faUser }/>
                         <button type='btn' className="text-white btn">{username}</button>
