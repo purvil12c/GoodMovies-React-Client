@@ -1,23 +1,23 @@
 import React from 'react';
 import {HomeNavigationBar} from "../../home/components/HomeNavigationBar";
-import MovieServiceClient from "../../services/MovieService";
-import {MovieSearchResultItem} from "./MovieSearchResultItem";
+import {UserSearchResultItem} from "./UserSearchResultItem";
+import UserService from "../../services/UserService";
 
-export default class MovieSearchComponent extends React.Component {
+export default class UserSearchComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             searchResults: []
         }
+
+        this.userService = new UserService();
     }
 
     componentDidMount() {
-        MovieServiceClient.instance.searchMovieForQuery(this.props.match.params.query).then(response => {
-            console.log(response.results);
+        this.userService.search(this.props.match.params.query).then(response => {
             this.setState({
-                searchResults: response.results
+                searchResults: response
             })
-
         })
     }
 
@@ -25,7 +25,7 @@ export default class MovieSearchComponent extends React.Component {
         if(this.state.searchResults) {
             let items = this.state.searchResults
                 .map(function(result) {
-                    return <MovieSearchResultItem searchResult={result}/>;
+                    return <UserSearchResultItem searchResult={result}/>;
                 });
             return (items);
         }
