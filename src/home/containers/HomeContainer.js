@@ -88,7 +88,7 @@ export default class HomeContainer extends React.Component {
                                        logout={this.logout}/>
                 }
 
-                <div className="row col-12 justify-content-center">
+                <div className="row col-12 justify-content-center mt-4">
                   <div className="col-6">
                     <input className="form-control" type="text" onChange={this.searchTextUpdated}
                            placeholder="Search" value={this.state.searchQuery}
