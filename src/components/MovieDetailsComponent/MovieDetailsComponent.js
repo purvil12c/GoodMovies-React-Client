@@ -6,6 +6,8 @@ import ReviewComponent from '../ReviewComponent/ReviewComponent';
 import MovieServiceClient from "../../services/MovieService";
 import UserService from "../../services/UserService";
 import AddWatchlistComponent from "../AddWatchlistComponent/AddWatchlistComponent";
+import TwitterService from "../../services/TwitterService";
+import Tweet from 'react-tweet';
 
 class MovieDetailsComponent extends React.Component {
     constructor(props){
@@ -16,11 +18,12 @@ class MovieDetailsComponent extends React.Component {
           reviews: [],
           userProfile: '',
           newReviewTitle: '',
-          newReviewBody: ''
+          newReviewBody: '',
+          tweets: ''
       }
 
       this.userService = new UserService();
-
+      this.twitterService = new TwitterService();
       this.writeReview = this.writeReview.bind(this);
       this.reviewBodyEdited = this.reviewBodyEdited.bind(this);
       this.reviewTitleEdited = this.reviewTitleEdited.bind(this);
@@ -32,6 +35,10 @@ class MovieDetailsComponent extends React.Component {
             this.setState({
                 movie: response
             })
+
+            this.twitterService.searchTweetsByMovie(this.state.movie.title.replace(' ',''))
+              .then(response=>response.json())
+              .then(response=>this.setState({tweets: response.statuses}));
         })
 
         MovieServiceClient.instance.getMovieCast(this.props.match.params.movieId).then(response => {
@@ -110,17 +117,24 @@ class MovieDetailsComponent extends React.Component {
                                 <img src={constants.TMDB_IMAGE_BASE_URL + '/w500' + this.state.movie.poster_path}
                                      className="col-12"/>
                             </div>
-                            <div className="col-md-6 col-xs-6">
+                            <div className="col-md-5 col-xs-5">
                                 <h1 className="white-title">{this.state.movie.title}</h1>
                                 <h6 className="white-title">{this.state.movie.overview}</h6>
                                 <br/>
                                 <h6 className="white-title">Release Date: {this.state.movie.release_date}</h6>
                                 <h6 className="white-title">Runtime: {this.state.movie.runtime} minutes</h6>
                             </div>
-                            <div className="col-md-3 col-xs-5">
+                            <div className="col-md-4 col-xs-5">
                                 <h3 className="white-title">Twitter Feed
                                     <i className="fa fa-twitter"></i>
                                 </h3>
+                                <div style={{overflowY: 'scroll', maxHeight: '350px'}}>
+                                {
+                                  this.state.tweets!='' &&
+                                    this.state.tweets.map(tweet=>
+                                    <Tweet data={tweet}/>)
+                                }
+                                </div>
                             </div>
                         </div>
                         <br/>
@@ -154,17 +168,24 @@ class MovieDetailsComponent extends React.Component {
                                         <AddWatchlistComponent movie={this.state.movie} userId={this.state.userProfile._id}/>
                                     }
                                 </div>
-                                <div className="col-md-6 col-xs-6">
+                                <div className="col-md-5 col-xs-5">
                                     <h1 className="white-title">{this.state.movie.title}</h1>
                                     <h6 className="white-title">{this.state.movie.overview}</h6>
                                     <br/>
                                     <h6 className="white-title">Release Date: {this.state.movie.release_date}</h6>
                                     <h6 className="white-title">Runtime: {this.state.movie.runtime} minutes</h6>
                                 </div>
-                                <div className="col-md-3 col-xs-5">
+                                <div className="col-md-4 col-xs-5">
                                     <h3 className="white-title">Twitter Feed
                                         <i className="fa fa-twitter"></i>
                                     </h3>
+                                    <div style={{overflowY: 'scroll', maxHeight: '350px'}}>
+                                    {
+                                      this.state.tweets!='' &&
+                                        this.state.tweets.map(tweet=>
+                                        <Tweet data={tweet}/>)
+                                    }
+                                    </div>
                                 </div>
                             </div>
                             <br/>
@@ -214,17 +235,24 @@ class MovieDetailsComponent extends React.Component {
                                         <AddWatchlistComponent movie={this.state.movie} userId={this.state.userProfile._id}/>
                                     }
                                 </div>
-                                <div className="col-md-6 col-xs-6">
+                                <div className="col-md-5 col-xs-5">
                                     <h1 className="white-title">{this.state.movie.title}</h1>
                                     <h6 className="white-title">{this.state.movie.overview}</h6>
                                     <br/>
                                     <h6 className="white-title">Release Date: {this.state.movie.release_date}</h6>
                                     <h6 className="white-title">Runtime: {this.state.movie.runtime} minutes</h6>
                                 </div>
-                                <div className="col-md-3 col-xs-5">
+                                <div className="col-md-4 col-xs-5">
                                     <h3 className="white-title">Twitter Feed
                                         <i className="fa fa-twitter"></i>
                                     </h3>
+                                    <div style={{overflowY: 'scroll', maxHeight: '350px'}}>
+                                    {
+                                      this.state.tweets!='' &&
+                                        this.state.tweets.map(tweet=>
+                                        <Tweet data={tweet}/>)
+                                    }
+                                    </div>
                                 </div>
                             </div>
                             <br/>
