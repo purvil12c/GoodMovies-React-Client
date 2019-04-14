@@ -61,10 +61,9 @@ export default class UserService {
             method: 'POST'
         });
 
-    followUser = (userId, followId, followBody) =>
+    followUser = (userId, followId) =>
         fetch('https://express-goodmovies-server.herokuapp.com/users/' + userId +
               '/follow/' + followId, {
-                  body: JSON.stringify(followBody),
                   credentials: "include",
                   headers: {
                       'Content-Type': 'application/json'

@@ -1,11 +1,11 @@
 import React from 'react'
-import {Link} from "react-router-dom";
+import {Link} from 'react-router-dom'
 
-class UserFollowers extends React.Component {
+class UserFollowing extends React.Component {
     constructor(props) {
         super(props);
         this.state = ({
-            followers: this.props.followers
+            following: this.props.following
         })
     }
 
@@ -14,7 +14,7 @@ class UserFollowers extends React.Component {
             <div>
                 <ul className="list-group">
                     {
-                        this.state.followers.map(user => {
+                        this.state.following.map(user => {
                             return (
                                 <li className="list-group-item">
                                     <Link to={`/profile/${user.userId}`}>
@@ -31,4 +31,4 @@ class UserFollowers extends React.Component {
 
 }
 
-export default UserFollowers
+export default UserFollowing

@@ -6,6 +6,7 @@ import UserReviews from "./UserReviews";
 import UserService from "../services/UserService";
 import UserWatchList from "./UserWatchList";
 import UserFollowers from "./UserFollowers";
+import UserFollowing from './UserFollowing';
 
 class Profile extends React.Component {
     constructor(props) {
@@ -83,10 +84,7 @@ class Profile extends React.Component {
                       });
 
     followUser = (userId, followId) => {
-        var followBody = {
-            "username": this.state.loggedInUser.username
-        }
-        this.userService.followUser(userId, followId, followBody).then(
+        this.userService.followUser(userId, followId).then(
             alert('Followed this user')
         );
     }
@@ -225,7 +223,7 @@ class Profile extends React.Component {
                                     <h1>
                                         {this.state.following.length}
                                     </h1>
-                                    <UserFollowers followers={this.state.followers}/>
+                                    <UserFollowing following={this.state.following}/>
                                 </div>
                             }
                         </div>
