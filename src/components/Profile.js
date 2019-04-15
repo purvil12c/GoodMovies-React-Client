@@ -80,8 +80,8 @@ class Profile extends React.Component {
     updateUser = (user, userId) => {
         this.userService.updateUser(user, userId).then(
             user => this.setState({
-                                      user: user
-                                  })
+                user: user
+            })
         )
     };
 
@@ -236,21 +236,33 @@ class Profile extends React.Component {
                             {
                                 this.state.tabInfo == 'followers' &&
                                 this.state.followers != undefined &&
+                                this.state.followers.length > 0 &&
                                 <div>
-                                    <h1>
-                                        {this.state.followers.length}
-                                    </h1>
                                     <UserFollowers followers={this.state.followers}/>
+                                </div>
+                            }
+                            {
+                                this.state.tabInfo == 'followers' &&
+                                this.state.followers != undefined &&
+                                this.state.followers.length === 0 &&
+                                <div>
+                                    <h4>No followers</h4>
                                 </div>
                             }
                             {
                                 this.state.tabInfo == 'following' &&
                                 this.state.following != undefined &&
+                                this.state.following.length > 0 &&
                                 <div>
-                                    <h1>
-                                        {this.state.following.length}
-                                    </h1>
                                     <UserFollowing following={this.state.following}/>
+                                </div>
+                            }
+                            {
+                                this.state.tabInfo == 'following' &&
+                                this.state.following != undefined &&
+                                this.state.following.length === 0 &&
+                                <div>
+                                    <h4>Not following anyone</h4>
                                 </div>
                             }
                         </div>

@@ -12,11 +12,8 @@ const ReviewComponent = ({review, deleteReview}) =>
         <div className="card-body">
             <h5 className="card-title">{review.title}</h5>
             <p className="card-text">
-                Review Body would be here
+                {review.body}
             </p>
-            <div className={'float-right'}>
-                Review by : {review.username}
-            </div>
         </div>
     </div>
 
