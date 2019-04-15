@@ -1,5 +1,4 @@
 import React from 'react';
-import SearchBarComponent from '../SearchBarComponent/SearchBarComponent';
 import './MovieDetailsComponent.css';
 import * as constants from '../../services/Constants'
 import ReviewComponent from '../ReviewComponent/ReviewComponent';
@@ -9,6 +8,7 @@ import AddWatchlistComponent from "../AddWatchlistComponent/AddWatchlistComponen
 import TwitterService from "../../services/TwitterService";
 import Tweet from 'react-tweet';
 import {HomeNavigationBar} from "../../home/components/HomeNavigationBar";
+import ProfileNavBar from "../ProfileNavBar";
 
 class MovieDetailsComponent extends React.Component {
     constructor(props){
@@ -83,7 +83,7 @@ class MovieDetailsComponent extends React.Component {
         else {
             // Post a review and update the state by fetching new ones
             MovieServiceClient.instance.createMovieReview(this.state.newReviewBody, this.state.newReviewTitle,
-                this.state.movie.id, this.state.userProfile._id, this.state.userProfile.username, this.state.movie.title).then(_ => {
+                this.state.movie.id, this.state.userProfile._id, this.state.userProfile.username, this.state.movie.title).then(response => {
 
                 MovieServiceClient.instance.getMovieReviews(this.props.match.params.movieId).then(response => {
                     this.setState ({
@@ -110,19 +110,9 @@ class MovieDetailsComponent extends React.Component {
     render() {
        if (this.state.userProfile.message === 'You are not logged in') {
             return (
-                <div className="container-fluid background mb-4">
-                    {
-                        this.state.userProfile.message === 'You are not logged in' &&
-                        <HomeNavigationBar loggedIn={false}/>
-
-                    }
-                    {
-                        this.state.userProfile.username !== undefined &&
-                        <HomeNavigationBar loggedIn={true}
-                                           username={this.state.userProfile.username}
-                                           logout={this.logout}/>
-                    }
-                    <div className="container">
+                <div className="background mb-4">
+                    <ProfileNavBar/>
+                    <div className="container mt-2">
                         <div className="row searchbar"/>
                         <div className="row">
                             <div className="col-md-3 col-xs-1">
@@ -167,19 +157,9 @@ class MovieDetailsComponent extends React.Component {
         else {
             if (this.state.reviews.length !== 0) {
                 return (
-                    <div className="container-fluid background mb-4">
-                        {
-                            this.state.userProfile.message === 'You are not logged in' &&
-                            <HomeNavigationBar loggedIn={false}/>
-
-                        }
-                        {
-                            this.state.userProfile.username !== undefined &&
-                            <HomeNavigationBar loggedIn={true}
-                                               username={this.state.userProfile.username}
-                                               logout={this.logout}/>
-                        }
-                        <div className="container">
+                    <div className="background mb-4 ml-4">
+                        <ProfileNavBar/>
+                        <div className="container mt-4">
                             <div className="row searchbar"/>
                             <div className="row">
                                 <div className="col-md-3 col-xs-1">
@@ -245,19 +225,9 @@ class MovieDetailsComponent extends React.Component {
             }
             else {
                 return (
-                    <div className="container-fluid background mb-4">
-                        {
-                            this.state.userProfile.message === 'You are not logged in' &&
-                            <HomeNavigationBar loggedIn={false}/>
-
-                        }
-                        {
-                            this.state.userProfile.username !== undefined &&
-                            <HomeNavigationBar loggedIn={true}
-                                               username={this.state.userProfile.username}
-                                               logout={this.logout}/>
-                        }
-                        <div className="container">
+                    <div className="background mb-4">
+                        <ProfileNavBar/>
+                        <div className="container mt-4">
                             <div className="row searchbar"/>
                             <div className="row">
                                 <div className="col-md-3 col-xs-1">

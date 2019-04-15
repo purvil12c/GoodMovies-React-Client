@@ -1,14 +1,17 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import logo from "../assets/goodmovies_logo.png";
 
 class ProfileNavBar extends React.Component {
     render() {
         return (
-            <div>
-                <nav className="navbar transparent fixed-top navbar-expand-lg">
-                    <Link className={"navbar-brand white-title"} to={"/home"}>GoodMovies</Link>
-                </nav>
-            </div>
+            <nav className="navbar navbar-inverse">
+                <Link to="/">
+                    <button type='btn' className="text-white btn">
+                        <img src={logo}/>
+                    </button>
+                </Link>
+            </nav>
         );
     }
 
