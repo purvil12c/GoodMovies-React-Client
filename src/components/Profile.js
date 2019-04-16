@@ -160,6 +160,10 @@ class Profile extends React.Component {
                                                     this.state.loggedInUser._id !== undefined &&
                                                     <h4>{this.state.firstname} {this.state.lastname}</h4>
                                                 }
+                                                {
+                                                    this.state.user.type === 'critic' &&
+                                                        <h5>CRITIC</h5>
+                                                }
                                             </div>
                                         }
                                     </div>
@@ -194,11 +198,15 @@ class Profile extends React.Component {
                                                            ? "nav-link active" : "nav-link"}
                                        onClick={this.showWatchList}>WatchList</a>
                                 </li>
-                                <li className="nav-item">
-                                    <a href="#" className={this.state.tabInfo == 'userReviews'
-                                                           ? "nav-link active" : "nav-link"}
-                                       onClick={this.showUserReviews}>Reviews</a>
-                                </li>
+                                {
+                                    this.state.user !== undefined &&
+                                    this.state.user.type === 'critic' &&
+                                    <li className="nav-item">
+                                        <a href="#" className={this.state.tabInfo == 'userReviews'
+                                            ? "nav-link active" : "nav-link"}
+                                           onClick={this.showUserReviews}>Reviews</a>
+                                    </li>
+                                }
                                 <li className="nav-item">
                                     <a href="#" className={this.state.tabInfo == 'followers'
                                                            ? "nav-link active" : "nav-link"}

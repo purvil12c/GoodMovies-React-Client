@@ -65,14 +65,6 @@ class UserInformation extends React.Component {
                                placeholder="xyz@goodmovies.com"/>
                     </div>
                 </div>
-                <div className={"form-group row"}>
-                    <label htmlFor="email" className="col-sm-2 col-form-label">
-                        Phone</label>
-                    <div className={"col sm-10"}>
-                        <input type={"number"} className="form-control" id="email"
-                               placeholder="(470) 290-9905"/>
-                    </div>
-                </div>
                 <div>
                     <button className={'btn btn-primary'} type={'button'} onClick={this.updateUser}>
                         Update
