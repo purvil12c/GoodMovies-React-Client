@@ -105,7 +105,7 @@ class Register extends React.Component {
                 </div>
                 <div className={"box"}>
                     <form className={"box-elements"}>
-                        <h1>Sign Up</h1>
+                        <h1>Sign Up&nbsp;<i class="fa fa-user-plus"></i></h1>
                         <input className={"form-control my-2"} type={"text"}
                                placeholder={"Firstname"}
                                onChange={this.firstnameChanged}
