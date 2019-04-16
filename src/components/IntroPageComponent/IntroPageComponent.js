@@ -56,7 +56,7 @@ class IntroPageComponent extends React.Component{
 
   render(){
     return(
-      <div className="center">
+      <div className="center container">
 
         <AnimatedDivText1 pose={this.state.isVisibleText1 ? 'visible' : 'hidden'}>
           <h1 className="white-title">Welcome to GoodMovies</h1>
