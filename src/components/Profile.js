@@ -156,6 +156,10 @@ class Profile extends React.Component {
                                                 <h3>
                                                     {this.state.username}
                                                 </h3>
+                                                {
+                                                    this.state.loggedInUser._id !== undefined &&
+                                                    <h4>{this.state.firstname} {this.state.lastname}</h4>
+                                                }
                                             </div>
                                         }
                                     </div>
