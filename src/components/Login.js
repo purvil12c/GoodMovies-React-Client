@@ -83,9 +83,10 @@ class Login extends React.Component {
                             Sign In
                         </button>
                         <p>
-                            Not a member?
+                            <Link to={"/register"} style={{color: 'white'}}>Not a member?&nbsp;Sign Up here!</Link>
                         </p>
-                        <Link to={"/register"}>Sign Up here!</Link>
+                        <br/>
+                        <Link to={"/home"} style={{color: 'white'}}>Continue as Guest</Link>
                     </form>
                 </div>
             </AnimatedDiv>

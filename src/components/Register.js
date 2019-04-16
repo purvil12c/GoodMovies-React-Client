@@ -151,9 +151,13 @@ class Register extends React.Component {
                             Sign Up
                         </button>
                         <p>
-                            Already a member?
+                          <Link to={"/login"} style={{color: 'white'}}>
+                              Already a member?&nbsp;Sign in here!</Link>
                         </p>
-                        <Link to={"/login"}>Sign in here!</Link>
+                        <Link to={"/login"} style={{color: 'white'}}>
+                            Already a member?&nbsp;Sign in here!</Link>
+                        <br/>
+                        <Link to={"/home"} style={{color: 'white'}}>Continue as Guest</Link>
                     </form>
                 </div>
             </AnimatedDiv>
