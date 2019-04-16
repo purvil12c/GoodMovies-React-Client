@@ -157,7 +157,7 @@ class MovieDetailsComponent extends React.Component {
         else {
             if (this.state.reviews.length !== 0) {
                 return (
-                    <div className="background mb-4 ml-4">
+                    <div className="background mb-4">
                         <ProfileNavBar/>
                         <div className="container mt-4">
                             <div className="row searchbar"/>
