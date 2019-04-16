@@ -4,6 +4,13 @@ import UserService from '../services/UserService'
 
 import logo from '../assets/goodmovies_logo.png';
 
+import posed from 'react-pose';
+
+const AnimatedDiv = posed.div({
+  hidden: { opacity: 0 },
+  visible: { opacity: 1}
+});
+
 class Register extends React.Component {
     constructor(props) {
         super(props);
@@ -16,6 +23,12 @@ class Register extends React.Component {
             verifyPassword: '',
             type: 'USER'
         }
+    }
+
+    componentDidMount(){
+      setTimeout(() => {
+        this.setState({ isVisible: !this.state.isVisible });
+      }, 500);
     }
 
     firstnameChanged = (event) => {
@@ -99,7 +112,7 @@ class Register extends React.Component {
 
     render() {
         return (
-            <div className={"background"}>
+            <AnimatedDiv pose={this.state.isVisible ? 'visible' : 'hidden'} className={"background"}>
                 <div className="row col-12 justify-content-center" style={{backgroundColor: 'black', margin: 0}}>
                   <img src={logo}/>
                 </div>
@@ -143,7 +156,7 @@ class Register extends React.Component {
                         <Link to={"/login"}>Sign in here!</Link>
                     </form>
                 </div>
-            </div>
+            </AnimatedDiv>
         );
     }
 

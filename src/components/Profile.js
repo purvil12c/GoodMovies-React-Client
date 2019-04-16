@@ -8,6 +8,13 @@ import UserWatchList from "./UserWatchList";
 import UserFollowers from "./UserFollowers";
 import UserFollowing from './UserFollowing';
 
+import posed from 'react-pose';
+
+const AnimatedDiv = posed.div({
+  hidden: { opacity: 0 },
+  visible: { opacity: 1}
+});
+
 class Profile extends React.Component {
     constructor(props) {
         super(props);
@@ -16,11 +23,16 @@ class Profile extends React.Component {
         this.state = {
             id: id,
             tabInfo: 'watchList',
-            loggedInUser: ''
+            loggedInUser: '',
+            isVisible: false,
         };
     }
 
     componentDidMount() {
+
+      setTimeout(() => {
+        this.setState({ isVisible: !this.state.isVisible });
+      }, 500);
 
         if (this.state.id === undefined) {
             this.userService.getProfile().then(
@@ -123,7 +135,7 @@ class Profile extends React.Component {
 
     render() {
         return (
-            <div>
+            <AnimatedDiv pose={this.state.isVisible ? 'visible' : 'hidden'}>
                 <div>
                     <ProfileNavBar/>
                 </div>
@@ -268,7 +280,7 @@ class Profile extends React.Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </AnimatedDiv>
         );
     }
 

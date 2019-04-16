@@ -5,6 +5,13 @@ import MovieSlider from "../components/MovieSlider";
 import UserService from "../../services/UserService"
 import MovieServiceClient from "../../services/MovieService";
 
+import posed from 'react-pose';
+
+const AnimatedDiv = posed.div({
+  hidden: { opacity: 0 },
+  visible: { opacity: 1}
+});
+
 export default class HomeContainer extends React.Component {
     constructor(props) {
         super(props);
@@ -15,7 +22,8 @@ export default class HomeContainer extends React.Component {
             nowPlayingMovies: [],
             searchQuery: '',
             userProfile: '',
-            searchType: 'movie'
+            searchType: 'movie',
+            isVisible: false
         }
 
         this.userService.getProfile().then(
@@ -30,6 +38,11 @@ export default class HomeContainer extends React.Component {
     }
 
     componentDidMount() {
+
+        setTimeout(() => {
+          this.setState({ isVisible: !this.state.isVisible });
+        }, 500);
+
         MovieServiceClient.instance.getPopularMovies().then(response => {
             this.setState({
                 popularMovies: response.results
@@ -75,7 +88,7 @@ export default class HomeContainer extends React.Component {
 
     render() {
         return (
-            <div>
+            <AnimatedDiv pose={this.state.isVisible ? 'visible' : 'hidden'}>
                 {
                     this.state.userProfile.message === 'You are not logged in' &&
                     <HomeNavigationBar loggedIn={false}/>
@@ -83,9 +96,12 @@ export default class HomeContainer extends React.Component {
                 }
                 {
                     this.state.userProfile.username !== undefined &&
-                    <HomeNavigationBar loggedIn={true}
-                                       username={this.state.userProfile.username}
-                                       logout={this.logout}/>
+                    <div>
+                      <HomeNavigationBar loggedIn={true}
+                                         username={this.state.userProfile.username}
+                                         logout={this.logout}/>
+                      <h1 className="ml-4 white-title">Welcome {this.state.userProfile.username}</h1>
+                    </div>
                 }
 
                 <div className="row col-12 justify-content-center mt-4">
@@ -110,7 +126,7 @@ export default class HomeContainer extends React.Component {
                 <h3 className="ml-4 mt-4 white-title"> In Theatres </h3>
                 <MovieSlider movies={this.state.nowPlayingMovies}/>
 
-            </div>
+            </AnimatedDiv>
 
         );
     }
