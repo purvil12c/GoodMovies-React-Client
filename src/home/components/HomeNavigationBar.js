@@ -7,7 +7,7 @@ import { faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 export const HomeNavigationBar = ({loggedIn, userId, username, logout}) => {
     return (
         <nav className="navbar navbar-inverse">
-            <Link to="/">
+            <Link to="/home">
                 <button type='btn' className="text-white btn">
                     <img src={logo}/>
                 </button>

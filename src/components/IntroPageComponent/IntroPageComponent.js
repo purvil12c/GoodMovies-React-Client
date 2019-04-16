@@ -68,7 +68,7 @@ class IntroPageComponent extends React.Component{
         <br/>
 
         <AnimatedDivVisitWebsite pose={this.state.isVisibleText2 ? 'visible' : 'hidden'}>
-          <Link to="/home" className="btn btn-outline-success">Browse Movies</Link>
+          <Link to="/home" className="btn btn-outline-success">Get Started</Link>
         </AnimatedDivVisitWebsite>
 
         <AnimatedDivFooter pose={this.state.isVisibleFooter ? 'visible' : 'hidden'} className="footer">

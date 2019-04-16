@@ -6,7 +6,7 @@ class ProfileNavBar extends React.Component {
     render() {
         return (
             <nav className="navbar navbar-inverse">
-                <Link to="/">
+                <Link to="/home">
                     <button type='btn' className="text-white btn">
                         <img src={logo}/>
                     </button>
