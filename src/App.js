@@ -7,6 +7,7 @@ import MovieDetailsComponent from "./components/MovieDetailsComponent/MovieDetai
 import HomeContainer from "./home/containers/HomeContainer";
 import MovieSearchComponent from "./components/MovieSearchComponent/MovieSearchComponent";
 import UserSearchComponent from "./components/UserSearchComponent/UserSearchComponent";
+import IntroPageComponent from "./components/IntroPageComponent/IntroPageComponent";
 
 class App extends Component {
     render() {
@@ -14,7 +15,7 @@ class App extends Component {
             <div className="App">
                 <Router>
                     <div>
-                        <Route path="/" exact component={HomeContainer}/>
+                        <Route path="/" exact component={IntroPageComponent}/>
                         <Route path="/home" exact component={HomeContainer}/>
                         <Route path="/login" exact component={Login}/>
                         <Route path="/register" exact component={Register}/>
