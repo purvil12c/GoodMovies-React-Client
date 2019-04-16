@@ -10,6 +10,13 @@ import Tweet from 'react-tweet';
 import {HomeNavigationBar} from "../../home/components/HomeNavigationBar";
 import ProfileNavBar from "../ProfileNavBar";
 
+import posed from 'react-pose';
+
+const AnimatedDiv = posed.div({
+  hidden: { opacity: 0 },
+  visible: { opacity: 1}
+});
+
 class MovieDetailsComponent extends React.Component {
     constructor(props){
       super(props);
@@ -20,7 +27,8 @@ class MovieDetailsComponent extends React.Component {
           userProfile: '',
           newReviewTitle: '',
           newReviewBody: '',
-          tweets: ''
+          tweets: '',
+          isVisible: false
       }
 
       this.userService = new UserService();
@@ -31,6 +39,10 @@ class MovieDetailsComponent extends React.Component {
     }
 
     componentDidMount() {
+
+        setTimeout(() => {
+          this.setState({ isVisible: !this.state.isVisible });
+        }, 500);
 
         MovieServiceClient.instance.getMovieDetails(this.props.match.params.movieId).then(response => {
             this.setState({
@@ -110,7 +122,7 @@ class MovieDetailsComponent extends React.Component {
     render() {
        if (this.state.userProfile.message === 'You are not logged in') {
             return (
-                <div className="background mb-4">
+                <AnimatedDiv pose={this.state.isVisible ? 'visible' : 'hidden'} className="background mb-4">
                     <ProfileNavBar/>
                     <div className="container mt-2">
                         <div className="row searchbar"/>
@@ -151,13 +163,13 @@ class MovieDetailsComponent extends React.Component {
                             }
                         </div>
                     </div>
-                </div>
+                </AnimatedDiv>
             );
         }
         else {
             if (this.state.reviews.length !== 0) {
                 return (
-                    <div className="background mb-4">
+                    <AnimatedDiv pose={this.state.isVisible ? 'visible' : 'hidden'} className="background mb-4">
                         <ProfileNavBar/>
                         <div className="container mt-4">
                             <div className="row searchbar"/>
@@ -220,12 +232,12 @@ class MovieDetailsComponent extends React.Component {
                                 <button className="btn col-12 btn-primary" onClick={this.writeReview}>Add</button>
                             </div>
                         </div>
-                    </div>
+                    </AnimatedDiv>
                 );
             }
             else {
                 return (
-                    <div className="background mb-4">
+                    <AnimatedDiv pose={this.state.isVisible ? 'visible' : 'hidden'} className="background mb-4">
                         <ProfileNavBar/>
                         <div className="container mt-4">
                             <div className="row searchbar"/>
@@ -282,7 +294,7 @@ class MovieDetailsComponent extends React.Component {
                                 <button className="btn col-12 btn-primary" onClick={this.writeReview}>Add</button>
                             </div>
                         </div>
-                    </div>
+                    </AnimatedDiv>
                 );
             }
         }
