@@ -24,37 +24,32 @@ class UserWatchList extends React.Component {
 
     render() {
         return (
-            <div>
-                <ul className="list-group">
-                    {
-                        this.state.watchlist.map(movie => {
-                            return (
-                                    <li className='card shadow p-3 bg-white rounded'>
-                                        <Link className='col-12 mb-2' style={{ textDecoration: 'none' }} to={`/movie/${movie.movieId}`}>
-                                        <div className="row no-gutters">
-                                            <div className="col-auto">
-                                                <img src={movie.imageUrl} className="img-fluid m-2" alt=""/>
-                                            </div>
-                                            <div className="col">
-                                                <div className="card-block">
-                                                    <h6 className="card-title m-4 black-title">{movie.movieName}</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        </Link>
-                                        {
-                                            this.props.loggedInUser._id
-                                            === this.props.currentUser._id &&
-                                                <div className="col-auto">
-                                            <i className="fa fa-times float-right"
-                                               onClick={() => this.deleteFromWatchlist(
-                                                   movie.movieId)}></i></div>
-                                        }
-                                    </li>
-                            )
-                        })
-                    }
-                </ul>
+            <div className="row card-group">
+              {
+                this.state.watchlist.map(movie => {
+                  return(
+                    <div className='col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch'>
+                        <div className='card'>
+                        <Link to={`/movie/${movie.movieId}`}>
+                            <img style={{width: '185px', height: 'auto'}} className='card-img-top' src={movie.imageUrl} alt='Card image cap'/>
+                        </Link>
+                            <div className='card-body'>
+                                <h5 className='bold-text'>{movie.movieName}</h5>
+                                {
+                                  this.props.loggedInUser._id
+                                  === this.props.currentUser._id &&
+                                  <div className="col-auto">
+                                  <button className="btn btn-danger"
+                                     onClick={() => this.deleteFromWatchlist(
+                                         movie.movieId)}>Delete</button></div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                  )
+                })
+              }
+
             </div>
         );
     }
