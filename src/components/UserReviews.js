@@ -18,12 +18,7 @@ class UserReviews extends React.Component {
     }
 
     deleteReview = (reviewId) => {
-        let reviews = this.state.reviews.filter(review => review._id !== reviewId);
-        this.setState({
-                          reviews: reviews
-                      })
-        this.userService.deleteReview(reviewId);
-
+        this.props.deleteReview(reviewId);
     };
 
     render() {
