@@ -92,7 +92,9 @@ class Profile extends React.Component {
     updateUser = (user, userId) => {
         this.userService.updateUser(user, userId).then(
             user => this.setState({
-                                      user: user
+                                      user: user,
+                                      firstname: user.firstname,
+                                      lastname: user.lastname
                                   })
         )
     };
@@ -172,7 +174,7 @@ class Profile extends React.Component {
                                                 }
                                                 {
                                                     this.state.user.type === 'critic' &&
-                                                        <h6>CERTIFIED CRITIC</h6>
+                                                    <h6>CERTIFIED CRITIC</h6>
                                                 }
                                             </div>
                                         }
@@ -182,8 +184,10 @@ class Profile extends React.Component {
                                             {
                                                 this.state.user != undefined &&
                                                 this.state.loggedInUser.username !== undefined &&
-                                                this.state.loggedInUser._id !== this.state.user._id &&
-                                                followers.includes(this.state.loggedInUser.username) == false &&
+                                                this.state.loggedInUser._id !== this.state.user._id
+                                                &&
+                                                followers.includes(this.state.loggedInUser.username)
+                                                == false &&
                                                 <button className={"btn btn-primary my-2"}
                                                         type={"button"}
                                                         onClick={() => this.followUser(
@@ -195,8 +199,10 @@ class Profile extends React.Component {
                                             {
                                                 this.state.user != undefined &&
                                                 this.state.loggedInUser.username !== undefined &&
-                                                this.state.loggedInUser._id !== this.state.user._id &&
-                                                followers.includes(this.state.loggedInUser.username) &&
+                                                this.state.loggedInUser._id !== this.state.user._id
+                                                &&
+                                                followers.includes(this.state.loggedInUser.username)
+                                                &&
                                                 <button className={"btn btn-primary my-2"}
                                                         type={"button"}
                                                         onClick={() => this.unfollowUser(
@@ -220,7 +226,7 @@ class Profile extends React.Component {
                                     this.state.user.type === 'critic' &&
                                     <li className="nav-item">
                                         <a href="#" className={this.state.tabInfo == 'userReviews'
-                                            ? "nav-link active" : "nav-link"}
+                                                               ? "nav-link active" : "nav-link"}
                                            onClick={this.showUserReviews}>Reviews</a>
                                     </li>
                                 }
@@ -271,7 +277,7 @@ class Profile extends React.Component {
                             {
                                 this.state.user !== undefined &&
                                 (this.state.loggedInUser._id !== undefined
-                                    || this.state.loggedInUser.message != undefined) &&
+                                 || this.state.loggedInUser.message != undefined) &&
                                 this.state.tabInfo == 'watchList' &&
                                 this.state.watchlist !== undefined &&
                                 this.state.watchlist.length === 0 &&
