@@ -78,7 +78,7 @@ class MovieDetailsComponent extends React.Component {
         return (
             <div className='col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch'>
                 <div key={index} className='card'>
-                    <img className='card-img-top' src={constants.TMDB_IMAGE_BASE_URL + '/w500' + actor.profile_path} alt='Card image cap'/>
+                    <img className='card-img-top' src={constants.TMDB_IMAGE_BASE_URL + '/w500' + actor.profile_path} alt='https://picsum.photos/100/100'/>
                     <div className='card-body'>
                         <h9 className='bold-text'>{actor.name}</h9>
                         <p> as </p>

@@ -5,6 +5,7 @@ const user_logout = 'https://express-goodmovies-server.herokuapp.com/users/logou
 const user_findById = 'https://express-goodmovies-server.herokuapp.com/users/';
 const user_deleteReview = 'https://express-goodmovies-server.herokuapp.com/reviews/';
 const user_search_url = 'https://express-goodmovies-server.herokuapp.com/users/search/';
+const user_updateReview = 'https://express-goodmovies-server.herokuapp.com/reviews/';
 
 export default class UserService {
     login = (user) =>
@@ -115,6 +116,14 @@ export default class UserService {
             },
             method: 'DELETE'
         })
-
+    updateReview = (reviewId, reviewTitle, reviewBody) =>
+        fetch(user_updateReview + reviewId, {
+            body: JSON.stringify({'body': reviewBody, 'title': reviewTitle}),
+            credentials: "include",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'PUT'
+        }).then(response => response.json())
 
 }
