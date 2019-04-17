@@ -27,6 +27,7 @@ class UserInformation extends React.Component {
     updateUser = () => {
         var userId = this.props.user._id;
         var user = {
+            _id: userId,
             firstname: this.state.firstname,
             lastname: this.state.lastname
         };
