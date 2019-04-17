@@ -11,6 +11,12 @@ class UserReviews extends React.Component {
         })
     }
 
+    componentWillReceiveProps(nextProps, nextContext) {
+        this.setState({
+                          reviews: nextProps.reviews
+                      })
+    }
+
     deleteReview = (reviewId) => {
         let reviews = this.state.reviews.filter(review => review._id !== reviewId);
         this.setState({

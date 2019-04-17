@@ -13,6 +13,14 @@ class UserInformation extends React.Component {
 
     }
 
+    componentWillReceiveProps(nextProps, nextContext) {
+        this.setState({
+                          firstname: nextProps.firstname,
+                          lastname: nextProps.lastname,
+                          email: nextProps.email
+                      })
+    }
+
     firstNameChanged = (event) => {
         this.setState({
                           firstname: event.target.value

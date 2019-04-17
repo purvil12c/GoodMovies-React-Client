@@ -13,6 +13,12 @@ class UserWatchList extends React.Component {
         });
     }
 
+    componentWillReceiveProps(nextProps, nextContext) {
+        this.setState({
+                          watchlist: nextProps.watchlist
+                      })
+    }
+
     deleteFromWatchlist = (movieId) => {
         let watchlist = this.state.watchlist.filter(movie => movie.movieId !== movieId);
         this.setState({
@@ -20,7 +26,6 @@ class UserWatchList extends React.Component {
                       });
         this.userService.deleteFromWatchList(this.props.currentUser._id, movieId)
     };
-
 
     render() {
         return (
