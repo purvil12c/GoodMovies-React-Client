@@ -28,6 +28,27 @@ class Profile extends React.Component {
         };
     }
 
+    componentWillReceiveProps(nextProps, nextContext) {
+        var id = nextProps.match.params.id;
+        console.log(id);
+        if (id !== undefined) {
+            this.userService.findUserById(id).then(user =>
+                                                       this.setState({
+                                                                         user: user,
+                                                                         username: user.username,
+                                                                         type: user.type,
+                                                                         ratings: user.ratings,
+                                                                         watchlist: user.watchlist,
+                                                                         followers: user.followers,
+                                                                         following: user.following,
+                                                                         firstname: user.firstname,
+                                                                         lastname: user.lastname,
+                                                                         email: user.email
+                                                                     })
+            )
+        }
+    }
+
     componentDidMount() {
 
         setTimeout(() => {
@@ -104,6 +125,14 @@ class Profile extends React.Component {
             }
         )
     };
+
+    deleteReview = (reviewId) => {
+        let reviews = this.state.reviews.filter(review => review._id !== reviewId);
+        this.setState({
+                          reviews: reviews
+                      });
+        this.userService.deleteReview(reviewId);
+    }
 
     showUserInformation = () =>
         this.setState({
@@ -296,7 +325,8 @@ class Profile extends React.Component {
                                 this.state.reviews !== undefined &&
                                 this.state.reviews.length > 0 &&
                                 <div>
-                                    <UserReviews reviews={this.state.reviews}/>
+                                    <UserReviews reviews={this.state.reviews}
+                                                 deleteReview={this.deleteReview}/>
                                 </div>
                             }
                             {
