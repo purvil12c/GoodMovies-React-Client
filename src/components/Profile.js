@@ -138,6 +138,12 @@ class Profile extends React.Component {
                                      }))
 
     render() {
+        if (this.state.user != undefined &&
+            this.state.loggedInUser.username !== undefined &&
+            this.state.loggedInUser._id !== this.state.user._id) {
+            var followers = [];
+            this.state.followers.map(user => followers.push(user.username))
+        }
         return (
             <AnimatedDiv pose={this.state.isVisible ? 'visible' : 'hidden'}>
                 <div>
@@ -172,11 +178,12 @@ class Profile extends React.Component {
                                         }
                                     </div>
                                     <div className={"col-sm-12 col-md-6 col-lg-8"}>
-                                        {
-                                            this.state.user != undefined &&
-                                            this.state.loggedInUser.username !== undefined &&
-                                            this.state.loggedInUser._id !== this.state.user._id &&
-                                            <div className={"float-right"}>
+                                        <div className={"float-right"}>
+                                            {
+                                                this.state.user != undefined &&
+                                                this.state.loggedInUser.username !== undefined &&
+                                                this.state.loggedInUser._id !== this.state.user._id &&
+                                                followers.includes(this.state.loggedInUser.username) == false &&
                                                 <button className={"btn btn-primary my-2"}
                                                         type={"button"}
                                                         onClick={() => this.followUser(
@@ -184,6 +191,12 @@ class Profile extends React.Component {
                                                             this.state.id)}>
                                                     Follow
                                                 </button>
+                                            }
+                                            {
+                                                this.state.user != undefined &&
+                                                this.state.loggedInUser.username !== undefined &&
+                                                this.state.loggedInUser._id !== this.state.user._id &&
+                                                followers.includes(this.state.loggedInUser.username) &&
                                                 <button className={"btn btn-primary my-2"}
                                                         type={"button"}
                                                         onClick={() => this.unfollowUser(
@@ -191,8 +204,8 @@ class Profile extends React.Component {
                                                             this.state.id)}>
                                                     Unfollow
                                                 </button>
-                                            </div>
-                                        }
+                                            }
+                                        </div>
                                     </div>
                                 </div>
                             </div>
