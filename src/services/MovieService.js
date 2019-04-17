@@ -84,11 +84,11 @@ class MovieServiceClient {
             });
     }
 
-    addMovieToWatchlist(userId, movieId, movieName) {
+    addMovieToWatchlist(userId, movieId, movieName, moviePosterUrl) {
         return fetch(constants.ADD_MOVIE_TO_WATCHLIST_URL.replace('MOVIE_ID', movieId).replace('USER_ID', userId),
             {
                 method : 'POST',
-                body : JSON.stringify({'movieName': movieName}),
+                body : JSON.stringify({'movieName': movieName, 'imageUrl': moviePosterUrl}),
                 headers: {
                     'content-type':'application/json'
                 }})

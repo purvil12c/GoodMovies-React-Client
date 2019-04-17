@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import '../../node_modules/font-awesome/css/font-awesome.min.css'
 import UserService from '../services/UserService'
+import * as constants from "../services/Constants";
 
 class UserWatchList extends React.Component {
     constructor(props) {
@@ -20,6 +21,7 @@ class UserWatchList extends React.Component {
         this.userService.deleteFromWatchList(this.props.currentUser._id, movieId)
     };
 
+
     render() {
         return (
             <div>
@@ -27,21 +29,28 @@ class UserWatchList extends React.Component {
                     {
                         this.state.watchlist.map(movie => {
                             return (
-                                <li className="list-group-item">
-                                    <div>
-                                        <Link to={'/movie/' + movie.movieId}>
-                                            {movie.movieName}
+                                    <li className='card shadow p-3 bg-white rounded'>
+                                        <Link className='col-12 mb-2' style={{ textDecoration: 'none' }} to={`/movie/${movie.movieId}`}>
+                                        <div className="row no-gutters">
+                                            <div className="col-auto">
+                                                <img src={movie.imageUrl} className="img-fluid m-2" alt=""/>
+                                            </div>
+                                            <div className="col">
+                                                <div className="card-block">
+                                                    <h6 className="card-title m-4 black-title">{movie.movieName}</h6>
+                                                </div>
+                                            </div>
+                                        </div>
                                         </Link>
                                         {
                                             this.props.loggedInUser._id
                                             === this.props.currentUser._id &&
+                                                <div className="col-auto">
                                             <i className="fa fa-times float-right"
                                                onClick={() => this.deleteFromWatchlist(
-                                                   movie.movieId)}></i>
-
+                                                   movie.movieId)}></i></div>
                                         }
-                                    </div>
-                                </li>
+                                    </li>
                             )
                         })
                     }

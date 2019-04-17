@@ -16,7 +16,7 @@ class UserFollowing extends React.Component {
                     {
                         this.state.following.map(user => {
                             return (
-                                <Link className='col-12' style={{ textDecoration: 'none' }} to={`/profile/${user.userId}`}>
+                                <Link className='col-12 mb-2' style={{ textDecoration: 'none' }} to={`/profile/${user.userId}`}>
                                     <li className='card shadow bg-white rounded'>
                                         <div className="row no-gutters">
                                             <div className="col-auto m-4">

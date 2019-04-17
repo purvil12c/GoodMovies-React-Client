@@ -37,7 +37,7 @@ export default class MovieSearchComponent extends React.Component {
                 <HomeNavigationBar loggedIn = {true}/>
                 <h6 className={'m-4 col-12 white-title'}> Search results for "{this.props.match.params.query}" </h6>
                 <div className={"col-12 mt-4"}>
-                    <ul>
+                    <ul className="list-group">
                         {this.renderSearchResults()}
                     </ul>
                 </div>
