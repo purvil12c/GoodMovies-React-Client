@@ -28,6 +28,27 @@ class Profile extends React.Component {
         };
     }
 
+    componentWillReceiveProps(nextProps, nextContext) {
+        var id = nextProps.match.params.id;
+        console.log(id);
+        if (id !== undefined) {
+            this.userService.findUserById(id).then(user =>
+                                                       this.setState({
+                                                                         user: user,
+                                                                         username: user.username,
+                                                                         type: user.type,
+                                                                         ratings: user.ratings,
+                                                                         watchlist: user.watchlist,
+                                                                         followers: user.followers,
+                                                                         following: user.following,
+                                                                         firstname: user.firstname,
+                                                                         lastname: user.lastname,
+                                                                         email: user.email
+                                                                     })
+            )
+        }
+    }
+
     componentDidMount() {
 
         setTimeout(() => {

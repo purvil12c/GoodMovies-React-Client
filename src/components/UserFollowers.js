@@ -9,6 +9,12 @@ class UserFollowers extends React.Component {
         })
     }
 
+    componentWillReceiveProps(nextProps, nextContext) {
+        this.setState({
+            followers: nextProps.followers
+                      })
+    }
+
     render() {
         return (
             <div>
