@@ -106,11 +106,14 @@ export default class HomeContainer extends React.Component {
 
                 <div className="row col-12 justify-content-center mt-4">
                   <div className="col-6">
-                    <input className="form-control" type="text" onChange={this.searchTextUpdated}
+                    <input
+                    style={{backgroundColor: 'rgb(0,0,0,0.3)', caretColor: 'rgb(255,255,0)', color: 'white', backgroundBlendMode: 'overlay', borderRadius: '100px', height: '50px', fontSize: '25px'}}
+                    className="form-control" type="text" onChange={this.searchTextUpdated}
                            placeholder="Search" value={this.state.searchQuery}
                            aria-label="Search"/>
                   </div>
-                  <select className="custom-select col-lg-1 col-xs-1" onChange={this.searchTypeUpdated}>
+                  <select style={{backgroundColor: 'rgb(255,255,255,1)', color: 'black', borderRadius: '20px', height: '50px', fontSize: '20px'}}
+                      className="custom-select col-lg-1 col-xs-1" onChange={this.searchTypeUpdated}>
                       <option value="movie">Movies</option>
                       <option value="user">Users</option>
                   </select>
