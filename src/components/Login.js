@@ -67,7 +67,7 @@ class Login extends React.Component {
     render() {
         return (
             <AnimatedDiv pose={this.state.isVisible ? 'visible' : 'hidden'} className={"background"}>
-              <div className="row col-12 justify-content-center" style={{backgroundColor: 'black', margin: 0}}>
+              <div className="row col-12 justify-content-center" style={{backgroundColor: 'transparent', margin: 0}}>
                 <img src={logo}/>
               </div>
                 <div className={"box"}>
