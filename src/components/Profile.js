@@ -132,7 +132,15 @@ class Profile extends React.Component {
                           reviews: reviews
                       });
         this.userService.deleteReview(reviewId);
-    }
+    };
+
+    deleteFromWatchlist = (movieId) => {
+        let watchlist = this.state.watchlist.filter(movie => movie.movieId !== movieId);
+        this.setState({
+                          watchlist: watchlist
+                      });
+        this.userService.deleteFromWatchList(this.state.user._id, movieId)
+    };
 
     showUserInformation = () =>
         this.setState({
@@ -306,7 +314,8 @@ class Profile extends React.Component {
                                 <div>
                                     <UserWatchList watchlist={this.state.watchlist}
                                                    loggedInUser={this.state.loggedInUser}
-                                                   currentUser={this.state.user}/>
+                                                   currentUser={this.state.user}
+                                                   deleteFromWatchlist={this.deleteFromWatchlist}/>
                                 </div>
                             }
                             {
