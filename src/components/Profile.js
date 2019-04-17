@@ -46,7 +46,8 @@ class Profile extends React.Component {
                                              followers: user.followers,
                                              following: user.following,
                                              firstname: user.firstname,
-                                             lastname: user.lastname
+                                             lastname: user.lastname,
+                                             email: user.email
                                          }
             ));
 
@@ -69,7 +70,8 @@ class Profile extends React.Component {
                                               followers: user.followers,
                                               following: user.following,
                                               firstname: user.firstname,
-                                              lastname: user.lastname
+                                              lastname: user.lastname,
+                                              email: user.email
                                           })
                 );
 
@@ -91,11 +93,15 @@ class Profile extends React.Component {
 
     updateUser = (user, userId) => {
         this.userService.updateUser(user, userId).then(
-            user => this.setState({
-                                      user: user,
-                                      firstname: user.firstname,
-                                      lastname: user.lastname
-                                  })
+            user => {
+                console.log(user)
+                this.setState({
+                                  user: user,
+                                  firstname: user.firstname,
+                                  lastname: user.lastname,
+                                  email: user.email
+                              })
+            }
         )
     };
 
