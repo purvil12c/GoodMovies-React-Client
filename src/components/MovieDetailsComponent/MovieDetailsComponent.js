@@ -119,7 +119,7 @@ class MovieDetailsComponent extends React.Component {
         })
     }
 
-    // TODO Show and hide things based on whether user is critic or user
+    
     render() {
        if (this.state.userProfile.message === 'You are not logged in') {
             return (
@@ -148,6 +148,10 @@ class MovieDetailsComponent extends React.Component {
                                   this.state.tweets!='' &&
                                     this.state.tweets.map(tweet=>
                                     <Tweet data={tweet}/>)
+                                }
+                                {
+                                   this.state.tweets !== '' && this.state.tweets.length === 0 &&
+                                   <h6 className="white-title">No tweets available for this movie</h6>
                                 }
                                 </div>
                             </div>
@@ -201,10 +205,15 @@ class MovieDetailsComponent extends React.Component {
                                     </h3>
                                     <div style={{overflowY: 'scroll', maxHeight: '350px'}}>
                                     {
-                                      this.state.tweets!='' &&
+                                      this.state.tweets !== '' &&
+                                      this.state.tweets.length > 0 &&
                                         this.state.tweets.map(tweet=>
                                         <Tweet data={tweet}/>)
                                     }
+                                        {
+                                            this.state.tweets !== '' && this.state.tweets.length === 0 &&
+                                            <h6 className="white-title">No tweets available for this movie</h6>
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -230,12 +239,18 @@ class MovieDetailsComponent extends React.Component {
                                     )
                                 }
                             </div>
-                            <div className="card shadow p-3 bg-white rounded">
-                                <h4>ADD A REVIEW</h4>
-                                <input className="card mb-2 mt-2 p-3" name="title" onChange={this.reviewTitleEdited} placeholder="Review Title"/>
-                                <textarea className="card mb-2 p-3" name="body" onChange={this.reviewBodyEdited} placeholder="Review Body"/>
-                                <button className="btn col-12 btn-primary" onClick={this.writeReview}>Add</button>
-                            </div>
+                            {
+                                this.state.userProfile !== undefined &&
+                                this.state.userProfile.type === 'critic' &&
+                                <div className="card shadow p-3 bg-white rounded">
+                                    <h5>ADD A REVIEW</h5>
+                                    <input className="card mb-2 mt-2 p-3" name="title" onChange={this.reviewTitleEdited}
+                                           placeholder="Review Title"/>
+                                    <textarea className="card mb-2 p-3" name="body" onChange={this.reviewBodyEdited}
+                                              placeholder="Review Body"/>
+                                    <button className="btn col-12 btn-primary" onClick={this.writeReview}>Add</button>
+                                </div>
+                            }
                         </div>
                     </AnimatedDiv>
                 );
@@ -277,6 +292,10 @@ class MovieDetailsComponent extends React.Component {
                                         this.state.tweets.map(tweet=>
                                         <Tweet data={tweet}/>)
                                     }
+                                    {
+                                        this.state.tweets !== '' && this.state.tweets.length === 0 &&
+                                        <h6 className="white-title">No tweets available for this movie</h6>
+                                    }
                                     </div>
                                 </div>
                             </div>
@@ -295,13 +314,19 @@ class MovieDetailsComponent extends React.Component {
                             <div className="row">
                                 <h3 className="white-title">Critic Reviews</h3>
                             </div>
-                            <p className="white-title">No reviews for this movie</p>
-                            <div className="card shadow p-3 bg-white rounded">
-                                <h5>ADD A REVIEW</h5>
-                                <input className="card mb-2 mt-2 p-3" name="title" onChange={this.reviewTitleEdited} placeholder="Review Title"/>
-                                <textarea className="card mb-2 p-3" name="body" onChange={this.reviewBodyEdited} placeholder="Review Body"/>
-                                <button className="btn col-12 btn-primary" onClick={this.writeReview}>Add</button>
-                            </div>
+                            <p className="white-title">No critics have reviewed this movie</p>
+                            {
+                                this.state.userProfile !== undefined &&
+                                this.state.userProfile.type === 'critic' &&
+                                <div className="card shadow p-3 bg-white rounded">
+                                    <h5>ADD A REVIEW</h5>
+                                    <input className="card mb-2 mt-2 p-3" name="title" onChange={this.reviewTitleEdited}
+                                           placeholder="Review Title"/>
+                                    <textarea className="card mb-2 p-3" name="body" onChange={this.reviewBodyEdited}
+                                              placeholder="Review Body"/>
+                                    <button className="btn col-12 btn-primary" onClick={this.writeReview}>Add</button>
+                                </div>
+                            }
                         </div>
                     </AnimatedDiv>
                 );
