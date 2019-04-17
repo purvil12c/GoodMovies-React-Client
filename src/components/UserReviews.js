@@ -1,6 +1,6 @@
 import React from 'react';
-import ReviewComponent from "./ReviewComponent";
 import UserService from '../services/UserService'
+import UserReviewItem from "./UserReviewItem";
 
 class UserReviews extends React.Component {
     constructor(props) {
@@ -18,23 +18,30 @@ class UserReviews extends React.Component {
     }
 
     deleteReview = (reviewId) => {
-        let reviews = this.state.reviews.filter(review => review._id !== reviewId);
-        this.setState({
-                          reviews: reviews
-                      })
-        this.userService.deleteReview(reviewId);
-
+        this.props.deleteReview(reviewId);
     };
+
+    updateReview = (reviewId, reviewTitle, reviewBody) => {
+        let review = this.state.reviews.find(function (review) {
+            return review._id === reviewId
+        });
+        review.title = reviewTitle
+        review.body = reviewBody
+        this.setState({
+            reviews: this.state.reviews
+        })
+        this.userService.updateReview(reviewId, reviewTitle, reviewBody);
+    }
 
     render() {
         return (
-            <div className={"container"}>
+            <div>
                 {
                     this.state.reviews.map(review => {
-                        console.log(review);
                         return (
-                            <ReviewComponent review={review}
-                                             deleteReview={this.deleteReview}/>
+                            <UserReviewItem review={review}
+                                            deleteReview={this.deleteReview}
+                                            updateReview={this.updateReview}/>
                         )
                     })
                 }
