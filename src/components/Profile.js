@@ -126,6 +126,14 @@ class Profile extends React.Component {
         )
     };
 
+    deleteReview = (reviewId) => {
+        let reviews = this.state.reviews.filter(review => review._id !== reviewId);
+        this.setState({
+                          reviews: reviews
+                      });
+        this.userService.deleteReview(reviewId);
+    }
+
     showUserInformation = () =>
         this.setState({
                           tabInfo: 'userInfo'
@@ -317,7 +325,8 @@ class Profile extends React.Component {
                                 this.state.reviews !== undefined &&
                                 this.state.reviews.length > 0 &&
                                 <div>
-                                    <UserReviews reviews={this.state.reviews}/>
+                                    <UserReviews reviews={this.state.reviews}
+                                                 deleteReview={this.deleteReview}/>
                                 </div>
                             }
                             {
