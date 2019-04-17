@@ -35,7 +35,7 @@ export default class AddWatchlistComponent extends React.Component {
     }
 
     addToWatchlist() {
-        MovieServiceClient.instance.addMovieToWatchlist(this.props.userId, this.props.movie.id, this.props.movie.title, constants.TMDB_IMAGE_BASE_URL + '/w92' + this.props.movie.poster_path).then(response => {
+        MovieServiceClient.instance.addMovieToWatchlist(this.props.userId, this.props.movie.id, this.props.movie.title, constants.TMDB_IMAGE_BASE_URL + '/w185' + this.props.movie.poster_path).then(response => {
 
             this.userService.findUserById(this.props.userId).then(response => {
 
