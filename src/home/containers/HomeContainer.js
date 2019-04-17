@@ -100,7 +100,7 @@ export default class HomeContainer extends React.Component {
                       <HomeNavigationBar loggedIn={true}
                                          username={this.state.userProfile.username}
                                          logout={this.logout}/>
-                      <h1 className="ml-4 white-title">Welcome {this.state.userProfile.username}</h1>
+                      <h2 className="ml-4 mt-4 white-title">Hello {this.state.userProfile.username}!</h2>
                     </div>
                 }
 

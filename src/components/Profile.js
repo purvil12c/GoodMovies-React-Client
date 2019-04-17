@@ -162,7 +162,7 @@ class Profile extends React.Component {
                                                 }
                                                 {
                                                     this.state.user.type === 'critic' &&
-                                                        <h5>CRITIC</h5>
+                                                        <h6>CERTIFIED CRITIC</h6>
                                                 }
                                             </div>
                                         }
@@ -244,6 +244,7 @@ class Profile extends React.Component {
                                  || this.state.loggedInUser.message != undefined) &&
                                 this.state.tabInfo == 'watchList' &&
                                 this.state.watchlist !== undefined &&
+                                this.state.watchlist.length > 0 &&
                                 <div>
                                     <UserWatchList watchlist={this.state.watchlist}
                                                    loggedInUser={this.state.loggedInUser}
@@ -251,10 +252,30 @@ class Profile extends React.Component {
                                 </div>
                             }
                             {
+                                this.state.user !== undefined &&
+                                (this.state.loggedInUser._id !== undefined
+                                    || this.state.loggedInUser.message != undefined) &&
+                                this.state.tabInfo == 'watchList' &&
+                                this.state.watchlist !== undefined &&
+                                this.state.watchlist.length === 0 &&
+                                <div>
+                                    <h4>Nothing on watchlist</h4>
+                                </div>
+                            }
+                            {
                                 this.state.tabInfo == 'userReviews' &&
                                 this.state.reviews !== undefined &&
+                                this.state.reviews.length > 0 &&
                                 <div>
                                     <UserReviews reviews={this.state.reviews}/>
+                                </div>
+                            }
+                            {
+                                this.state.tabInfo == 'userReviews' &&
+                                this.state.reviews !== undefined &&
+                                this.state.reviews.length === 0 &&
+                                <div>
+                                    <h4>No reviews</h4>
                                 </div>
                             }
                             {

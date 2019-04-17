@@ -13,7 +13,7 @@ export const UserSearchResultItem = ({searchResult}) => {
                             <h6 className="card-title m-4 black-title">{searchResult.username}</h6>
                         </div>
                         <div className="card-body">
-                            <p className="black-title">{searchResult.type}</p>
+                            <p className="black-title">{searchResult.type.toUpperCase()}</p>
                         </div>
                     </div>
                 </div>
