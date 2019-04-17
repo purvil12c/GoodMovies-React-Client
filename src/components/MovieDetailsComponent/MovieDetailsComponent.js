@@ -119,11 +119,11 @@ class MovieDetailsComponent extends React.Component {
         })
     }
 
-    
+
     render() {
        if (this.state.userProfile.message === 'You are not logged in') {
             return (
-                <AnimatedDiv style={{ backgroundAttachment: 'fixed', backgroundImage: `url(${constants.TMDB_BACKDROP_BASE_URL+this.state.movie.backdrop_path})`, backgroundSize: 'cover', backgroundColor: '#2d3436', backgroundBlendMode: 'overlay'}} pose={this.state.isVisible ? 'visible' : 'hidden'} className="background mb-4">
+                <AnimatedDiv style={{ backgroundImage: `url(${constants.TMDB_BACKDROP_BASE_URL+this.state.movie.backdrop_path})`, backgroundSize: 'contain', backgroundColor: '#2d3436', backgroundBlendMode: 'overlay'}} pose={this.state.isVisible ? 'visible' : 'hidden'} className="background mb-4">
                     <HomeNavigationBar loggedIn={false}/>
                     <div className="container mt-2">
                         <div className="row searchbar"/>
@@ -174,7 +174,7 @@ class MovieDetailsComponent extends React.Component {
         else {
             if (this.state.reviews.length !== 0) {
                 return (
-                    <AnimatedDiv style={{ backgroundAttachment: 'fixed', backgroundImage: `url(${constants.TMDB_BACKDROP_BASE_URL+this.state.movie.backdrop_path})`, backgroundSize: 'cover', backgroundColor: '#2d3436', backgroundBlendMode: 'overlay'}} pose={this.state.isVisible ? 'visible' : 'hidden'} className="background mb-4">
+                    <AnimatedDiv style={{ backgroundImage: `url(${constants.TMDB_BACKDROP_BASE_URL+this.state.movie.backdrop_path})`, backgroundSize: 'contain', backgroundColor: '#2d3436', backgroundBlendMode: 'overlay'}} pose={this.state.isVisible ? 'visible' : 'hidden'} className="background mb-4">
                         <div>
                             <HomeNavigationBar loggedIn={true}
                                                username={this.state.userProfile.username}
@@ -257,7 +257,7 @@ class MovieDetailsComponent extends React.Component {
             }
             else {
                 return (
-                    <AnimatedDiv style={{ backgroundAttachment: 'fixed', backgroundImage: `url(${constants.TMDB_BACKDROP_BASE_URL+this.state.movie.backdrop_path})`, backgroundSize: 'cover', backgroundColor: '#2d3436', backgroundBlendMode: 'overlay'}} pose={this.state.isVisible ? 'visible' : 'hidden'} className="background mb-4">
+                    <AnimatedDiv style={{ backgroundImage: `url(${constants.TMDB_BACKDROP_BASE_URL+this.state.movie.backdrop_path})`, backgroundSize: 'contain', backgroundColor: '#2d3436', backgroundBlendMode: 'overlay'}} pose={this.state.isVisible ? 'visible' : 'hidden'} className="background mb-4">
                         <div>
                             <HomeNavigationBar loggedIn={true}
                                                username={this.state.userProfile.username}
