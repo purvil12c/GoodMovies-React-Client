@@ -11,9 +11,9 @@ import UserFollowing from './UserFollowing';
 import posed from 'react-pose';
 
 const AnimatedDiv = posed.div({
-  hidden: { opacity: 0 },
-  visible: { opacity: 1}
-});
+                                  hidden: {opacity: 0},
+                                  visible: {opacity: 1}
+                              });
 
 class Profile extends React.Component {
     constructor(props) {
@@ -30,9 +30,9 @@ class Profile extends React.Component {
 
     componentDidMount() {
 
-      setTimeout(() => {
-        this.setState({ isVisible: !this.state.isVisible });
-      }, 500);
+        setTimeout(() => {
+            this.setState({isVisible: !this.state.isVisible});
+        }, 500);
 
         if (this.state.id === undefined) {
             this.userService.getProfile().then(
@@ -92,8 +92,8 @@ class Profile extends React.Component {
     updateUser = (user, userId) => {
         this.userService.updateUser(user, userId).then(
             user => this.setState({
-                user: user
-            })
+                                      user: user
+                                  })
         )
     };
 
@@ -124,14 +124,18 @@ class Profile extends React.Component {
 
     followUser = (userId, followId) => {
         this.userService.followUser(userId, followId).then(
-            alert('Followed this user')
-        );
+            response => this.userService.findUserById(this.state.id)
+        ).then(user => this.setState({
+                                         followers: user.followers
+                                     }))
     };
 
     unfollowUser = (userId, followId) =>
         this.userService.unfollowUser(userId, followId).then(
-            alert('Unfollowed this user')
-        );
+            response => this.userService.findUserById(this.state.id)
+        ).then(user => this.setState({
+                                         followers: user.followers
+                                     }))
 
     render() {
         return (
