@@ -8,8 +8,7 @@ import AddWatchlistComponent from "../AddWatchlistComponent/AddWatchlistComponen
 import TwitterService from "../../services/TwitterService";
 import Tweet from 'react-tweet';
 import {HomeNavigationBar} from "../../home/components/HomeNavigationBar";
-import ProfileNavBar from "../ProfileNavBar";
-
+import {withRouter} from 'react-router-dom';
 import posed from 'react-pose';
 
 const AnimatedDiv = posed.div({
@@ -36,6 +35,7 @@ class MovieDetailsComponent extends React.Component {
         this.writeReview = this.writeReview.bind(this);
         this.reviewBodyEdited = this.reviewBodyEdited.bind(this);
         this.reviewTitleEdited = this.reviewTitleEdited.bind(this);
+        this.backToSearchResults = this.backToSearchResults.bind(this);
     }
 
     componentDidMount() {
@@ -132,6 +132,14 @@ class MovieDetailsComponent extends React.Component {
         this.props.history.push('/login');
     };
 
+    backToSearchResults() {
+        this.props.history.goBack();
+    }
+
+    backToProfile() {
+
+    }
+
     render() {
         if (this.state.userProfile.message === 'You are not logged in') {
             return (
@@ -144,6 +152,14 @@ class MovieDetailsComponent extends React.Component {
                 }} pose={this.state.isVisible ? 'visible' : 'hidden'} className="background mb-4">
                     <HomeNavigationBar loggedIn={false}/>
                     <div className="container mt-2">
+                        {
+                            this.props.location.source !== undefined && this.props.location.source === 'search' &&
+                            <button className="btn ml-3 mb-4 mt-4 btn-dark" onClick={this.backToSearchResults}><i className="fa fa-arrow-left white-title"/> Back to search results</button>
+                        }
+                        {
+                            this.props.location.source !== undefined && this.props.location.source === 'profile' &&
+                            <button className="btn ml-3 mb-4 mt-4 btn-dark" onClick={this.backToSearchResults}><i className="fa fa-arrow-left white-title"/> Back to profile</button>
+                        }
                         <div className="row searchbar"/>
                         <div className="row">
                             <div className="col-md-3 col-xs-1">
@@ -165,7 +181,7 @@ class MovieDetailsComponent extends React.Component {
                             </div>
                             <div className="col-md-4 col-xs-5">
                                 <h3 className="white-title">Twitter Feed
-                                    <i className="fa fa-twitter"></i>
+                                    <i className="fa fa-twitter"/>
                                 </h3>
                                 <div style={{overflowY: 'scroll', maxHeight: '350px'}}>
                                     {
@@ -194,6 +210,21 @@ class MovieDetailsComponent extends React.Component {
                                 )
                             }
                         </div>
+                        <br/>
+                        <div className="row">
+                            <h3 className="white-title">Critic Reviews</h3>
+                        </div>
+                        {
+                            this.state.reviews.length === 0 &&
+                            <p className="white-title">No critics have reviewed this movie</p>
+                        }
+                        <div className="row card-columns mb-4">
+                            {
+                                this.state.reviews.map(review =>
+                                    <ReviewComponent review={review}/>
+                                )
+                            }
+                        </div>
                     </div>
                 </AnimatedDiv>
             );
@@ -214,6 +245,14 @@ class MovieDetailsComponent extends React.Component {
                                                logout={this.logout}/>
                         </div>
                         <div className="container mt-4">
+                            {
+                                this.props.location.source !== undefined && this.props.location.source === 'search' &&
+                                <button className="btn ml-3 mb-4 mt-4 btn-dark" onClick={this.backToSearchResults}><i className="fa fa-arrow-left white-title"/> Back to search results</button>
+                            }
+                            {
+                                this.props.location.source !== undefined && this.props.location.source === 'profile' &&
+                                <button className="btn ml-3 mb-4 mt-4 btn-dark" onClick={this.backToSearchResults}><i className="fa fa-arrow-left white-title"/> Back to profile</button>
+                            }
                             <div className="row searchbar"/>
                             <div className="row">
                                 <div className="col-md-3 col-xs-1">
@@ -313,6 +352,14 @@ class MovieDetailsComponent extends React.Component {
                                                logout={this.logout}/>
                         </div>
                         <div className="container mt-4">
+                            {
+                                this.props.location.source !== undefined && this.props.location.source === 'search' &&
+                                <button className="btn ml-3 mb-4 mt-4 btn-dark" onClick={this.backToSearchResults}><i className="fa fa-arrow-left white-title"/> Back to search results</button>
+                            }
+                            {
+                                this.props.location.source !== undefined && this.props.location.source === 'profile' &&
+                                <button className="btn ml-3 mb-4 mt-4 btn-dark" onClick={this.backToSearchResults}><i className="fa fa-arrow-left white-title"/> Back to profile</button>
+                            }
                             <div className="row searchbar"/>
                             <div className="row">
                                 <div className="col-md-3 col-xs-1">

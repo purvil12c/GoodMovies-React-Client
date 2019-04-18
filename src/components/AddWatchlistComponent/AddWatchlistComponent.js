@@ -97,10 +97,6 @@ export default class AddWatchlistComponent extends React.Component {
             return (
                 <div className="btn btn-outline-success col-12 mt-4" onClick={this.addToWatchlist}>
                   Add to watchlist
-                  <Lottie options={defaultOptions}
-                        height={50}
-                        width={50}
-                  />
                 </div>
             );
         }

@@ -335,7 +335,9 @@ class Profile extends React.Component {
                                 this.state.reviews.length > 0 &&
                                 <div>
                                     <UserReviews reviews={this.state.reviews}
-                                                 deleteReview={this.deleteReview}/>
+                                                 deleteReview={this.deleteReview}
+                                                 currentUser={this.state.user}
+                                                 loggedInUser={this.state.loggedInUser}/>
                                 </div>
                             }
                             {
