@@ -112,7 +112,7 @@ export default class HomeContainer extends React.Component {
                            placeholder="Search" value={this.state.searchQuery}
                            aria-label="Search"/>
                   </div>
-                  <select style={{backgroundColor: 'rgb(255,255,255,1)', color: 'black', borderRadius: '20px', height: '50px', fontSize: '20px'}}
+                  <select style={{width: '100px',backgroundColor: 'rgb(255,255,255,1)', color: 'black', borderRadius: '20px', height: '50px', fontSize: '20px'}}
                       className="custom-select col-lg-1 col-xs-1" onChange={this.searchTypeUpdated}>
                       <option value="movie">Movies</option>
                       <option value="user">Users</option>
