@@ -1,9 +1,9 @@
 import React from "react";
 import './IntroPageComponent.css'
 import posed from 'react-pose';
-import {Link} from 'react-router-dom'
-import Lottie from 'react-lottie'
-import animationData from '../../assets/action.json'
+import {Link} from 'react-router-dom';
+import Lottie from 'react-lottie';
+import animationData from '../../assets/action.json';
 
 const AnimatedDivText1 = posed.div({
   hidden: { opacity: 0 },

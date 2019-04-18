@@ -3,6 +3,18 @@ import UserService from "../../services/UserService";
 import MovieServiceClient from "../../services/MovieService";
 import * as constants from "../../services/Constants";
 
+import Lottie from 'react-lottie';
+import animationData from '../../assets/love.json';
+
+const defaultOptions = {
+      loop: true,
+      autoplay: true,
+      animationData: animationData,
+      rendererSettings: {
+        preserveAspectRatio: 'xMidYMid slice'
+      }
+  };
+
 export default class AddWatchlistComponent extends React.Component {
 
     constructor(props){
@@ -83,7 +95,13 @@ export default class AddWatchlistComponent extends React.Component {
         }
         else if (this.state.watchlistIds !== undefined && this.state.watchlistIds.indexOf(String(this.props.movie.id)) <= -1) {
             return (
-                <button className="btn btn-outline-success col-12 mt-4" onClick={this.addToWatchlist}>Add to watchlist</button>
+                <div className="btn btn-outline-success col-12 mt-4" onClick={this.addToWatchlist}>
+                  Add to watchlist
+                  <Lottie options={defaultOptions}
+                        height={50}
+                        width={50}
+                  />
+                </div>
             );
         }
     }
