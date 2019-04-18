@@ -114,15 +114,13 @@ class Profile extends React.Component {
 
     updateUser = (user, userId) => {
         this.userService.updateUser(user, userId).then(
-            user => {
-                console.log(user)
+            user =>
                 this.setState({
-                                  user: user,
                                   firstname: user.firstname,
-                                  lastname: user.lastname,
-                                  email: user.email
+                                  lastname: user.lastname != undefined ? user.lastname
+                                                                       : this.state.lastname,
+                                  email: user.email != undefined ? user.email : this.state.email
                               })
-            }
         )
     };
 
