@@ -1,7 +1,7 @@
 import React from 'react';
 
-import {HomeNavigationBar} from '../components/HomeNavigationBar';
-import MovieSlider from "../components/MovieSlider";
+import {HomeNavigationBar} from './HomeNavigationBar';
+import MovieSlider from "./MovieSlider";
 import UserService from "../../services/UserService"
 import MovieServiceClient from "../../services/MovieService";
 

@@ -3,7 +3,7 @@ import ProfileNavBar from "./ProfileNavBar";
 import './Profile.css'
 import UserInformation from "./UserInformation";
 import UserReviews from "./UserReviews";
-import UserService from "../services/UserService";
+import UserService from "../../services/UserService";
 import UserWatchList from "./UserWatchList";
 import UserFollowers from "./UserFollowers";
 import UserFollowing from './UserFollowing';

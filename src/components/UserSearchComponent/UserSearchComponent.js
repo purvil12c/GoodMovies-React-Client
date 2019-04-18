@@ -1,5 +1,5 @@
 import React from 'react';
-import {HomeNavigationBar} from "../../home/components/HomeNavigationBar";
+import {HomeNavigationBar} from "../HomeComponent/HomeNavigationBar";
 import {UserSearchResultItem} from "./UserSearchResultItem";
 import UserService from "../../services/UserService";
 

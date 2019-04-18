@@ -1,9 +1,8 @@
 import React from 'react';
 import "./LoginRegister.css"
 import {Link} from 'react-router-dom'
-import UserService from '../services/UserService'
-
-import logo from '../assets/goodmovies_logo.png';
+import UserService from '../../services/UserService'
+import logo from '../../assets/goodmovies_logo.png';
 
 import posed from 'react-pose';
 

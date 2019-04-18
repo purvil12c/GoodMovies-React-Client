@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import '../../node_modules/font-awesome/css/font-awesome.min.css'
+import '../../../node_modules/font-awesome/css/font-awesome.min.css'
 
 class UserWatchList extends React.Component {
     constructor(props) {

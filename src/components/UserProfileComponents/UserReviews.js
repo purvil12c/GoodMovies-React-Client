@@ -1,5 +1,5 @@
 import React from 'react';
-import UserService from '../services/UserService'
+import UserService from '../../services/UserService'
 import UserReviewItem from "./UserReviewItem";
 
 class UserReviews extends React.Component {
