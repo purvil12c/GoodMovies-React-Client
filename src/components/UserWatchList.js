@@ -31,7 +31,7 @@ class UserWatchList extends React.Component {
                         return (
                             <div className='col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch'>
                                 <div className='card'>
-                                    <Link to={`/movie/${movie.movieId}`}>
+                                    <Link to={{pathname: `/movie/${movie.movieId}`, source: 'profile'}}>
                                         <img style={{width: '185px', height: 'auto'}}
                                              className='card-img-top' src={movie.imageUrl}
                                              alt='Card image cap'/>

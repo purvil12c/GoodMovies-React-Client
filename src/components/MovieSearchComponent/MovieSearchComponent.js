@@ -23,11 +23,16 @@ export default class MovieSearchComponent extends React.Component {
 
     renderSearchResults() {
         if(this.state.searchResults) {
-            let items = this.state.searchResults
-                .map(function(result) {
-                    return <MovieSearchResultItem searchResult={result}/>;
-                });
-            return (items);
+            if (this.state.searchResults.length === 0) {
+                return <h4 className="white-title ml-4">No results found</h4>
+            }
+            else {
+                let items = this.state.searchResults
+                    .map(function (result) {
+                        return <MovieSearchResultItem searchResult={result}/>;
+                    });
+                return (items);
+            }
         }
     }
 

@@ -41,7 +41,9 @@ class UserReviews extends React.Component {
                         return (
                             <UserReviewItem review={review}
                                             deleteReview={this.deleteReview}
-                                            updateReview={this.updateReview}/>
+                                            updateReview={this.updateReview}
+                                            loggedInUser={this.props.loggedInUser}
+                                            currentUser={this.props.currentUser}/>
                         )
                     })
                 }

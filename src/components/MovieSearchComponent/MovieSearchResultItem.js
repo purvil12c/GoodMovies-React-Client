@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import * as constants from '../../services/Constants'
 export const MovieSearchResultItem = ({searchResult}) => {
     return (
-        <Link className='col-12 mb-2' style={{ textDecoration: 'none' }} to={`/movie/${searchResult.id}`}>
+        <Link className='col-12 mb-2' style={{ textDecoration: 'none' }} to={{pathname: `/movie/${searchResult.id}`, source: 'search'}}>
         <li className='card shadow p-3 bg-white rounded'>
             <div className="row no-gutters">
                 <div className="col-auto">
