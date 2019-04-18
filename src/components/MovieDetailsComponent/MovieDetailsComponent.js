@@ -214,6 +214,10 @@ class MovieDetailsComponent extends React.Component {
                         <div className="row">
                             <h3 className="white-title">Critic Reviews</h3>
                         </div>
+                        {
+                            this.state.reviews.length === 0 &&
+                            <p className="white-title">No critics have reviewed this movie</p>
+                        }
                         <div className="row card-columns mb-4">
                             {
                                 this.state.reviews.map(review =>
