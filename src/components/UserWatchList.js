@@ -29,7 +29,7 @@ class UserWatchList extends React.Component {
                 {
                     this.state.watchlist.map(movie => {
                         return (
-                            <div className='col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch'>
+                            <div className='col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch mt-2'>
                                 <div className='card'>
                                     <Link to={{pathname: `/movie/${movie.movieId}`, source: 'profile'}}>
                                         <img style={{width: '185px', height: 'auto'}}
