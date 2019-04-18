@@ -1,13 +1,10 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import '../../node_modules/font-awesome/css/font-awesome.min.css'
-import UserService from '../services/UserService'
-import * as constants from "../services/Constants";
 
 class UserWatchList extends React.Component {
     constructor(props) {
         super(props);
-        this.userService = new UserService();
         this.state = ({
             watchlist: this.props.watchlist
         });
