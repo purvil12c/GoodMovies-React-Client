@@ -5,7 +5,6 @@ export const API_KEY = 'c5caca19c541b3bea74c471a0a6adf98';
 
 export const HEROKU_BASE_URL = 'https://express-goodmovies-server.herokuapp.com';
 
-
 export const POPULAR_MOVIES_URL = TMDB_BASE_URL + '/discover/movie?api_key=' + API_KEY + '&&sort_by=popularity.desc';
 export const NOW_PLAYING_MOVIES_URL = TMDB_BASE_URL + '/movie/now_playing?api_key=' + API_KEY;
 export const MOVIE_DETAIL_URL = TMDB_BASE_URL + '/movie/MOVIE_ID?api_key=' + API_KEY;

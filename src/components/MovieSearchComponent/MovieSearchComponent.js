@@ -2,12 +2,17 @@ import React from 'react';
 import {HomeNavigationBar} from "../../home/components/HomeNavigationBar";
 import MovieServiceClient from "../../services/MovieService";
 import {MovieSearchResultItem} from "./MovieSearchResultItem";
+import UserService from "../../services/UserService";
 
 export default class MovieSearchComponent extends React.Component {
     constructor(props) {
         super(props);
+
+        this.userService = new UserService();
+
         this.state = {
-            searchResults: []
+            searchResults: [],
+            userProfile: ''
         }
     }
 
@@ -17,8 +22,13 @@ export default class MovieSearchComponent extends React.Component {
             this.setState({
                 searchResults: response.results
             })
-
         })
+
+        this.userService.getProfile().then(
+            response => this.setState({
+                userProfile: response
+            })
+        )
     }
 
     renderSearchResults() {
@@ -39,7 +49,19 @@ export default class MovieSearchComponent extends React.Component {
     render() {
         return (
             <div>
-                <HomeNavigationBar loggedIn = {true}/>
+                {
+                    this.state.userProfile.message === 'You are not logged in' &&
+                    <HomeNavigationBar loggedIn={false}/>
+
+                }
+                {
+                    this.state.userProfile.username !== undefined &&
+                    <div>
+                        <HomeNavigationBar loggedIn={true}
+                                           username={this.state.userProfile.username}
+                                           logout={this.logout}/>
+                    </div>
+                }
                 <h6 className={'m-4 col-12 white-title'}> Search results for "{this.props.match.params.query}" </h6>
                 <div className={"col-12 mt-4"}>
                     <ul className="list-group">

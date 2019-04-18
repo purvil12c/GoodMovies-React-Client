@@ -7,7 +7,8 @@ export default class UserSearchComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchResults: []
+            searchResults: [],
+            userProfile: ''
         }
 
         this.userService = new UserService();
@@ -19,6 +20,12 @@ export default class UserSearchComponent extends React.Component {
                 searchResults: response
             })
         })
+
+        this.userService.getProfile().then(
+            response => this.setState({
+                userProfile: response
+            })
+        )
     }
 
     renderSearchResults() {
@@ -34,7 +41,19 @@ export default class UserSearchComponent extends React.Component {
     render() {
         return (
             <div>
-                <HomeNavigationBar loggedIn = {true}/>
+                {
+                    this.state.userProfile.message === 'You are not logged in' &&
+                    <HomeNavigationBar loggedIn={false}/>
+
+                }
+                {
+                    this.state.userProfile.username !== undefined &&
+                    <div>
+                        <HomeNavigationBar loggedIn={true}
+                                           username={this.state.userProfile.username}
+                                           logout={this.logout}/>
+                    </div>
+                }
                 <h6 className={'m-4 col-12 white-title'}> Search results for "{this.props.match.params.query}" </h6>
                 <div className={"col-12 mt-4"}>
                     <ul>
