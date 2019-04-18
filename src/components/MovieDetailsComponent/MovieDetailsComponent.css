@@ -28,7 +28,7 @@ html, body{
 }
 
 body {
-    background: url("../netflix_bg.jpg")!important;
+    background: url("../../assets/netflix_bg.jpg")!important;
     background-position: center center!important;
     background-repeat: revert!important;
     background-attachment: fixed;

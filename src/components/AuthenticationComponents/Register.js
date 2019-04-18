@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import UserService from '../services/UserService'
+import UserService from '../../services/UserService'
 
-import logo from '../assets/goodmovies_logo.png';
+import logo from '../../assets/goodmovies_logo.png';
 
 import posed from 'react-pose';
 

@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import Login from "./components/Login";
+import Login from "./components/AuthenticationComponents/Login";
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-import Register from "./components/Register";
-import Profile from "./components/Profile";
+import Register from "./components/AuthenticationComponents/Register";
+import Profile from "./components/UserProfileComponents/Profile";
 import MovieDetailsComponent from "./components/MovieDetailsComponent/MovieDetailsComponent";
-import HomeContainer from "./home/containers/HomeContainer";
+import HomeContainer from "./components/HomeComponent/HomeContainer";
 import MovieSearchComponent from "./components/MovieSearchComponent/MovieSearchComponent";
 import UserSearchComponent from "./components/UserSearchComponent/UserSearchComponent";
 import IntroPageComponent from "./components/IntroPageComponent/IntroPageComponent";

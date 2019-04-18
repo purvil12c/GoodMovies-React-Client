@@ -1,5 +1,5 @@
 import React from 'react';
-import UserService from '../services/UserService'
+import UserService from '../../services/UserService'
 
 class UserInformation extends React.Component {
     constructor(props) {

@@ -7,7 +7,7 @@ import UserService from "../../services/UserService";
 import AddWatchlistComponent from "../AddWatchlistComponent/AddWatchlistComponent";
 import TwitterService from "../../services/TwitterService";
 import Tweet from 'react-tweet';
-import {HomeNavigationBar} from "../../home/components/HomeNavigationBar";
+import {HomeNavigationBar} from "../HomeComponent/HomeNavigationBar";
 import {withRouter} from 'react-router-dom';
 import posed from 'react-pose';
 

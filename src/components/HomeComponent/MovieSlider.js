@@ -1,7 +1,7 @@
 import React from 'react';
 import {Carousel} from 'react-responsive-carousel';
 import * as constants from '../../services/Constants'
-import {MovieSliderItem} from "../components/MovieSliderItem";
+import {MovieSliderItem} from "./MovieSliderItem";
 
 export default class MovieSlider extends React.Component {
 

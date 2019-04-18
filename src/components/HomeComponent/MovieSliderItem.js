@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import '../Styles.css'
+import './Styles.css'
 export const MovieSliderItem = ({movies, posters}) => {
     return (
         <div className="slider-item-background">
