@@ -70,8 +70,8 @@ class IntroPageComponent extends React.Component{
       <div className="center container">
 
         <Lottie options={defaultOptions}
-              height={400}
-              width={400}
+              height={300}
+              width={300}
               style={{borderRadius: '200px'}}
         />
 
