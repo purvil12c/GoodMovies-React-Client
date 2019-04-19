@@ -30,7 +30,7 @@ class UserReviews extends React.Component {
         this.setState({
             reviews: this.state.reviews
         })
-        this.userService.updateReview(reviewId, reviewTitle, reviewBody);
+        this.userService.updateReview(reviewId, reviewTitle, reviewBody).then(alert("Review updated."));
     }
 
     render() {
