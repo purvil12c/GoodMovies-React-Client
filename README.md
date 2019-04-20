@@ -4,6 +4,8 @@ GoodMovies offers its users an open community of movie buffs to review, watchlis
 
 We built this project/web application as a part of our CS5610 (Web Development) course requirement. This repository represents the source code for the web-based client. 
 
+We are using **TMDB API** for fetching all the details related to movies.
+
 **Deployed on Heroku:** 
 http://react-goodmovies-client.herokuapp.com
 
