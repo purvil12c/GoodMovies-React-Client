@@ -7,7 +7,7 @@ We built this project/web application as a part of our CS5610 (Web Development) 
 We are using **TMDB API** for fetching all the details related to movies.
 
 **Deployed on Heroku:** 
-http://react-goodmovies-client.herokuapp.com
+https://react-goodmovies-client.herokuapp.com
 
 **Tech Stack used -** 
 
