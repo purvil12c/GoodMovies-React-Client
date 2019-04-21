@@ -31,13 +31,13 @@ export default class UserReviewItem extends React.Component {
         if (this.props.loggedInUser._id === this.props.currentUser._id) {
             return (
                 this.state.review !== undefined &&
-                <div className="card">
+                <div className="card mb-2 shadow">
                     <div className="card-header">
                         {this.state.review.movieName}
                         <i className="fa fa-trash float-right ml-4"
                            onClick={() => this.props.deleteReview(this.state.review._id)}
                         />
-                        <i className="fa fa-check float-right"
+                        <i className="fa fa-check-circle float-right"
                            onClick={() => this.props.updateReview(this.state.review._id, this.state.updatedReviewTitle, this.state.updatedReviewBody)}
                         />
                     </div>
@@ -53,7 +53,7 @@ export default class UserReviewItem extends React.Component {
         else {
             return(
                 this.state.review !== undefined &&
-                <div className="card">
+                <div className="card mb-2 shadow">
                     <div className="card-header">
                         {this.state.review.movieName}
                     </div>

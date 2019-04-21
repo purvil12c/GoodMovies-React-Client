@@ -79,7 +79,7 @@ class MovieDetailsComponent extends React.Component {
     renderCastCards(actor, index) {
         return (
             <div className='col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch'>
-                <div key={index} className='card'>
+                <div key={index} className='card mb-2'>
                     <img className='card-img-top'
                          src={constants.TMDB_IMAGE_BASE_URL + '/w500' + actor.profile_path}
                          alt='https://picsum.photos/100/100'/>
@@ -134,10 +134,6 @@ class MovieDetailsComponent extends React.Component {
 
     backToSearchResults() {
         this.props.history.goBack();
-    }
-
-    backToProfile() {
-
     }
 
     render() {
@@ -199,9 +195,7 @@ class MovieDetailsComponent extends React.Component {
                             </div>
                         </div>
                         <br/>
-                        <div className="row">
-                            <h3 className="white-title">Cast</h3>
-                        </div>
+                        <h3 className="white-title">Cast</h3>
                         <div className="row card-group">
                             {
                                 this.state.cast.slice(0, 4).map((actor, index) =>
@@ -211,9 +205,7 @@ class MovieDetailsComponent extends React.Component {
                             }
                         </div>
                         <br/>
-                        <div className="row">
-                            <h3 className="white-title">Critic Reviews</h3>
-                        </div>
+                        <h3 className="white-title">Critic Reviews</h3>
                         {
                             this.state.reviews.length === 0 &&
                             <p className="white-title">No critics have reviewed this movie</p>
@@ -295,9 +287,7 @@ class MovieDetailsComponent extends React.Component {
                                 </div>
                             </div>
                             <br/>
-                            <div className="row">
-                                <h3 className="white-title">Cast</h3>
-                            </div>
+                            <h3 className="white-title">Cast</h3>
                             <div className="row card-group">
                                 {
                                     this.state.cast.slice(0, 4).map((actor, index) =>
@@ -307,9 +297,7 @@ class MovieDetailsComponent extends React.Component {
                                 }
                             </div>
                             <br/>
-                            <div className="row">
-                                <h3 className="white-title">Critic Reviews</h3>
-                            </div>
+                            <h3 className="white-title">Critic Reviews</h3>
                             <div className="row card-columns mb-4">
                                 {
                                     this.state.reviews.map(review =>
@@ -401,9 +389,7 @@ class MovieDetailsComponent extends React.Component {
                                 </div>
                             </div>
                             <br/>
-                            <div className="row">
-                                <h3 className="white-title">Cast</h3>
-                            </div>
+                            <h3 className="white-title">Cast</h3>
                             <div className="row card-group">
                                 {
                                     this.state.cast.slice(0, 4).map((actor, index) =>
@@ -413,9 +399,7 @@ class MovieDetailsComponent extends React.Component {
                                 }
                             </div>
                             <br/>
-                            <div className="row">
-                                <h3 className="white-title">Critic Reviews</h3>
-                            </div>
+                            <h3 className="white-title">Critic Reviews</h3>
                             <p className="white-title">No critics have reviewed this movie</p>
                             {
                                 this.state.userProfile !== undefined &&

@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 export const UserSearchResultItem = ({searchResult}) => {
     return (
-        <Link className='col-2' style={{ textDecoration: 'none' }} to={`/profile/${searchResult._id}`}>
+        <Link className='col-12 mb-2' style={{ textDecoration: 'none' }} to={`/profile/${searchResult._id}`}>
             <li className='card shadow bg-white rounded'>
                 <div className="row no-gutters">
                     <div className="col-auto m-4">
