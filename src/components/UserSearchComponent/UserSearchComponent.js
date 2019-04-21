@@ -2,13 +2,20 @@ import React from 'react';
 import {HomeNavigationBar} from "../HomeComponent/HomeNavigationBar";
 import {UserSearchResultItem} from "./UserSearchResultItem";
 import UserService from "../../services/UserService";
+import posed from "react-pose";
+
+const AnimatedDiv = posed.div({
+    hidden: { opacity: 0 },
+    visible: { opacity: 1}
+});
 
 export default class UserSearchComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             searchResults: [],
-            userProfile: ''
+            userProfile: '',
+            isVisible: false
         }
 
         this.userService = new UserService();
@@ -20,6 +27,10 @@ export default class UserSearchComponent extends React.Component {
                 searchResults: response
             })
         })
+
+        setTimeout(() => {
+            this.setState({ isVisible: !this.state.isVisible });
+        }, 500);
 
         this.userService.getProfile().then(
             response => this.setState({
@@ -40,7 +51,7 @@ export default class UserSearchComponent extends React.Component {
 
     render() {
         return (
-            <div>
+            <AnimatedDiv pose={this.state.isVisible ? 'visible' : 'hidden'}>
                 {
                     this.state.userProfile.message === 'You are not logged in' &&
                     <HomeNavigationBar loggedIn={false}/>
@@ -54,13 +65,15 @@ export default class UserSearchComponent extends React.Component {
                                            logout={this.logout}/>
                     </div>
                 }
-                <h6 className={'m-4 col-12 white-title'}> Search results for "{this.props.match.params.query}" </h6>
+                <div className="container-fluid ml-0">
+                <h6 className={'mt-4 col-12 white-title'}> Search results for "{this.props.match.params.query}" </h6>
+                </div>
                 <div className={"col-12 mt-4"}>
                     <ul className="list-group">
                         {this.renderSearchResults()}
                     </ul>
                 </div>
-            </div>
+            </AnimatedDiv>
         );
     }
 }
