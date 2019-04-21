@@ -87,39 +87,62 @@ export default class HomeContainer extends React.Component {
     };
 
     render() {
-        return (
-            <AnimatedDiv pose={this.state.isVisible ? 'visible' : 'hidden'}>
-                {
-                    this.state.userProfile.message === 'You are not logged in' &&
+        if (this.state.userProfile.message === 'You are not logged in') {
+            return (
+                <AnimatedDiv pose={this.state.isVisible ? 'visible' : 'hidden'}>
                     <HomeNavigationBar loggedIn={false}/>
+                    <div className="row col-12 justify-content-center mt-4">
+                        <div className="col-6">
+                            <input
+                                style={{backgroundColor: 'rgb(0,0,0,0.3)', caretColor: 'rgb(255,255,0)', color: 'white', backgroundBlendMode: 'overlay', borderRadius: '100px', height: '50px', fontSize: '20px'}}
+                                className="form-control" type="text" onChange={this.searchTextUpdated}
+                                placeholder="Search" value={this.state.searchQuery}
+                                aria-label="Search"/>
+                        </div>
+                        <select style={{width: '100px',backgroundColor: 'rgb(255,255,255,1)', color: 'black', borderRadius: '20px', height: '50px', fontSize: '18px'}}
+                                className="custom-select col-lg-1 col-xs-1" onChange={this.searchTypeUpdated}>
+                            <option value="movie">Movies</option>
+                            <option value="user">Users</option>
+                        </select>
+                        <button type='btn' className="text-white btn btn-outline-success ml-2" onClick={this.searchButtonClicked}>
+                            GO
+                        </button>
 
-                }
-                {
-                    this.state.userProfile.username !== undefined &&
-                    <div>
-                      <HomeNavigationBar loggedIn={true}
-                                         username={this.state.userProfile.username}
-                                         logout={this.logout}/>
-                      <h2 className="ml-4 mt-4 white-title">Hello {this.state.userProfile.username}!</h2>
                     </div>
-                }
 
+                    <h3 className="ml-4 mt-4 white-title"> Popular Movies </h3>
+                    <MovieSlider movies={this.state.popularMovies}/>
+
+                    <h3 className="ml-4 mt-4 white-title"> In Theatres </h3>
+                    <MovieSlider movies={this.state.nowPlayingMovies}/>
+                </AnimatedDiv>
+            )
+        }
+        else if (this.state.userProfile !== undefined) {
+            return (
+            <AnimatedDiv pose={this.state.isVisible ? 'visible' : 'hidden'}>
+                <div>
+                    <HomeNavigationBar loggedIn={true}
+                                       username={this.state.userProfile.username}
+                                       logout={this.logout}/>
+                    <h2 className="ml-4 mt-4 white-title">Hello {this.state.userProfile.username}!</h2>
+                </div>
                 <div className="row col-12 justify-content-center mt-4">
-                  <div className="col-6">
-                    <input
-                    style={{backgroundColor: 'rgb(0,0,0,0.3)', caretColor: 'rgb(255,255,0)', color: 'white', backgroundBlendMode: 'overlay', borderRadius: '100px', height: '50px', fontSize: '20px'}}
-                    className="form-control" type="text" onChange={this.searchTextUpdated}
-                           placeholder="Search" value={this.state.searchQuery}
-                           aria-label="Search"/>
-                  </div>
-                  <select style={{width: '100px',backgroundColor: 'rgb(255,255,255,1)', color: 'black', borderRadius: '20px', height: '50px', fontSize: '18px'}}
-                      className="custom-select col-lg-1 col-xs-1" onChange={this.searchTypeUpdated}>
-                      <option value="movie">Movies</option>
-                      <option value="user">Users</option>
-                  </select>
-                  <button type='btn' className="text-white btn btn-outline-success ml-2" onClick={this.searchButtonClicked}>
-                      GO
-                  </button>
+                    <div className="col-6">
+                        <input
+                            style={{backgroundColor: 'rgb(0,0,0,0.3)', caretColor: 'rgb(255,255,0)', color: 'white', backgroundBlendMode: 'overlay', borderRadius: '100px', height: '50px', fontSize: '20px'}}
+                            className="form-control" type="text" onChange={this.searchTextUpdated}
+                            placeholder="Search" value={this.state.searchQuery}
+                            aria-label="Search"/>
+                    </div>
+                    <select style={{width: '100px',backgroundColor: 'rgb(255,255,255,1)', color: 'black', borderRadius: '20px', height: '50px', fontSize: '18px'}}
+                            className="custom-select col-lg-1 col-xs-1" onChange={this.searchTypeUpdated}>
+                        <option value="movie">Movies</option>
+                        <option value="user">Users</option>
+                    </select>
+                    <button type='btn' className="text-white btn btn-outline-success ml-2" onClick={this.searchButtonClicked}>
+                        GO
+                    </button>
 
                 </div>
 
@@ -131,6 +154,7 @@ export default class HomeContainer extends React.Component {
 
             </AnimatedDiv>
 
-        );
+            )
+        }
     }
 }
