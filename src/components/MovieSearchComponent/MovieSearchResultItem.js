@@ -7,7 +7,7 @@ export const MovieSearchResultItem = ({searchResult}) => {
         <li className='card shadow p-3 bg-white rounded'>
             <div className="row no-gutters">
                 <div className="col-auto">
-                    <img src={constants.TMDB_IMAGE_BASE_URL + '/w92' + searchResult.poster_path} className="img-fluid m-2" alt=""/>
+                    <img src={constants.TMDB_IMAGE_BASE_URL + '/w92' + searchResult.poster_path} className="img-fluid m-2" alt='https://picsum.photos/100/100'/>
                 </div>
                 <div className="col">
                     <div className="card-block">

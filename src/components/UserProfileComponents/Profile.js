@@ -193,7 +193,7 @@ class Profile extends React.Component {
                     <ProfileNavBar/>
                 </div>
 
-                <div className={"container my-5"}>
+                <div className={"container mt-4 mb-4"}>
                     <div className="card text-center">
                         <div className="card-header text-left">
                             <div className={"jumbotron"}>
@@ -223,7 +223,7 @@ class Profile extends React.Component {
                                     <div className={"col-sm-12 col-md-6 col-lg-8"}>
                                         <div className={"float-right"}>
                                             {
-                                                this.state.user != undefined &&
+                                                this.state.user !== undefined &&
                                                 this.state.loggedInUser.username !== undefined &&
                                                 this.state.loggedInUser._id !== this.state.user._id
                                                 &&

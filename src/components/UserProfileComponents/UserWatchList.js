@@ -1,5 +1,4 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 import '../../../node_modules/font-awesome/css/font-awesome.min.css'
 
 class UserWatchList extends React.Component {
@@ -10,7 +9,7 @@ class UserWatchList extends React.Component {
         });
     }
 
-    componentWillReceiveProps(nextProps, nextContext) {
+    componentWillReceiveProps(nextProps) {
         this.setState({
                           watchlist: nextProps.watchlist
                       })
@@ -26,24 +25,20 @@ class UserWatchList extends React.Component {
                 {
                     this.state.watchlist.map(movie => {
                         return (
-                            <div className='col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch mt-2'>
-                                <div className='card'>
-                                    <Link to={{pathname: `/movie/${movie.movieId}`, source: 'profile'}}>
-                                        <img style={{width: '185px', height: 'auto'}}
-                                             className='card-img-top' src={movie.imageUrl}
-                                             alt='Card image cap'/>
-                                    </Link>
-                                    <div className='card-body'>
-                                        <h5 className='bold-text'>{movie.movieName}</h5>
+                            <div className='col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch'>
+                                <div className='card mb-2 shadow'>
+                                    <img className='card-img-top'
+                                         src={movie.imageUrl}
+                                         style={{width: '185px'}}
+                                         alt='https://picsum.photos/100/100'/>
+                                    <div className="card-footer">
                                         {
                                             this.props.loggedInUser._id
                                             === this.props.currentUser._id &&
-                                            <div className="col-auto">
                                                 <button className="btn btn-danger"
                                                         onClick={() => this.deleteFromWatchlist(
-                                                            movie.movieId)}>Delete
+                                                            movie.movieId)}>Remove
                                                 </button>
-                                            </div>
                                         }
                                     </div>
                                 </div>
