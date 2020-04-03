@@ -91,22 +91,16 @@ class IntroPageComponent extends React.Component{
         <AnimatedDivFooter pose={this.state.isVisibleFooter ? 'visible' : 'hidden'} className="footer">
           <div className="row">
             <div className="col-xs-12 col-md-4 white-title">
-              <img className="footer-image" src="https://media.licdn.com/dms/image/C4E03AQEUs_lMYd9YgA/profile-displayphoto-shrink_200_200/0?e=1560988800&v=beta&t=VuK-IAB0bpQQLB9gTWUUkl8nR8QhpEWBOoTqK9i1rIA"/>
-              <br/>
               <h4>Purvil Bambharolia</h4>
               <h5>bambharolia.p@husky.neu.edu</h5>
               <h5>Github: purvil12c</h5>
             </div>
             <div className="col-xs-12 col-md-4 white-title">
-              <img className="footer-image" src="https://media.licdn.com/dms/image/C4E03AQHL5FnK_7zCGQ/profile-displayphoto-shrink_200_200/0?e=1560988800&v=beta&t=KHNIMv-zY1ZNd95kiBb-jxUWRcvz8b8V9IHwBqhINWM"/>
-              <br/>
               <h4>Dipen Patel</h4>
               <h5>patel.dip@husky.neu.edu</h5>
               <h5>Github: dipenpatel0810</h5>
             </div>
             <div className="col-xs-12 col-md-4 white-title">
-              <img className="footer-image" src="https://media.licdn.com/dms/image/C4E03AQEi3D9RfMR83A/profile-displayphoto-shrink_800_800/0?e=1560988800&v=beta&t=ecP3shKYBwV6SI3C_PwJw5QmPfeZ9VOOd9BRyhz2xrw"/>
-              <br/>
               <h4>Shivam Bhalla</h4>
               <h5>bhalla.shivam@husky.neu.edu</h5>
               <h5>Github: Shivam101</h5>
